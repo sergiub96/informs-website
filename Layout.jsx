@@ -54,9 +54,9 @@ function Nav({ onNav, page }) {
           <div className="nav-inner">
             <div className="nav-logo" onClick={() => go('home')}>
               <img
-                src="uploads/informs-logo-low resolution.png"
+                src="logo/png/logo-no-background.png"
                 alt="INFORMS"
-                style={{ height: '32px', width: 'auto', display: 'block', filter: 'brightness(0) invert(1)' }}
+                style={{ height: '28px', width: 'auto', display: 'block' }}
               />
             </div>
 
@@ -123,7 +123,7 @@ function Footer({ onNav }) {
           <div>
             <div className="f-logo">
               <img
-                src="uploads/informs-logo-low resolution.png"
+                src="logo/png/logo-no-background.png"
                 alt="INFORMS"
                 style={{ height: '28px', width: 'auto', display: 'block', marginBottom: '14px', filter: 'brightness(0) invert(1)' }}
               />

@@ -14,7 +14,11 @@ function AboutPage({ onNav }) {
 
   return (
     <>
-      <div className="pg-hero">
+      <div className="pg-hero pg-hero-video">
+        <video className="pg-hero-vid" autoPlay muted loop playsInline>
+          <source src="assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4" type="video/mp4" />
+        </video>
+        <div className="pg-hero-overlay"></div>
         <div className="container">
           <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px' }}>
             Cine suntem
@@ -160,22 +164,41 @@ function ContactPage() {
   const [form, setForm] = useState({ nume: '', email: '', telefon: '', subiect: '', mesaj: '' });
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.nume.trim() || !form.email.trim() || !form.mesaj.trim()) {
       setError('Te rugăm să completezi câmpurile obligatorii (*).');
       return;
     }
     setError('');
-    setSent(true);
+    setLoading(true);
+    try {
+      const res = await fetch('/mail.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const json = await res.json();
+      if (json.ok) setSent(true);
+      else setError('Mesajul nu a putut fi trimis. Încearcă din nou sau sună direct.');
+    } catch {
+      setError('Eroare de rețea. Încearcă din nou sau sună direct.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
-      <div className="pg-hero">
+      <div className="pg-hero pg-hero-video">
+        <video className="pg-hero-vid" autoPlay muted loop playsInline>
+          <source src="assets/videos_library/digitalizare-SEAP-contract.mp4" type="video/mp4" />
+        </video>
+        <div className="pg-hero-overlay"></div>
         <div className="container">
           <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px' }}>
             Ia legătura cu noi
@@ -230,8 +253,8 @@ function ContactPage() {
                         {error}
                       </p>
                     )}
-                    <button type="submit" className="btn btn-primary" style={{ alignSelf: 'flex-start', fontSize: '15px', padding: '14px 32px' }}>
-                      Trimite mesajul
+                    <button type="submit" className="btn btn-primary" style={{ alignSelf: 'flex-start', fontSize: '15px', padding: '14px 32px' }} disabled={loading}>
+                      {loading ? 'Se trimite...' : 'Trimite mesajul'}
                     </button>
                   </div>
                 </form>
@@ -243,13 +266,17 @@ function ContactPage() {
                 <div className="card" style={{ padding: '28px' }}>
                   <h4 style={{ marginBottom: '20px', color: 'var(--navy)' }}>Informații de contact</h4>
                   {[
+                    { label: 'Email', val: 'office@informs.ro', href: 'mailto:office@informs.ro' },
                     { label: 'Website', val: 'www.informs.ro' },
                     { label: 'Companie', val: 'MILBAC MANAGEMENT S.R.L.' },
                     { label: 'Program', val: 'Luni – Vineri, 09:00 – 17:00' },
                   ].map((r, i, arr) => (
                     <div key={i} style={{ paddingBottom: i < arr.length - 1 ? '16px' : 0, marginBottom: i < arr.length - 1 ? '16px' : 0, borderBottom: i < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>
                       <div style={{ fontSize: '10.5px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--text-muted)', marginBottom: '4px' }}>{r.label}</div>
-                      <div style={{ fontSize: '14.5px', fontWeight: 500 }}>{r.val}</div>
+                      {r.href
+                        ? <a href={r.href} style={{ fontSize: '14.5px', fontWeight: 500, color: 'var(--blue-a)', textDecoration: 'none' }}>{r.val}</a>
+                        : <div style={{ fontSize: '14.5px', fontWeight: 500 }}>{r.val}</div>
+                      }
                     </div>
                   ))}
                 </div>
@@ -289,7 +316,11 @@ function ServicesPage({ onNav }) {
 
   return (
     <>
-      <div className="pg-hero">
+      <div className="pg-hero pg-hero-video">
+        <video className="pg-hero-vid" autoPlay muted loop playsInline>
+          <source src="assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4" type="video/mp4" />
+        </video>
+        <div className="pg-hero-overlay"></div>
         <div className="container">
           <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px' }}>
             Ce oferim
@@ -332,6 +363,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'Pe baza datelor de intrare solicitate, analizăm situația prezentată și îți oferim soluții concrete, aplicate, care să răspundă tuturor cerințelor și obiectivelor stabilite.',
       items: ['Evaluare și analiză expertă', 'Soluții personalizate pentru fiecare nevoie', 'Rapoarte detaliate', 'Implementare asistată'],
       img: 'https://static.wixstatic.com/media/ab6452_9bdced09566642e99bef512302a368d7~mv2.webp/v1/fill/w_954,h_972,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%203.webp',
+      video: 'assets/videos_library/achizitii-publice.mp4',
     },
     'achizitii-publice': {
       title: 'Achiziții publice',
@@ -339,6 +371,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'Elaborăm documentații complete în domeniul achizițiilor publice. Oferim asistență și suport în derularea procedurilor, de la elaborarea documentelor până la evaluarea ofertelor.',
       items: ['Documentații de atribuire', 'Servicii de ofertare (calificare, tehnic, financiar)', 'Evaluarea ofertelor depuse', 'Răspunsuri în fața CNSC și curților de apel'],
       img: 'https://static.wixstatic.com/media/ab6452_990466dc460d40a1b91200dc7080f012~mv2.webp/v1/fill/w_968,h_958,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%201.webp',
+      video: 'assets/videos_library/achizitii-publice.mp4',
     },
     'delegare-servicii': {
       title: 'Delegare servicii de utilități publice',
@@ -346,6 +379,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'Elaborăm documentații complete pentru gestiunea serviciilor de utilități publice, adaptate conform legislației în vigoare.',
       items: ['Salubrizare', 'Transport public', 'Iluminat public', 'Alte servicii de utilitate publică'],
       img: 'https://static.wixstatic.com/media/ab6452_9bdced09566642e99bef512302a368d7~mv2.webp/v1/fill/w_954,h_972,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%203.webp',
+      video: 'assets/videos_library/documentatii-delegare-servicii-utilitati-publice.mp4',
     },
     'modele-excel': {
       title: 'Modele de lucru EXCEL',
@@ -353,6 +387,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'Complexitatea și volumul informațiilor nu trebuie să reprezinte un impediment. Instrumentele Excel sunt concepute pentru a simplifica activitatea și a reduce erorile umane.',
       items: ['Aplicabilitate generală', 'Aplicabilitate specifică domeniului', 'Format editabil și personalizabil', 'Actualizate conform legislației'],
       img: 'https://static.wixstatic.com/media/ab6452_dfa86221bf384275a44be40c2b4a1bf0~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%205.webp',
+      video: 'assets/videos_library/modele-excel-achizitii-publice-calcul-automat.mp4',
     },
     'modele-word': {
       title: 'Modele de lucru WORD',
@@ -360,6 +395,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'Cererile și formularele tipizate clasice în format scanat sunt de domeniul trecutului. Digitalizează-ți activitatea și zilnic salvezi timp prețios.',
       items: ['Formulare tipizate', 'Cereri standardizate', 'Documente administrative', 'Format editabil'],
       img: 'https://static.wixstatic.com/media/ab6452_f425c6e6bc7d4aad8604f8e2f0b758bd~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%202.webp',
+      video: 'assets/videos_library/modele-excel-achizitii-publice-calcul-automat.mp4',
     },
     'modele-pdf': {
       title: 'Modele de lucru PDF inteligent',
@@ -367,6 +403,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'E timpul să renunți la completarea clasică. Lucrează în mod inteligent cu modele standard în format electronic, ușor de completat și de arhivat.',
       items: ['Formulare interactive', 'Câmpuri de completare automată', 'Format standardizat', 'Compatibil Adobe Acrobat'],
       img: 'https://static.wixstatic.com/media/ab6452_6c32cfd5b5744ffaa00d4c5cf86916c1~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%204.webp',
+      video: 'assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4',
     },
   };
 
@@ -374,7 +411,13 @@ function ServiceDetailPage({ onNav, service }) {
 
   return (
     <>
-      <div className="pg-hero">
+      <div className={`pg-hero${d.video ? ' pg-hero-video' : ''}`}>
+        {d.video && (
+          <video className="pg-hero-vid" autoPlay muted loop playsInline>
+            <source src={d.video} type="video/mp4" />
+          </video>
+        )}
+        {d.video && <div className="pg-hero-overlay"></div>}
         <div className="container">
           <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px', cursor: 'pointer' }} onClick={() => go('servicii')}>
             ← Servicii
@@ -429,7 +472,11 @@ function MaterialeGratuitePage({ onNav }) {
   const go = (p) => { onNav(p); window.scrollTo({ top: 0, behavior: 'instant' }); };
   return (
     <>
-      <div className="pg-hero">
+      <div className="pg-hero pg-hero-video">
+        <video className="pg-hero-vid" autoPlay muted loop playsInline>
+          <source src="assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4" type="video/mp4" />
+        </video>
+        <div className="pg-hero-overlay"></div>
         <div className="container">
           <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px' }}>Gratuit</div>
           <h1>Materiale gratuite</h1>

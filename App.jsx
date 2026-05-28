@@ -5,17 +5,12 @@ const POLICY_PAGES  = ['politica-confidentialitate', 'termeni-si-conditii'];
 
 function App() {
   const [page, setPage] = useState('home');
-  const [fading, setFading] = useState(false);
   const [displayPage, setDisplayPage] = useState('home');
 
   const navigate = (newPage) => {
     if (newPage === displayPage) return;
-    setFading(true);
-    setTimeout(() => {
-      setDisplayPage(newPage);
-      setPage(newPage);
-      setFading(false);
-    }, 220);
+    setDisplayPage(newPage);
+    setPage(newPage);
   };
 
   const renderPage = () => {
@@ -38,7 +33,7 @@ function App() {
   return (
     <div>
       <Nav onNav={navigate} page={page} />
-      <main style={{ opacity: fading ? 0 : 1, transition: 'opacity 0.22s ease', minHeight: '60vh' }}>
+      <main style={{ minHeight: '60vh' }}>
         {renderPage()}
       </main>
       <Footer onNav={navigate} />

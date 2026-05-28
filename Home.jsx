@@ -1,5 +1,6 @@
 const { useState, useEffect, useRef } = React;
 
+
 /* ── Animated headline: cuvinte dezvăluite secvențial ── */
 function AnimatedHeadline({ lines, startDelay = 0.28 }) {
   let wi = 0;
@@ -75,10 +76,10 @@ function HomePage({ onNav }) {
   ];
 
   const domains = [
-    { icon: <IcoFile />,     label: 'Achiziții publice' },
-    { icon: <IcoBuilding />, label: 'Delegare servicii\nutilități publice' },
-    { icon: <IcoGrid />,     label: 'Management\nde proiect' },
-    { icon: <IcoCode />,     label: 'Digitalizare' },
+    { icon: <IcoFile />,     num: '01', label: 'Achiziții publice',                  desc: 'Documentații complete pentru proceduri de atribuire — servicii, produse și lucrări. Conformitate legislativă garantată.' },
+    { icon: <IcoBuilding />, num: '02', label: 'Delegare servicii utilități publice', desc: 'Studii de oportunitate și documentații complete pentru gestiunea serviciilor de salubrizare, transport și iluminat.' },
+    { icon: <IcoGrid />,     num: '03', label: 'Management de proiect',               desc: 'Instrumente pentru planificarea, monitorizarea și raportarea proiectelor finanțate din fonduri publice sau europene.' },
+    { icon: <IcoCode />,     num: '04', label: 'Digitalizare',                        desc: 'Automatizarea fluxurilor documentare prin modele Excel, Word și PDF inteligent, adaptate activității tale specifice.' },
   ];
 
   const models = [
@@ -124,45 +125,30 @@ function HomePage({ onNav }) {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="hero">
-        <div className="hero-bg-img"></div>
-        <div className="hero-grid-bg"></div>
-        <div className="hero-sweep"></div>
-        <div className="hero-glow hero-glow-1"></div>
-        <div className="hero-glow hero-glow-2"></div>
-        <div className="hero-glow hero-glow-3"></div>
-        <div className="hero-doc hero-doc-1"></div>
-        <div className="hero-doc hero-doc-2"></div>
-        <div className="hero-doc hero-doc-3"></div>
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div className="hero-wrap">
-            <div>
-              <p className="h-label">
-                Achiziții publice &nbsp;·&nbsp; Utilități publice &nbsp;·&nbsp; Digitalizare
-              </p>
-              <AnimatedHeadline
-                lines={['Formulare inteligente.', 'Documentații complete.']}
-                startDelay={0.28}
-              />
-              <p className="hero-sub h-sub" style={{ animationDelay: '0.72s' }}>
-                Soluții adaptate pentru sectorul public și privat — modele de lucru conforme legislației,
-                asistență tehnică de specialitate și documentații complete.
-              </p>
-              <div className="hero-actions h-actions" style={{ animationDelay: '0.92s' }}>
-                <button className="btn btn-primary" onClick={() => go('servicii')}>
-                  Descoperă serviciile
-                </button>
-                <button className="btn btn-ghost" onClick={() => go('contact')}>
-                  Solicită ofertă
-                </button>
-              </div>
-            </div>
-            <div className="hero-img-wrap">
-              <img
-                src="uploads/ai-digital-transformation-backgr_edited.webp"
-                alt="Transformare digitală — INFORMS"
-              />
-            </div>
+      <section className="hero hero-video-section">
+        <video className="hero-video" autoPlay muted loop playsInline>
+          <source src="assets/img_informs/animated-digital-data-network-with-cloud-and-file.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-video-overlay"></div>
+        <div className="container hero-center-content">
+          <p className="h-label">
+            Achiziții publice &nbsp;·&nbsp; Delegare servicii de utilități publice &nbsp;·&nbsp; Digitalizare
+          </p>
+          <AnimatedHeadline
+            lines={['Formulare inteligente.', 'Documentații complete.']}
+            startDelay={0.28}
+          />
+          <p className="hero-sub h-sub" style={{ animationDelay: '0.72s' }}>
+            Soluții adaptate pentru sectorul public și privat — modele de lucru conforme legislației,
+            asistență tehnică de specialitate și documentații complete.
+          </p>
+          <div className="hero-actions h-actions" style={{ animationDelay: '0.92s', justifyContent: 'center' }}>
+            <button className="btn btn-primary" onClick={() => go('servicii')}>
+              Descoperă serviciile
+            </button>
+            <button className="btn btn-ghost" onClick={() => go('contact')}>
+              Solicită ofertă
+            </button>
           </div>
         </div>
       </section>
@@ -210,43 +196,78 @@ function HomePage({ onNav }) {
       </div>
 
       {/* ── PAIN / SOLUTION ── */}
-      <div className="pain-solution">
-        <div className="pain-side">
-          <p className="ps-label">Provocări comune</p>
-          <h2>Știm cu ce te confrunți</h2>
-          {[
-            'Documentații incomplete → riscuri de contestație',
-            'Erori umane în formulare → proceduri anulate',
-            'Legislație în schimbare → actualizări frecvente',
-            'Timp pierdut pe documente standard',
-          ].map((item, i) => (
-            <div key={i} className="ps-item">
-              <div className="ps-icon ps-icon-x">✕</div>
-              <p style={{ color: 'rgba(255,255,255,.68)' }}>{item}</p>
+      {/* ── CHALLENGES & SOLUTIONS ── */}
+      <section className="sec sec-white">
+        <div className="container">
+          <FadeUp>
+            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+              <div className="badge" style={{ marginBottom: '14px' }}>Context operațional</div>
+              <h2>Provocări frecvente în domeniu</h2>
+              <p style={{ maxWidth: '560px', margin: '12px auto 0', fontSize: '15px' }}>
+                Mediul administrativ și de achiziții publice generează, în mod obiectiv, o serie de dificultăți recurente ce pot afecta eficiența instituțională.
+              </p>
             </div>
-          ))}
-        </div>
-        <div className="sol-side">
-          <p className="ps-label">Soluțiile INFORMS</p>
-          <h2>Cum eliminăm aceste riscuri</h2>
-          {[
-            'Documentații complete, conforme legislației în vigoare',
-            'Modele standardizate — 90% reducere erori umane',
-            'Actualizare permanentă a tuturor instrumentelor',
-            'Aplicabilitate directă — economisești timp zilnic',
-          ].map((item, i) => (
-            <div key={i} className="ps-item">
-              <div className="ps-icon ps-icon-ok">✓</div>
-              <p>{item}</p>
-            </div>
-          ))}
-          <div style={{ marginTop: '36px' }}>
-            <button className="btn btn-primary" onClick={() => go('contact')}>
-              Solicită o consultare
-            </button>
+          </FadeUp>
+          <div className="challenges-grid">
+            {[
+              {
+                num: '01',
+                problem: 'Documentații cu lacune procedurale',
+                problemDesc: 'Absența unor elemente obligatorii în documentații generează vulnerabilități juridice și riscuri de contestație.',
+                solution: 'Modele integral verificate juridic',
+                solutionDesc: 'Fiecare instrument respectă cerințele legale în vigoare, reducând expunerea instituțională la erori procedurale.',
+              },
+              {
+                num: '02',
+                problem: 'Inconsistențe generate de procesarea manuală',
+                problemDesc: 'Redactarea manuală a documentelor standardizate este susceptibilă la erori repetitive și neuniformitate în aplicare.',
+                solution: 'Standardizare și automatizare',
+                solutionDesc: 'Modelele structurate elimină variabilitatea umană, asigurând uniformitate și o rată de eroare redusă cu până la 90%.',
+              },
+              {
+                num: '03',
+                problem: 'Cadru legislativ în continuă evoluție',
+                problemDesc: 'Modificările frecvente ale legislației impun actualizarea constantă a documentelor și procedurilor aplicabile.',
+                solution: 'Actualizare permanentă',
+                solutionDesc: 'Instrumentele INFORMS sunt revizuite și actualizate în concordanță cu orice modificare legislativă relevantă.',
+              },
+              {
+                num: '04',
+                problem: 'Resurse temporale alocate documentației',
+                problemDesc: 'Elaborarea documentelor de rutină consumă resurse semnificative ce ar putea fi direcționate spre activități cu valoare adăugată superioară.',
+                solution: 'Eficiență operațională imediată',
+                solutionDesc: 'Aplicabilitatea directă a instrumentelor reduce substanțial timpul alocat documentației administrative.',
+              },
+            ].map((item, i) => (
+              <FadeUp key={i} delay={i * 80}>
+                <div className="challenge-card">
+                  <div className="challenge-num">{item.num}</div>
+                  <div className="challenge-body">
+                    <div className="challenge-problem">
+                      <div className="challenge-tag challenge-tag-problem">Provocare</div>
+                      <h4>{item.problem}</h4>
+                      <p>{item.problemDesc}</p>
+                    </div>
+                    <div className="challenge-arrow">→</div>
+                    <div className="challenge-solution">
+                      <div className="challenge-tag challenge-tag-solution">Abordare INFORMS</div>
+                      <h4>{item.solution}</h4>
+                      <p>{item.solutionDesc}</p>
+                    </div>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
           </div>
+          <FadeUp delay={320}>
+            <div style={{ textAlign: 'center', marginTop: '40px' }}>
+              <button className="btn btn-primary" onClick={() => go('contact')}>
+                Solicită o consultare
+              </button>
+            </div>
+          </FadeUp>
         </div>
-      </div>
+      </section>
 
       {/* ── FEATURE STRIP ── */}
       <div className="feat-strip">
@@ -265,25 +286,32 @@ function HomePage({ onNav }) {
         </div>
       </div>
 
-      {/* ── DOMAINS ── */}
-      <section className="sec sec-white">
+      {/* u2500u2500 DOMAINS u2500u2500 */}
+      <section className="sec dom-section">
         <div className="container">
           <FadeUp>
-            <div style={{ maxWidth: 560, marginBottom: '8px' }}>
-              <div className="badge" style={{ marginBottom: '16px' }}>Domenii de activitate</div>
-              <h2>Expertiză în domenii-cheie</h2>
+            <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+              <div className="badge badge-white" style={{ marginBottom: '16px' }}>Domenii de activitate</div>
+              <h2 style={{ color: '#fff' }}>Expertiză în domenii-cheie</h2>
+              <p style={{ color: 'rgba(255,255,255,.58)', maxWidth: '520px', margin: '14px auto 0', fontSize: '15px', lineHeight: 1.75 }}>
+                Peste 15 ani de experiență concentrată în domeniile cu cel mai mare impact pentru administrația publică.
+              </p>
             </div>
           </FadeUp>
-          <FadeUp delay={100}>
-            <div className="domain-grid">
-              {domains.map((d, i) => (
-                <div key={i} className="d-card">
-                  <div className="d-card-icon">{d.icon}</div>
-                  <h4>{d.label.replace('\n', '\u00A0')}</h4>
+          <div className="dom-grid">
+            {domains.map((d, i) => (
+              <FadeUp key={i} delay={i * 80}>
+                <div className="dom-card">
+                  <div className="dom-card-top">
+                    <div className="dom-icon">{d.icon}</div>
+                    <span className="dom-num">{d.num}</span>
+                  </div>
+                  <h3 className="dom-title">{d.label}</h3>
+                  <p className="dom-desc">{d.desc}</p>
                 </div>
-              ))}
-            </div>
-          </FadeUp>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -341,7 +369,7 @@ function HomePage({ onNav }) {
               <FadeUp key={i} delay={i * 65}>
                 <div className="model-card" onClick={() => go(m.page)}>
                   <div className="model-card-img">
-                    <img src={m.img} alt={m.title} onError={(e) => { e.target.style.display = 'none'; }} />
+                    <img src={m.img} alt={m.title} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
                   </div>
                   <div className="model-card-body">
                     <h3>{m.title}</h3>
@@ -356,21 +384,24 @@ function HomePage({ onNav }) {
       </section>
 
       {/* ── OBJECTIVES ── */}
-      <section className="sec sec-pale">
+      <section className="sec obj-section">
+        <video className="obj-section-vid" autoPlay muted loop playsInline>
+          <source src="assets/videos_library/digitalizare-SEAP-contract.mp4" type="video/mp4" />
+        </video>
         <div className="container">
           <FadeUp>
             <div style={{ textAlign: 'center', marginBottom: '0' }}>
               <div className="badge" style={{ marginBottom: '14px' }}>Obiective</div>
-              <h2>Obiectivele urmărite</h2>
+              <h2 style={{ color: '#fff' }}>Obiectivele urmărite</h2>
             </div>
           </FadeUp>
           <div className="obj-grid">
             {objectives.map((o, i) => (
               <FadeUp key={i} delay={i * 110}>
-                <div className="obj-item">
+                <div className="obj-item obj-item-dark">
                   <div className="obj-num">{o.num}</div>
-                  <h3>{o.title}</h3>
-                  <p>{o.desc}</p>
+                  <h3 style={{ color: '#fff' }}>{o.title}</h3>
+                  <p style={{ color: 'rgba(255,255,255,.72)' }}>{o.desc}</p>
                 </div>
               </FadeUp>
             ))}
@@ -412,7 +443,7 @@ function HomePage({ onNav }) {
       </section>
 
       {/* ── PROCESS ── */}
-      <section className="sec sec-white">
+      <section className="sec proc-section">
         <div className="container">
           <FadeUp>
             <div style={{ textAlign: 'center' }}>
