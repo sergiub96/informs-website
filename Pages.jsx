@@ -194,11 +194,7 @@ function ContactPage() {
 
   return (
     <>
-      <div className="pg-hero pg-hero-video">
-        <video className="pg-hero-vid" autoPlay muted loop playsInline>
-          <source src="assets/videos_library/digitalizare-SEAP-contract.mp4" type="video/mp4" />
-        </video>
-        <div className="pg-hero-overlay"></div>
+      <div className="pg-hero">
         <div className="container">
           <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px' }}>
             Ia legătura cu noi

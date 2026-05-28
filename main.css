@@ -46,16 +46,16 @@ nav.main-nav{
 }
 .nav-island{
   max-width:var(--max-w);margin:0 auto;
-  background:rgba(255,255,255,.82);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(255,255,255,.65);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   border-radius:14px;
-  border:1px solid rgba(255,255,255,.6);
-  box-shadow:0 4px 24px rgba(4,14,32,.12),inset 0 1px 0 rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 4px 20px rgba(4,14,32,.10),inset 0 1px 0 rgba(255,255,255,.7);
   transition:background .25s ease,box-shadow .25s ease;
 }
 nav.main-nav.scrolled .nav-island{
-  background:rgba(255,255,255,.96);
-  box-shadow:0 8px 32px rgba(4,14,32,.16),inset 0 1px 0 rgba(255,255,255,.9);
+  background:rgba(255,255,255,.65);
+  box-shadow:0 4px 20px rgba(4,14,32,.10),inset 0 1px 0 rgba(255,255,255,.7);
 }
 .nav-inner{
   height:58px;display:flex;align-items:center;
