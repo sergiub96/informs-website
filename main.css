@@ -135,6 +135,79 @@ h3{font-size:1.22rem;font-weight:700;line-height:1.32}
 h4{font-size:1.02rem;font-weight:700;letter-spacing:.01em}
 .lead{font-size:1.15rem;color:var(--text-2);line-height:1.78}
 
+/* ── Stat number entrance animation (replaces CountUp JS) ── */
+@keyframes statIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.stat-num-anim{display:inline-block;animation:statIn .7s ease both}
+.stat-col:nth-child(1) .stat-num-anim{animation-delay:.05s}
+.stat-col:nth-child(2) .stat-num-anim{animation-delay:.15s}
+.stat-col:nth-child(3) .stat-num-anim{animation-delay:.25s}
+.stat-col:nth-child(4) .stat-num-anim{animation-delay:.35s}
+
+/* ── Homepage parallax background ── */
+.home-page{position:relative;overflow:hidden}
+.hbg{
+  position:absolute;inset:0;
+  pointer-events:none;z-index:0;
+  overflow:hidden;
+}
+.hbg-grid{
+  position:absolute;inset:-60%;
+  background-image:
+    linear-gradient(rgba(59,128,202,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(59,128,202,.028) 1px,transparent 1px);
+  background-size:64px 64px;
+  transform:rotate(12deg);
+}
+.hbg-b1{
+  position:absolute;
+  width:780px;height:780px;
+  top:-140px;right:-180px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(59,128,202,.07) 0%,transparent 65%);
+}
+.hbg-b2{
+  position:absolute;
+  width:620px;height:620px;
+  top:42%;left:-160px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(19,88,176,.055) 0%,transparent 65%);
+}
+.hbg-b3{
+  position:absolute;
+  width:720px;height:720px;
+  bottom:-80px;right:8%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(59,128,202,.06) 0%,transparent 65%);
+}
+/* Sections sit above parallax layer */
+.home-page > section,
+.home-page > .sec{position:relative;z-index:1}
+/* CSS scroll-driven parallax — replaces JS scroll listener */
+@supports (animation-timeline: scroll()) {
+  .hbg-b1{
+    animation:hbg-drift1 linear both;
+    animation-timeline:scroll(root);
+    animation-range:0% 100%;
+  }
+  .hbg-b2{
+    animation:hbg-drift2 linear both;
+    animation-timeline:scroll(root);
+    animation-range:0% 100%;
+  }
+  .hbg-b3{
+    animation:hbg-drift3 linear both;
+    animation-timeline:scroll(root);
+    animation-range:0% 100%;
+  }
+  @keyframes hbg-drift1{from{transform:translateY(0)}to{transform:translateY(320px)}}
+  @keyframes hbg-drift2{from{transform:translateY(0)}to{transform:translateY(520px)}}
+  @keyframes hbg-drift3{from{transform:translateY(0)}to{transform:translateY(-140px)}}
+}
+/* Light sections: semi-transparent so parallax shows through */
+.home-page .sec-white{background:rgba(255,255,255,.86)}
+.home-page .sec-pale{background:rgba(244,248,252,.84)}
+.home-page .obj-section{background:rgba(255,255,255,.86)}
+
 /* ── Sections ── */
 .sec{padding:88px 0}
 .sec-sm{padding:52px 0}
@@ -438,17 +511,40 @@ h4{font-size:1.02rem;font-weight:700;letter-spacing:.01em}
 .svc-grid-card:hover{border-left-color:var(--blue-a);box-shadow:var(--s-sm);transform:translateX(2px)}
 
 /* ── Objectives ── */
-.obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
-.obj-item{}
-.obj-num{
-  width:48px;height:48px;border-radius:var(--r-lg);
-  background:var(--blue-lt);color:var(--blue-a);
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;font-weight:800;margin-bottom:18px;
-  font-variant-numeric:tabular-nums;
+.obj-section{background:var(--white)}
+.obj-badge{
+  background:var(--blue-lt)!important;
+  color:var(--blue)!important;
+  border:1px solid rgba(19,88,176,.15)!important;
 }
-.obj-item h3{margin-bottom:9px;font-size:1.18rem}
-.obj-item p{font-size:15px;color:var(--text-2);line-height:1.75}
+.obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+.obj-item{
+  position:relative;overflow:hidden;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:36px 32px 34px;
+  box-shadow:0 2px 12px rgba(6,24,48,.06);
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+}
+.obj-item::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue-a),transparent 75%);
+}
+.obj-item:hover{
+  transform:translateY(-5px);
+  border-color:var(--blue-a);
+  box-shadow:0 10px 32px rgba(6,24,48,.1);
+}
+.obj-num-bg{
+  position:absolute;right:-8px;bottom:-18px;
+  font-size:130px;font-weight:900;line-height:1;
+  color:rgba(6,24,48,.05);letter-spacing:-.04em;
+  pointer-events:none;user-select:none;
+}
+.obj-key{color:var(--blue-a)}
+.obj-item h3{margin-bottom:11px;font-size:1.22rem;font-weight:700;color:var(--navy);line-height:1.3}
+.obj-item p{font-size:14.5px;color:var(--text-2);line-height:1.8}
 
 /* ── Ce facem / Audience cards ── */
 .audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -589,7 +685,7 @@ footer a:hover{color:#fff}
 .breadcrumb span:hover{color:rgba(255,255,255,.75)}
 .breadcrumb-sep{opacity:.3}
 
-/* ── Page hero — video variant ── */
+/* ── Page hero — video variant (dark — About, Contact, Services, Materiale) ── */
 .pg-hero-video{
   position:relative;overflow:hidden;
   background-image:none;
@@ -603,9 +699,22 @@ footer a:hover{color:#fff}
 }
 .pg-hero-overlay{
   position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(160deg,rgba(6,24,48,.60) 0%,rgba(6,24,48,.42) 100%);
+  background:linear-gradient(160deg,rgba(6,24,48,.60) 0%,rgba(6,24,48,.38) 100%);
 }
 .pg-hero-video .container{position:relative;z-index:2}
+
+/* ── Service detail pages — white bg, dark text, clean video ── */
+.pg-hero-svc{background:#fff}
+.pg-hero-svc .pg-hero-vid{opacity:.55}
+
+/* ── Right-aligned contained video (service detail pages) ── */
+.pg-hero-vid-right{
+  left:auto;
+  width:52%;
+  object-fit:contain;
+  object-position:right center;
+  opacity:1;
+}
 
 /* ── Service feature cards ── */
 .svc-feature-card:hover{border-color:var(--blue-a);box-shadow:var(--s-md)}
@@ -641,8 +750,8 @@ textarea{resize:vertical;min-height:128px;line-height:1.6}
 .divider{height:1px;background:var(--border);margin:0}
 
 /* ── Fade animation ── */
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity .95s ease,transform .95s cubic-bezier(.2,0,0,1)}
-.fade-up.in{opacity:1;transform:translateY(0)}
+/* AOS overrides — tighter timing to match old fade-up feel */
+[data-aos="fade-up"]{transition-duration:560ms!important}
 
 /* ── Hero glow elements ── */
 .hero-glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}

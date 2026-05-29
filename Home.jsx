@@ -22,32 +22,6 @@ function AnimatedHeadline({ lines, startDelay = 0.28 }) {
   );
 }
 
-/* ── Count-up number ── */
-function CountUp({ to, suffix = '', duration = 1700 }) {
-  const [val, setVal] = useState(0);
-  const [active, setActive] = useState(false);
-  const ref = useRef(null);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setActive(true); obs.disconnect(); }
-    });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-  useEffect(() => {
-    if (!active) return;
-    let start = null;
-    const step = (ts) => {
-      if (!start) start = ts;
-      const p = Math.min((ts - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      setVal(Math.round(ease * to));
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [active, to, duration]);
-  return <span ref={ref}>{val}{suffix}</span>;
-}
 
 
 function HomePage({ onNav }) {
@@ -75,14 +49,20 @@ function HomePage({ onNav }) {
   ];
 
   const objectives = [
-    { num: '01', title: 'Reducerea timpului de lucru',     desc: 'Reducerea considerabilă a timpului de lucru și eliminarea în proporție de cel puțin 90% a erorilor umane prin standardizarea documentelor.' },
-    { num: '02', title: 'Simplificare și eficientizare',  desc: 'Modalități de lucru care simplifică interpretarea informațiilor complexe. Ecosisteme eficiente cu rezultate ce au impact real.' },
-    { num: '03', title: 'Digitalizare și standardizare',  desc: 'Digitalizarea activităților administrative prin instrumente personalizate. Performanța apare când toți respectă un mod de lucru comun.' },
+    { num: '01', key: 'Reducerea', rest: ' timpului de lucru',     desc: 'Reducerea considerabilă a timpului de lucru și eliminarea în proporție de cel puțin 90% a erorilor umane prin standardizarea documentelor.' },
+    { num: '02', key: 'Simplificare', rest: ' și eficientizare',  desc: 'Modalități de lucru care simplifică interpretarea informațiilor complexe. Ecosisteme eficiente cu rezultate ce au impact real.' },
+    { num: '03', key: 'Digitalizare', rest: ' și standardizare',  desc: 'Digitalizarea activităților administrative prin instrumente personalizate. Performanța apare când toți respectă un mod de lucru comun.' },
   ];
 
 
   return (
-    <>
+    <div className="home-page">
+      <div className="hbg" aria-hidden="true">
+        <div className="hbg-grid"></div>
+        <div className="hbg-b1"></div>
+        <div className="hbg-b2"></div>
+        <div className="hbg-b3"></div>
+      </div>
       {/* ── HERO ── */}
       <section className="hero hero-video-section">
         <video className="hero-video" autoPlay muted loop playsInline>
@@ -124,7 +104,7 @@ function HomePage({ onNav }) {
             ].map((s, i) => (
               <div key={i} className="stat-col">
                 <div className="s-num">
-                  <CountUp to={s.to} suffix={s.suffix} />
+                  <span className="stat-num-anim">{s.to}{s.suffix}</span>
                 </div>
                 <div className="s-lbl">{s.lbl}</div>
                 <div className="s-det">{s.det}</div>
@@ -350,7 +330,7 @@ function HomePage({ onNav }) {
       </section>
 
       {/* ── OBJECTIVES ── */}
-      <section className="sec sec-pale">
+      <section className="sec obj-section">
         <div className="container">
           <FadeUp>
             <div style={{ textAlign: 'center', marginBottom: '0' }}>
@@ -362,8 +342,8 @@ function HomePage({ onNav }) {
             {objectives.map((o, i) => (
               <FadeUp key={i} delay={i * 110}>
                 <div className="obj-item">
-                  <div className="obj-num">{o.num}</div>
-                  <h3>{o.title}</h3>
+                  <div className="obj-num-bg">{o.num}</div>
+                  <h3><span className="obj-key">{o.key}</span>{o.rest}</h3>
                   <p>{o.desc}</p>
                 </div>
               </FadeUp>
@@ -504,7 +484,7 @@ function HomePage({ onNav }) {
           </FadeUp>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

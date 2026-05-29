@@ -11,7 +11,7 @@ function AboutPage({ onNav }) {
   return (
     <>
       <div className="pg-hero pg-hero-video">
-        <video className="pg-hero-vid" autoPlay muted loop playsInline>
+        <video className="pg-hero-vid" autoPlay muted playsInline>
           <source src="assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4" type="video/mp4" />
         </video>
         <div className="pg-hero-overlay"></div>
@@ -191,7 +191,7 @@ function ContactPage() {
   return (
     <>
       <div className="pg-hero pg-hero-video">
-        <video className="pg-hero-vid" autoPlay muted loop playsInline>
+        <video className="pg-hero-vid" autoPlay muted playsInline>
           <source src="assets/videos_library/contact-informs.mp4" type="video/mp4" />
         </video>
         <div className="pg-hero-overlay"></div>
@@ -313,10 +313,9 @@ function ServicesPage({ onNav }) {
   return (
     <>
       <div className="pg-hero pg-hero-video">
-        <video className="pg-hero-vid" autoPlay muted loop playsInline>
+        <video className="pg-hero-vid" autoPlay muted playsInline>
           <source src="assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4" type="video/mp4" />
         </video>
-        <div className="pg-hero-overlay"></div>
         <div className="container">
           <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px' }}>
             Ce oferim
@@ -360,6 +359,7 @@ function ServiceDetailPage({ onNav, service }) {
       items: ['Evaluare și analiză expertă', 'Soluții personalizate pentru fiecare nevoie', 'Rapoarte detaliate', 'Implementare asistată'],
       img: 'https://static.wixstatic.com/media/ab6452_9bdced09566642e99bef512302a368d7~mv2.webp/v1/fill/w_954,h_972,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%203.webp',
       video: 'assets/videos_library/achizitii-publice.mp4',
+      split: true,
     },
     'achizitii-publice': {
       title: 'Achiziții publice',
@@ -368,6 +368,7 @@ function ServiceDetailPage({ onNav, service }) {
       items: ['Documentații de atribuire', 'Servicii de ofertare (calificare, tehnic, financiar)', 'Evaluarea ofertelor depuse', 'Răspunsuri în fața CNSC și curților de apel'],
       img: 'https://static.wixstatic.com/media/ab6452_990466dc460d40a1b91200dc7080f012~mv2.webp/v1/fill/w_968,h_958,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%201.webp',
       video: 'assets/videos_library/achizitii-publice.mp4',
+      split: true,
     },
     'delegare-servicii': {
       title: 'Delegare servicii de utilități publice',
@@ -376,6 +377,7 @@ function ServiceDetailPage({ onNav, service }) {
       items: ['Salubrizare', 'Transport public', 'Iluminat public', 'Alte servicii de utilitate publică'],
       img: 'https://static.wixstatic.com/media/ab6452_9bdced09566642e99bef512302a368d7~mv2.webp/v1/fill/w_954,h_972,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%203.webp',
       video: 'assets/videos_library/documentatii-delegare-servicii-utilitati-publice.mp4',
+      split: true,
     },
     'modele-excel': {
       title: 'Modele de lucru EXCEL',
@@ -384,6 +386,7 @@ function ServiceDetailPage({ onNav, service }) {
       items: ['Aplicabilitate generală', 'Aplicabilitate specifică domeniului', 'Format editabil și personalizabil', 'Actualizate conform legislației'],
       img: 'https://static.wixstatic.com/media/ab6452_dfa86221bf384275a44be40c2b4a1bf0~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%205.webp',
       video: 'assets/videos_library/excel-doc.mp4',
+      split: true,
     },
     'modele-word': {
       title: 'Modele de lucru WORD',
@@ -392,6 +395,7 @@ function ServiceDetailPage({ onNav, service }) {
       items: ['Formulare tipizate', 'Cereri standardizate', 'Documente administrative', 'Format editabil'],
       img: 'https://static.wixstatic.com/media/ab6452_f425c6e6bc7d4aad8604f8e2f0b758bd~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%202.webp',
       video: 'assets/videos_library/word-doc.mp4',
+      split: true,
     },
     'modele-pdf': {
       title: 'Modele de lucru PDF inteligent',
@@ -400,6 +404,7 @@ function ServiceDetailPage({ onNav, service }) {
       items: ['Formulare interactive', 'Câmpuri de completare automată', 'Format standardizat', 'Compatibil Adobe Acrobat'],
       img: 'https://static.wixstatic.com/media/ab6452_6c32cfd5b5744ffaa00d4c5cf86916c1~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%204.webp',
       video: 'assets/videos_library/pdf-doc.mp4',
+      split: true,
     },
   };
 
@@ -407,19 +412,18 @@ function ServiceDetailPage({ onNav, service }) {
 
   return (
     <>
-      <div className={`pg-hero${d.video ? ' pg-hero-video' : ''}`}>
+      <div className={`pg-hero${d.video ? ' pg-hero-video pg-hero-svc' : ''}`}>
         {d.video && (
-          <video key={d.video} className="pg-hero-vid" autoPlay muted loop playsInline>
+          <video key={d.video} className={`pg-hero-vid${d.split ? ' pg-hero-vid-right' : ''}`} autoPlay muted playsInline>
             <source src={d.video} type="video/mp4" />
           </video>
         )}
-        {d.video && <div className="pg-hero-overlay"></div>}
         <div className="container">
-          <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px', cursor: 'pointer', display:'inline-flex', alignItems:'center', gap:'6px' }} onClick={() => go('servicii')}>
+          <div className="tag-label" style={{ background: 'rgba(6,24,48,.08)', color: 'var(--navy)', marginBottom: '18px', cursor: 'pointer', display:'inline-flex', alignItems:'center', gap:'6px' }} onClick={() => go('servicii')}>
             <IcoLeftAlt size={14} /> Servicii
           </div>
-          <h1>{fmtTitle(d.title)}</h1>
-          <p>{d.sub}</p>
+          <h1 style={{ color: 'var(--navy)' }}>{fmtTitle(d.title)}</h1>
+          <p style={{ color: 'var(--text-2)' }}>{d.sub}</p>
         </div>
       </div>
 
@@ -469,7 +473,7 @@ function MaterialeGratuitePage({ onNav }) {
   return (
     <>
       <div className="pg-hero pg-hero-video">
-        <video className="pg-hero-vid" autoPlay muted loop playsInline>
+        <video className="pg-hero-vid" autoPlay muted playsInline>
           <source src="assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4" type="video/mp4" />
         </video>
         <div className="pg-hero-overlay"></div>

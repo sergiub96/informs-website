@@ -24,11 +24,16 @@ function App() {
   const [displayPage, setDisplayPage] = useState('home');
 
   useEffect(() => {
+    if (window.AOS) window.AOS.init({ duration: 560, once: true, offset: 40, easing: 'ease-out-cubic' });
+  }, []);
+
+  useEffect(() => {
     const meta = PAGE_META[displayPage] || PAGE_META['home'];
     document.title = meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.desc);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', meta.title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', meta.desc);
+    if (window.AOS) window.AOS.refreshHard();
   }, [displayPage]);
 
   const navigate = (newPage) => {

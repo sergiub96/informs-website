@@ -1,20 +1,8 @@
 const { useState, useEffect, useRef } = React;
 
 function FadeUp({ children, delay = 0, style = {}, className = '' }) {
-  const ref = useRef(null);
-  const [vis, setVis] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setVis(true); },
-      { threshold: 0.07, rootMargin: '0px 0px -28px 0px' }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
   return (
-    <div ref={ref} className={`fade-up${vis ? ' in' : ''} ${className}`} style={{ transitionDelay: `${delay}ms`, ...style }}>
+    <div data-aos="fade-up" data-aos-delay={delay} data-aos-once="true" className={className} style={style}>
       {children}
     </div>
   );
@@ -133,7 +121,7 @@ function Footer({ onNav }) {
     const el = videoRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) el.play().catch(() => {}); else el.pause(); },
+      ([entry]) => { if (entry.isIntersecting) el.play().catch(() => {}); },
       { threshold: 0.05 }
     );
     obs.observe(el);
@@ -142,7 +130,7 @@ function Footer({ onNav }) {
 
   return (
     <footer>
-      <video ref={videoRef} className="footer-vid" muted loop playsInline>
+      <video ref={videoRef} className="footer-vid" muted playsInline>
         <source src="assets/videos_library/footer.mp4" type="video/mp4" />
       </video>
       <div className="footer-content">
