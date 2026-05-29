@@ -49,37 +49,22 @@ function CountUp({ to, suffix = '', duration = 1700 }) {
   return <span ref={ref}>{val}{suffix}</span>;
 }
 
-/* ── Icons ── */
-const Ico = ({ d, size = 20 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-    {d}
-  </svg>
-);
-const IcoChart   = () => <Ico d={<><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></>} />;
-const IcoFile    = () => <Ico d={<><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></>} />;
-const IcoShield  = () => <Ico d={<><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></>} />;
-const IcoGrid    = () => <Ico d={<><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></>} />;
-const IcoCode    = () => <Ico d={<><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></>} />;
-const IcoUsers   = () => <Ico d={<><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>} />;
-const IcoArrow   = () => <Ico d={<><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></>} size={14} />;
-const IcoBuilding = () => <Ico d={<><rect x="2" y="7" width="9" height="14"/><path d="M16 3H7v4"/><rect x="11" y="11" width="11" height="10"/><line x1="2" y1="21" x2="22" y2="21"/></>} />;
-const IcoBolt    = () => <Ico d={<><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></>} />;
 
 function HomePage({ onNav }) {
   const go = (p) => { onNav(p); window.scrollTo({ top: 0, behavior: 'instant' }); };
   const [activeSvc, setActiveSvc] = useState(0);
 
   const features = [
-    { icon: <IcoBolt />,    title: 'OPTIMIZEAZĂ',             desc: 'Organizează fluxul de lucru eficient și performant' },
-    { icon: <IcoFile />,    title: 'APLICĂ DIRECT',           desc: 'Modele cu aplicare directă, conform legislației în vigoare' },
-    { icon: <IcoShield />,  title: 'DOCUMENTAȚII COMPLETE',   desc: 'Documentații complete și asistență tehnico-economică' },
+    { icon: <IcoGear size={22} />,       title: 'OPTIMIZEAZĂ',             desc: 'Organizează fluxul de lucru eficient și performant' },
+    { icon: <IcoDoc size={22} />,        title: 'APLICĂ DIRECT',           desc: 'Modele cu aplicare directă, conform legislației în vigoare' },
+    { icon: <IcoShieldLib size={22} />,  title: 'DOCUMENTAȚII COMPLETE',   desc: 'Documentații complete și asistență tehnico-economică' },
   ];
 
   const domains = [
-    { icon: <IcoFile />,     num: '01', label: 'Achiziții publice',                  desc: 'Documentații complete pentru proceduri de atribuire — servicii, produse și lucrări. Conformitate legislativă garantată.' },
-    { icon: <IcoBuilding />, num: '02', label: 'Delegare servicii utilități publice', desc: 'Studii de oportunitate și documentații complete pentru gestiunea serviciilor de salubrizare, transport și iluminat.' },
-    { icon: <IcoGrid />,     num: '03', label: 'Management de proiect',               desc: 'Instrumente pentru planificarea, monitorizarea și raportarea proiectelor finanțate din fonduri publice sau europene.' },
-    { icon: <IcoCode />,     num: '04', label: 'Digitalizare',                        desc: 'Automatizarea fluxurilor documentare prin modele Excel, Word și PDF inteligent, adaptate activității tale specifice.' },
+    { icon: <IcoDoc size={24} />,      num: '01', label: 'Achiziții publice',                  desc: 'Documentații complete pentru proceduri de atribuire — servicii, produse și lucrări. Conformitate legislativă garantată.' },
+    { icon: <IcoHomeAlt size={24} />,  num: '02', label: 'Delegare servicii utilități publice', desc: 'Studii de oportunitate și documentații complete pentru gestiunea serviciilor de salubrizare, transport și iluminat.' },
+    { icon: <IcoDash size={24} />,     num: '03', label: 'Management de proiect',               desc: 'Instrumente pentru planificarea, monitorizarea și raportarea proiectelor finanțate din fonduri publice sau europene.' },
+    { icon: <IcoSyncLib size={24} />,  num: '04', label: 'Digitalizare',                        desc: 'Automatizarea fluxurilor documentare prin modele Excel, Word și PDF inteligent, adaptate activității tale specifice.' },
   ];
 
   const models = [
@@ -316,35 +301,37 @@ function HomePage({ onNav }) {
       </section>
 
       {/* ── SERVICES ── */}
-      <section className="sec sec-pale">
+      <section className="sec sec-white">
         <div className="container">
           <FadeUp>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '40px', flexWrap: 'wrap', gap: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px', flexWrap: 'wrap', gap: '16px' }}>
               <div>
                 <div className="badge" style={{ marginBottom: '14px' }}>Ce oferim</div>
                 <h2>Serviciile noastre</h2>
+                <p style={{ fontSize: '1rem', color: 'var(--text-2)', marginTop: '10px', maxWidth: 480 }}>Soluții complete pentru instituții publice, companii și liber-profesioniști.</p>
               </div>
               <button className="btn btn-outline btn-sm" onClick={() => go('servicii')}>
-                Toate serviciile <IcoArrow />
+                Toate serviciile <IcoRightAlt size={14} />
               </button>
             </div>
           </FadeUp>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
             {[
-              { icon: <IcoChart />,    title: 'Documentații complete',          desc: 'Achiziții publice, administrație, delegare servicii, management documente.',           items: ['Instituții publice', 'Companii', 'Liber-profesioniști'] },
-              { icon: <IcoFile />,     title: 'Instrumente de lucru specifice',  desc: 'Instrumente avansate pentru eficientizarea și standardizarea oricărei activități.', items: ['Analiză cost-beneficiu', 'Studiu de oportunitate', 'Documentații de atribuire'] },
-              { icon: <IcoUsers />,    title: 'Asistență tehnică de specialitate', desc: 'Digitalizarea instituțiilor publice și companiilor private. Excel, Word, PDF.',   items: ['Instruire personal', 'Implementare asistată', 'Actualizări legislative'] },
+              { icon: <IcoNote size={22} />,     title: 'Documentații complete',            desc: 'Achiziții publice, administrație, delegare servicii, management documente.',            items: ['Instituții publice', 'Companii', 'Liber-profesioniști'],            page: 'achizitii-publice' },
+              { icon: <IcoWrench size={22} />,   title: 'Instrumente de lucru specifice',    desc: 'Instrumente avansate pentru eficientizarea și standardizarea oricărei activități.',    items: ['Modele Excel', 'Modele Word', 'PDF inteligent'],                    page: 'modele-excel' },
+              { icon: <IcoUserAlt size={22} />,  title: 'Asistență tehnică de specialitate', desc: 'Digitalizarea instituțiilor publice și companiilor private. Excel, Word, PDF.',        items: ['Instruire personal', 'Implementare asistată', 'Actualizări legislative'], page: 'analiza-si-solutii' },
             ].map((s, i) => (
               <FadeUp key={i} delay={i * 90}>
-                <div className="card" style={{ padding: '28px', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ width: 44, height: 44, borderRadius: '10px', background: 'var(--blue-lt)', color: 'var(--blue-a)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
+                <div className="card svc-feature-card" style={{ padding: '32px', height: '100%', display: 'flex', flexDirection: 'column', cursor: 'pointer' }} onClick={() => go(s.page)}>
+                  <div style={{ width: 48, height: 48, borderRadius: '12px', background: 'var(--blue-lt)', color: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', flexShrink: 0 }}>
                     {s.icon}
                   </div>
-                  <h3 style={{ marginBottom: '10px' }}>{s.title}</h3>
-                  <p style={{ fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.72', marginBottom: '18px', flex: 1 }}>{s.desc}</p>
-                  <ul className="bullet-list">
+                  <h3 style={{ marginBottom: '10px', fontSize: '1.08rem' }}>{s.title}</h3>
+                  <p style={{ fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.72', marginBottom: '20px', flex: 1 }}>{s.desc}</p>
+                  <ul className="bullet-list" style={{ marginBottom: '20px' }}>
                     {s.items.map((item, j) => <li key={j}><span className="bullet-dot"></span>{item}</li>)}
                   </ul>
+                  <span className="card-link" style={{ marginTop: 'auto' }}>Detalii <IcoRightAlt size={14} /></span>
                 </div>
               </FadeUp>
             ))}
@@ -374,7 +361,7 @@ function HomePage({ onNav }) {
                   <div className="model-card-body">
                     <h3>{m.title}</h3>
                     <p>{m.desc}</p>
-                    <span className="card-link">Detalii <IcoArrow /></span>
+                    <span className="card-link">Detalii <IcoRightAlt size={14} /></span>
                   </div>
                 </div>
               </FadeUp>
@@ -384,24 +371,21 @@ function HomePage({ onNav }) {
       </section>
 
       {/* ── OBJECTIVES ── */}
-      <section className="sec obj-section">
-        <video className="obj-section-vid" autoPlay muted loop playsInline>
-          <source src="assets/videos_library/digitalizare-SEAP-contract.mp4" type="video/mp4" />
-        </video>
+      <section className="sec sec-pale">
         <div className="container">
           <FadeUp>
             <div style={{ textAlign: 'center', marginBottom: '0' }}>
               <div className="badge" style={{ marginBottom: '14px' }}>Obiective</div>
-              <h2 style={{ color: '#fff' }}>Obiectivele urmărite</h2>
+              <h2>Obiectivele urmărite</h2>
             </div>
           </FadeUp>
           <div className="obj-grid">
             {objectives.map((o, i) => (
               <FadeUp key={i} delay={i * 110}>
-                <div className="obj-item obj-item-dark">
+                <div className="obj-item">
                   <div className="obj-num">{o.num}</div>
-                  <h3 style={{ color: '#fff' }}>{o.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,.72)' }}>{o.desc}</p>
+                  <h3>{o.title}</h3>
+                  <p>{o.desc}</p>
                 </div>
               </FadeUp>
             ))}
@@ -428,7 +412,7 @@ function HomePage({ onNav }) {
                     <div className="svc-desc">{s.desc}</div>
                     {activeSvc === i && (
                       <span className="svc-cta-link" onClick={(e) => { e.stopPropagation(); go(s.page); }}>
-                        Detalii complete <IcoArrow />
+                        Detalii complete <IcoRightAlt size={14} />
                       </span>
                     )}
                   </div>

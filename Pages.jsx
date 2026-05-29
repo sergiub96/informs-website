@@ -1,10 +1,6 @@
 const { useState } = React;
 
-const ArrowIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path>
-  </svg>
-);
+const ArrowIcon = () => <IcoRightAlt size={14} />;
 
 /* ══════════════════════════════════════
    DESPRE NOI
@@ -210,8 +206,8 @@ function ContactPage() {
             <FadeUp>
               {sent ? (
                 <div style={{ textAlign: 'center', padding: '72px 32px', background: 'var(--blue-pale)', borderRadius: '20px' }}>
-                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'var(--blue-light)', color: 'var(--blue-accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: '26px' }}>
-                    ✓
+                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'var(--blue-lt)', color: 'var(--blue-a)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+                    <IcoCheck size={30} />
                   </div>
                   <h3 style={{ marginBottom: '12px' }}>Mesaj trimis cu succes!</h3>
                   <p style={{ color: 'var(--text-muted)' }}>Te vom contacta în cel mai scurt timp posibil.</p>
@@ -282,8 +278,8 @@ function ContactPage() {
                   <p style={{ fontSize: '13.5px', color: 'var(--text-muted)', marginBottom: '18px', lineHeight: '1.65' }}>
                     Partenerul nostru pentru soluții digitale avansate.
                   </p>
-                  <a href="https://agathaplus.ro/" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ fontSize: '14px' }}>
-                    Vizitează ↗
+                  <a href="https://agathaplus.ro/" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ fontSize: '14px', display:'inline-flex', alignItems:'center', gap:'6px' }}>
+                    Vizitează <IcoShareLib size={13} />
                   </a>
                 </div>
               </div>
@@ -409,14 +405,14 @@ function ServiceDetailPage({ onNav, service }) {
     <>
       <div className={`pg-hero${d.video ? ' pg-hero-video' : ''}`}>
         {d.video && (
-          <video className="pg-hero-vid" autoPlay muted loop playsInline>
+          <video key={d.video} className="pg-hero-vid" autoPlay muted loop playsInline>
             <source src={d.video} type="video/mp4" />
           </video>
         )}
         {d.video && <div className="pg-hero-overlay"></div>}
         <div className="container">
-          <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px', cursor: 'pointer' }} onClick={() => go('servicii')}>
-            ← Servicii
+          <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px', cursor: 'pointer', display:'inline-flex', alignItems:'center', gap:'6px' }} onClick={() => go('servicii')}>
+            <IcoLeftAlt size={14} /> Servicii
           </div>
           <h1>{d.title}</h1>
           <p>{d.sub}</p>

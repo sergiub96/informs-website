@@ -22,12 +22,23 @@ function FadeUp({ children, delay = 0, style = {}, className = '' }) {
 
 function Nav({ onNav, page }) {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [ddOpen, setDdOpen] = useState(false);
   const ddTimer = useRef(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 10);
+    const h = () => {
+      const y = window.scrollY;
+      setScrolled(y > 10);
+      if (y > 80) {
+        setHidden(y > lastScrollY.current);
+      } else {
+        setHidden(false);
+      }
+      lastScrollY.current = y;
+    };
     window.addEventListener('scroll', h, { passive: true });
     return () => window.removeEventListener('scroll', h);
   }, []);
@@ -49,7 +60,7 @@ function Nav({ onNav, page }) {
 
   return (
     <>
-      <nav className={`main-nav${scrolled ? ' scrolled' : ''}`}>
+      <nav className={`main-nav${scrolled ? ' scrolled' : ''}${hidden ? ' nav-hidden' : ''}`}>
         <div className="nav-island">
           <div className="nav-inner">
             <div className="nav-logo" onClick={() => go('home')}>
@@ -60,37 +71,39 @@ function Nav({ onNav, page }) {
               />
             </div>
 
-          <div className="nav-links">
-            <span className={`nav-link${page === 'home' ? ' active' : ''}`} onClick={() => go('home')}>Acasă</span>
-            <span className={`nav-link${page === 'despre-noi' ? ' active' : ''}`} onClick={() => go('despre-noi')}>Despre noi</span>
+            <div className="nav-links">
+              <span className={`nav-link${page === 'home' ? ' active' : ''}`} onClick={() => go('home')}>Acasă</span>
+              <span className={`nav-link${page === 'despre-noi' ? ' active' : ''}`} onClick={() => go('despre-noi')}>Despre noi</span>
 
-            <div
-              className={`nav-dd${ddOpen ? ' dd-open' : ''}`}
-              onMouseEnter={openDd}
-              onMouseLeave={closeDd}
-            >
-              <span className={`nav-link nav-dd-toggle${svcPages.includes(page) || page === 'servicii' ? ' active' : ''}`}>
-                Servicii
-              </span>
-              <div className="nav-dd-menu" onMouseEnter={openDd} onMouseLeave={closeDd}>
-                {svcs.map(([p, l]) => (
-                  <span key={p} className="nav-dd-item" onClick={() => go(p)}>{l}</span>
-                ))}
+              <div
+                className={`nav-dd${ddOpen ? ' dd-open' : ''}`}
+                onMouseEnter={openDd}
+                onMouseLeave={closeDd}
+              >
+                <span className={`nav-link nav-dd-toggle${svcPages.includes(page) || page === 'servicii' ? ' active' : ''}`}>
+                  Servicii
+                </span>
+                <div className="nav-dd-menu" onMouseEnter={openDd} onMouseLeave={closeDd}>
+                  {svcs.map(([p, l]) => (
+                    <span key={p} className="nav-dd-item" onClick={() => go(p)}>{l}</span>
+                  ))}
+                </div>
               </div>
+
+              <span className={`nav-link${page === 'materiale-gratuite' ? ' active' : ''}`} onClick={() => go('materiale-gratuite')}>
+                Materiale gratuite
+              </span>
             </div>
 
-            <span className={`nav-link${page === 'materiale-gratuite' ? ' active' : ''}`} onClick={() => go('materiale-gratuite')}>
-              Materiale gratuite
-            </span>
-            <span className={`nav-link nav-cta${page === 'contact' ? ' active' : ''}`} onClick={() => go('contact')}>
-              Contact
-            </span>
+            <div className="nav-end">
+              <span className={`nav-link nav-cta${page === 'contact' ? ' active' : ''}`} onClick={() => go('contact')}>
+                Contact
+              </span>
+              <button className={`hamburger${open ? ' open' : ''}`} onClick={() => setOpen(!open)} aria-label="Meniu">
+                <span></span><span></span><span></span>
+              </button>
+            </div>
           </div>
-
-          <button className={`hamburger${open ? ' open' : ''}`} onClick={() => setOpen(!open)} aria-label="Meniu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
         </div>
       </nav>
 
