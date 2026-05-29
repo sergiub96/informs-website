@@ -127,9 +127,25 @@ function Nav({ onNav, page }) {
 
 function Footer({ onNav }) {
   const go = (p) => { onNav(p); window.scrollTo({ top: 0, behavior: 'instant' }); };
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) el.play().catch(() => {}); else el.pause(); },
+      { threshold: 0.05 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <footer>
+      <video ref={videoRef} className="footer-vid" muted loop playsInline>
+        <source src="assets/videos_library/footer.mp4" type="video/mp4" />
+      </video>
+      <div className="footer-content">
       <div className="footer-gradient-line"></div>
       <div className="container">
         <div className="footer-grid">
@@ -200,6 +216,7 @@ function Footer({ onNav }) {
             „Există un singur tip de succes - acela de a-ți putea petrece timpul așa cum îți dorești." - Chr. Morley
           </span>
         </div>
+      </div>
       </div>
     </footer>
   );

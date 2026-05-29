@@ -383,7 +383,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'Complexitatea și volumul informațiilor nu trebuie să reprezinte un impediment. Instrumentele Excel sunt concepute pentru a simplifica activitatea și a reduce erorile umane.',
       items: ['Aplicabilitate generală', 'Aplicabilitate specifică domeniului', 'Format editabil și personalizabil', 'Actualizate conform legislației'],
       img: 'https://static.wixstatic.com/media/ab6452_dfa86221bf384275a44be40c2b4a1bf0~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%205.webp',
-      video: 'assets/videos_library/modele-excel-achizitii-publice-calcul-automat.mp4',
+      video: 'assets/videos_library/excel-doc.mp4',
     },
     'modele-word': {
       title: 'Modele de lucru WORD',
@@ -391,7 +391,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'Cererile și formularele tipizate clasice în format scanat sunt de domeniul trecutului. Digitalizează-ți activitatea și zilnic salvezi timp prețios.',
       items: ['Formulare tipizate', 'Cereri standardizate', 'Documente administrative', 'Format editabil'],
       img: 'https://static.wixstatic.com/media/ab6452_f425c6e6bc7d4aad8604f8e2f0b758bd~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%202.webp',
-      video: 'assets/videos_library/modele-excel-achizitii-publice-calcul-automat.mp4',
+      video: 'assets/videos_library/word-doc.mp4',
     },
     'modele-pdf': {
       title: 'Modele de lucru PDF inteligent',
@@ -399,7 +399,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'E timpul să renunți la completarea clasică. Lucrează în mod inteligent cu modele standard în format electronic, ușor de completat și de arhivat.',
       items: ['Formulare interactive', 'Câmpuri de completare automată', 'Format standardizat', 'Compatibil Adobe Acrobat'],
       img: 'https://static.wixstatic.com/media/ab6452_6c32cfd5b5744ffaa00d4c5cf86916c1~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%204.webp',
-      video: 'assets/videos_library/modele-excel-achizitii-publice-calcul-automat.mp4',
+      video: 'assets/videos_library/pdf-doc.mp4',
     },
   };
 

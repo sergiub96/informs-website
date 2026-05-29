@@ -548,7 +548,9 @@ h4{font-size:1.02rem;font-weight:700;letter-spacing:.01em}
 .trust-dot{width:7px;height:7px;border-radius:50%;background:var(--blue-a);flex-shrink:0}
 
 /* ── Footer ── */
-footer{background:var(--navy);color:rgba(255,255,255,.65);padding:0 0 28px}
+footer{background:var(--navy);color:rgba(255,255,255,.65);padding:0 0 28px;position:relative;overflow:hidden}
+.footer-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.14;z-index:0;pointer-events:none}
+.footer-content{position:relative;z-index:1}
 .footer-gradient-line{height:2px;background:linear-gradient(90deg,transparent 0%,var(--blue-a) 25%,var(--blue) 75%,transparent 100%);margin-bottom:56px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
 footer h5{color:rgba(255,255,255,.38);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;margin-bottom:16px;font-weight:700}
@@ -695,7 +697,7 @@ textarea{resize:vertical;min-height:128px;line-height:1.6}
   .cta-wrap{padding:48px 28px;border-radius:var(--r-lg)}
   .quote-card{padding:52px 28px 48px;border-radius:var(--r-lg)}
   .trust-inner{gap:14px;justify-content:flex-start}
-  .two-col{grid-template-columns:1fr!important}
+  .two-col{grid-template-columns:1fr!important;gap:28px!important}
   .pain-solution{grid-template-columns:1fr}
   .pain-side,.sol-side{padding:52px 28px}
   .pg-hero{padding:104px 0 56px}
