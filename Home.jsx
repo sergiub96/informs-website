@@ -52,7 +52,6 @@ function CountUp({ to, suffix = '', duration = 1700 }) {
 
 function HomePage({ onNav }) {
   const go = (p) => { onNav(p); window.scrollTo({ top: 0, behavior: 'instant' }); };
-  const [activeSvc, setActiveSvc] = useState(0);
 
   const features = [
     { icon: <IcoGear size={22} />,       title: 'OPTIMIZEAZĂ',             desc: 'Organizează fluxul de lucru eficient și performant' },
@@ -81,26 +80,6 @@ function HomePage({ onNav }) {
     { num: '03', title: 'Digitalizare și standardizare',  desc: 'Digitalizarea activităților administrative prin instrumente personalizate. Performanța apare când toți respectă un mod de lucru comun.' },
   ];
 
-  const services = [
-    { title: 'Analiză și soluții aplicabile',
-      desc: 'Pe baza datelor de intrare solicitate, analizăm situația și oferim soluții concrete, aplicate, care răspund cerințelor și obiectivelor.',
-      img: 'uploads/Caiet-de-sarcini-produse.webp', page: 'analiza-si-solutii' },
-    { title: 'Achiziții publice',
-      desc: 'Documentații complete pentru atribuirea contractelor de servicii, produse și lucrări. Asistență deplină în derularea procedurilor.',
-      img: 'uploads/Ofertare-licitatii-lucrari.webp', page: 'achizitii-publice' },
-    { title: 'Delegare servicii de utilități publice',
-      desc: 'Documentații complete pentru gestiunea serviciilor: salubrizare, transport public, iluminat public.',
-      img: 'uploads/delegare-serviciu-salubrizare.webp', page: 'delegare-servicii' },
-    { title: 'Modele de lucru EXCEL',
-      desc: 'Instrumente cu aplicabilitate generală și specifică pe domeniu, în format editabil Excel, actualizate conform legislației.',
-      img: 'uploads/Caiet-de-sarcini-lucrari.webp', page: 'modele-excel' },
-    { title: 'Modele de lucru WORD',
-      desc: 'Instrumente cu aplicabilitate generală și specifică pe domeniu, în format editabil Word, pentru o digitalizare completă.',
-      img: 'uploads/Clauze-contractuale-lucrari.webp', page: 'modele-word' },
-    { title: 'Modele de lucru PDF inteligent',
-      desc: 'Instrumente cu aplicabilitate generală și specifică pe domeniu, în format PDF inteligent, interactive și ușor de completat.',
-      img: 'uploads/Formulare-lucrari.webp', page: 'modele-pdf' },
-  ];
 
   return (
     <>
@@ -355,7 +334,7 @@ function HomePage({ onNav }) {
                     <span className="model-card-vis-tag">{m.tag}</span>
                   </div>
                   <div className="model-card-body">
-                    <h3>{m.title}</h3>
+                    <h3>{fmtTitle(m.title)}</h3>
                     <p>{m.desc}</p>
                     <span className="card-link">Detalii <IcoRightAlt size={14} /></span>
                   </div>
@@ -393,31 +372,78 @@ function HomePage({ onNav }) {
       <section className="sec sec-white">
         <div className="container">
           <FadeUp>
-            <div style={{ marginBottom: '44px' }}>
+            <div style={{ marginBottom: '48px' }}>
               <div className="badge" style={{ marginBottom: '14px' }}>Portofoliu servicii</div>
               <h2>Ce facem la INFORMS</h2>
+              <p style={{ fontSize: '1rem', color: 'var(--text-2)', marginTop: '10px', maxWidth: 520 }}>
+                Servicii specializate, structurate în funcție de rolul tău în procedura de achiziție.
+              </p>
             </div>
           </FadeUp>
-          <div className="ce-facem-wrap">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              {services.map((s, i) => (
-                <div key={i} className={`svc-item${activeSvc === i ? ' active' : ''}`} onClick={() => setActiveSvc(i)}>
-                  <span className="svc-num">0{i + 1}</span>
-                  <div style={{ flex: 1 }}>
-                    <div className="svc-title">{s.title}</div>
-                    <div className="svc-desc">{s.desc}</div>
-                    {activeSvc === i && (
-                      <span className="svc-cta-link" onClick={(e) => { e.stopPropagation(); go(s.page); }}>
-                        Detalii complete <IcoRightAlt size={14} />
-                      </span>
-                    )}
+          <div className="audience-grid">
+            <FadeUp>
+              <div className="audience-card">
+                <div className="audience-accent"></div>
+                <div style={{ padding: '32px' }}>
+                  <div className="audience-type-badge">Autoritate contractantă</div>
+                  <h3 style={{ margin: '16px 0 8px', fontSize: '1.18rem' }}>Achizitor public</h3>
+                  <p style={{ fontSize: '13.5px', color: 'var(--text-2)', lineHeight: 1.72, marginBottom: '24px' }}>
+                    Documentații complete și instrumente de lucru pentru organizarea și derularea procedurilor de achiziție publică.
+                  </p>
+                  <div className="audience-links">
+                    {[
+                      ['achizitii-publice',  'Documentații de atribuire servicii, produse, lucrări'],
+                      ['delegare-servicii',  'Delegare servicii de utilități publice'],
+                      ['analiza-si-solutii', 'Analiză și soluții personalizate'],
+                      ['modele-excel',       'Instrumente Excel pentru calcul și monitorizare'],
+                      ['modele-word',        'Formulare și documente tipizate Word'],
+                      ['modele-pdf',         'Formulare PDF interactive standardizate'],
+                    ].map(([page, label], i) => (
+                      <div key={i} className="audience-link-item" onClick={() => go(page)}>
+                        <IcoCheck size={14} />
+                        <span style={{ flex: 1 }}>{label}</span>
+                        <IcoRightAlt size={12} />
+                      </div>
+                    ))}
                   </div>
+                  <button className="btn btn-primary" style={{ marginTop: '28px', width: '100%', justifyContent: 'center' }} onClick={() => go('achizitii-publice')}>
+                    Portofoliu achizitor <IcoRightAlt size={14} />
+                  </button>
                 </div>
-              ))}
-            </div>
-            <div className="svc-img-panel">
-              <img src={services[activeSvc].img} alt={services[activeSvc].title} onError={(e) => { e.target.style.display = 'none'; }} />
-            </div>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={120}>
+              <div className="audience-card audience-card-navy">
+                <div className="audience-accent audience-accent-light"></div>
+                <div style={{ padding: '32px' }}>
+                  <div className="audience-type-badge audience-type-badge-light">Ofertant</div>
+                  <h3 style={{ margin: '16px 0 8px', fontSize: '1.18rem', color: '#fff' }}>Participant la licitații</h3>
+                  <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,.6)', lineHeight: 1.72, marginBottom: '24px' }}>
+                    Instrumente și servicii pentru pregătirea ofertelor, calificarea în proceduri și contestarea deciziilor nefavorabile.
+                  </p>
+                  <div className="audience-links">
+                    {[
+                      ['analiza-si-solutii', 'Ofertare completă - tehnic, financiar, calificare'],
+                      ['achizitii-publice',  'Contestații CNSC și curți de apel'],
+                      ['analiza-si-solutii', 'Analiză de risc și strategie de ofertare'],
+                      ['modele-excel',       'Calcul automat preț ofertă'],
+                      ['modele-pdf',         'Formulare interactive pentru depunere'],
+                      ['achizitii-publice',  'Documentații de calificare complete'],
+                    ].map(([page, label], i) => (
+                      <div key={i} className="audience-link-item audience-link-item-light" onClick={() => go(page)}>
+                        <IcoCheck size={14} />
+                        <span style={{ flex: 1 }}>{label}</span>
+                        <IcoRightAlt size={12} />
+                      </div>
+                    ))}
+                  </div>
+                  <button className="btn btn-ghost" style={{ marginTop: '28px', width: '100%', justifyContent: 'center' }} onClick={() => go('contact')}>
+                    Solicită ofertă <IcoRightAlt size={14} />
+                  </button>
+                </div>
+              </div>
+            </FadeUp>
           </div>
         </div>
       </section>

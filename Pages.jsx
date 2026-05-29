@@ -395,7 +395,7 @@ function ServiceDetailPage({ onNav, service }) {
       desc: 'E timpul să renunți la completarea clasică. Lucrează în mod inteligent cu modele standard în format electronic, ușor de completat și de arhivat.',
       items: ['Formulare interactive', 'Câmpuri de completare automată', 'Format standardizat', 'Compatibil Adobe Acrobat'],
       img: 'https://static.wixstatic.com/media/ab6452_6c32cfd5b5744ffaa00d4c5cf86916c1~mv2.webp/v1/fill/w_650,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%204.webp',
-      video: 'assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4',
+      video: 'assets/videos_library/modele-excel-achizitii-publice-calcul-automat.mp4',
     },
   };
 
@@ -414,7 +414,7 @@ function ServiceDetailPage({ onNav, service }) {
           <div className="tag-label" style={{ background: 'rgba(255,255,255,0.13)', color: 'rgba(255,255,255,0.82)', marginBottom: '18px', cursor: 'pointer', display:'inline-flex', alignItems:'center', gap:'6px' }} onClick={() => go('servicii')}>
             <IcoLeftAlt size={14} /> Servicii
           </div>
-          <h1>{d.title}</h1>
+          <h1>{fmtTitle(d.title)}</h1>
           <p>{d.sub}</p>
         </div>
       </div>

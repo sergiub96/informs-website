@@ -205,4 +205,13 @@ function Footer({ onNav }) {
   );
 }
 
-Object.assign(window, { FadeUp, Nav, Footer });
+function fmtTitle(text) {
+  const map = { 'EXCEL': '#177245', 'Excel': '#177245', 'WORD': '#1358B0', 'Word': '#1358B0', 'PDF': '#C23B22' };
+  const parts = text.split(/\b(EXCEL|Excel|WORD|Word|PDF)\b/);
+  return parts.map((p, i) => map[p]
+    ? React.createElement('span', { key: i, style: { color: map[p] } }, p)
+    : p
+  );
+}
+
+Object.assign(window, { FadeUp, Nav, Footer, fmtTitle });

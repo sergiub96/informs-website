@@ -437,28 +437,23 @@ h4{font-size:.92rem;font-weight:700;letter-spacing:.01em}
 .obj-item h3{margin-bottom:9px;font-size:1.05rem}
 .obj-item p{font-size:13.5px;color:var(--text-2);line-height:1.75}
 
-/* ── Ce facem ── */
-.ce-facem-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-.svc-item{
-  padding:16px 20px;border-radius:var(--r-lg);
-  border:1.5px solid transparent;
-  transition:all var(--dur) var(--ease);cursor:pointer;
-  display:flex;align-items:flex-start;gap:16px;
-}
-.svc-item:hover{background:var(--bg)}
-.svc-item.active{background:var(--white);border-color:var(--blue-a);box-shadow:var(--s-sm)}
-.svc-num{font-size:18px;font-weight:800;color:var(--blue-a);min-width:30px;line-height:1.55;font-variant-numeric:tabular-nums}
-.svc-title{font-weight:700;font-size:.98rem}
-.svc-desc{font-size:13px;color:var(--text-2);line-height:1.65;margin-top:5px;display:none}
-.svc-item.active .svc-desc{display:block}
-.svc-cta-link{
-  display:inline-flex;align-items:center;gap:4px;margin-top:9px;
-  font-size:12.5px;font-weight:600;color:var(--blue-a);cursor:pointer;
-  transition:gap var(--dur);
-}
-.svc-cta-link:hover{gap:8px}
-.svc-img-panel{border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--s-lg);aspect-ratio:1/1;background:var(--blue-lt)}
-.svc-img-panel img{width:100%;height:100%;object-fit:cover;display:block}
+/* ── Ce facem / Audience cards ── */
+.audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.audience-card{border-radius:var(--r-xl);overflow:hidden;border:1.5px solid var(--border);background:var(--white);display:flex;flex-direction:column}
+.audience-card-navy{background:var(--navy);border-color:transparent}
+.audience-accent{height:4px;background:linear-gradient(90deg,var(--blue) 0%,var(--blue-a) 100%)}
+.audience-accent-light{background:linear-gradient(90deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,.08) 100%)}
+.audience-type-badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:5px 14px;border-radius:20px;background:var(--blue-lt);color:var(--blue)}
+.audience-type-badge-light{background:rgba(255,255,255,.12);color:rgba(255,255,255,.82)}
+.audience-links{display:flex;flex-direction:column;gap:2px}
+.audience-link-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;font-size:13.5px;font-weight:500;cursor:pointer;transition:all var(--dur) var(--ease);color:var(--text-2)}
+.audience-link-item svg:last-child{opacity:0;transition:opacity var(--dur);flex-shrink:0}
+.audience-link-item:hover{background:var(--blue-lt);color:var(--blue)}
+.audience-link-item:hover svg:last-child{opacity:1}
+.audience-link-item-light{color:rgba(255,255,255,.65)}
+.audience-link-item-light:hover{background:rgba(255,255,255,.08);color:#fff}
+.audience-link-item-light svg:first-child{color:rgba(255,255,255,.45)}
+.audience-link-item-light:hover svg:last-child{opacity:.8}
 
 /* ── Pain / Solution ── */
 .pain-solution{display:grid;grid-template-columns:1fr 1fr}
@@ -679,6 +674,7 @@ textarea{resize:vertical;min-height:128px;line-height:1.6}
   .feat-item:last-child{border-bottom:none}
   .obj-layout{grid-template-columns:1fr;gap:36px}
   .obj-grid{grid-template-columns:1fr;gap:24px}
+  .audience-grid{grid-template-columns:1fr}
   .process-grid{grid-template-columns:1fr;gap:24px}
   .form-row{grid-template-columns:1fr}
   .sec{padding:60px 0}
