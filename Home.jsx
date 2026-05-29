@@ -67,11 +67,11 @@ function HomePage({ onNav }) {
   ];
 
   const models = [
-    { title: 'Modele EXCEL',               desc: 'Instrumente avansate de calcul. Complexitatea nu trebuie să fie un impediment.',             page: 'modele-excel',     tag: 'XLS', accent: '#177245' },
-    { title: 'Modele PDF inteligent',      desc: 'Formulare electronice interactive. Standardizare completă a documentelor.',                  page: 'modele-pdf',       tag: 'PDF', accent: '#B83232' },
-    { title: 'Modele WORD',                desc: 'Formulare tipizate digitale. Cererile scanate sunt de domeniul trecutului.',                 page: 'modele-word',      tag: 'DOC', accent: '#1358B0' },
-    { title: 'Procese verbale & Rapoarte', desc: 'Modele adaptate pentru situații complexe din domeniul achizițiilor.',                        page: 'contact',          tag: 'RPT', accent: '#7B5CB8' },
-    { title: 'Documentații de atribuire',  desc: 'Documentații complete pentru proceduri de atribuire a contractelor publice.',                page: 'achizitii-publice', tag: 'ATR', accent: '#0D3870' },
+    { title: 'Modele EXCEL',               desc: 'Instrumente avansate de calcul. Complexitatea nu trebuie să fie un impediment.',  page: 'modele-excel',     tag: 'XLS', cv: 'excel', pills: ['.xlsx', 'Calcul automat', 'Editabil'] },
+    { title: 'Modele PDF inteligent',      desc: 'Formulare electronice interactive. Standardizare completă a documentelor.',        page: 'modele-pdf',       tag: 'PDF', cv: 'pdf',   pills: ['.pdf', 'Câmpuri interactive', 'Adobe Acrobat'] },
+    { title: 'Modele WORD',                desc: 'Formulare tipizate digitale. Cererile scanate sunt de domeniul trecutului.',       page: 'modele-word',      tag: 'DOC', cv: 'word',  pills: ['.docx', 'Editabil', 'Formulare tipizate'] },
+    { title: 'Procese verbale & Rapoarte', desc: 'Modele adaptate pentru situații complexe din domeniul achizițiilor.',              page: 'contact',          tag: 'RPT', cv: 'rpt',   pills: ['Situații complexe', 'Achiziții publice'] },
+    { title: 'Documentații de atribuire',  desc: 'Documentații complete pentru proceduri de atribuire a contractelor publice.',      page: 'achizitii-publice', tag: 'ATR', cv: 'atr',  pills: ['Servicii', 'Produse', 'Lucrări'] },
   ];
 
   const objectives = [
@@ -329,14 +329,18 @@ function HomePage({ onNav }) {
             {models.map((m, i) => (
               <FadeUp key={i} delay={i * 65}>
                 <div className="model-card" onClick={() => go(m.page)}>
-                  <div className="model-card-vis" style={{ background: m.accent }}>
-                    <div className="model-card-vis-lines"></div>
-                    <span className="model-card-vis-tag">{m.tag}</span>
+                  <div className={`model-card-vis cv-${m.cv}`}>
+                    <div className="mc-pat"></div>
+                    <div className="mc-badge">{m.tag}</div>
+                    <span className="mc-tag">{m.tag}</span>
                   </div>
                   <div className="model-card-body">
                     <h3>{fmtTitle(m.title)}</h3>
                     <p>{m.desc}</p>
-                    <span className="card-link">Detalii <IcoRightAlt size={14} /></span>
+                    <div className="mc-pills">
+                      {m.pills.map((p, j) => <span key={j} className="mc-pill">{p}</span>)}
+                    </div>
+                    <span className="card-link" style={{ marginTop: '13px' }}>Detalii <IcoRightAlt size={14} /></span>
                   </div>
                 </div>
               </FadeUp>

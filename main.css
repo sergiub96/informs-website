@@ -406,14 +406,27 @@ h4{font-size:.92rem;font-weight:700;letter-spacing:.01em}
 .card-link:hover{gap:9px}
 
 /* ── Work model cards ── */
-.model-card{overflow:hidden;cursor:pointer;background:var(--white);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--s-xs);transition:all var(--dur) var(--ease);display:flex;flex-direction:column}
+.model-card{overflow:hidden;cursor:pointer;background:var(--white);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--s-xs);transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease);display:flex;flex-direction:column}
 .model-card:hover{transform:translateY(-5px);box-shadow:var(--s-md);border-color:transparent}
-.model-card-vis{aspect-ratio:16/10;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:16px 18px}
-.model-card-vis-lines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 17px,rgba(255,255,255,.06) 17px,rgba(255,255,255,.06) 18px)}
-.model-card-vis-tag{font-size:48px;font-weight:900;color:rgba(255,255,255,.15);letter-spacing:-.02em;line-height:1;position:relative;z-index:1;user-select:none}
-.model-card-body{padding:16px 18px 20px;flex:1;display:flex;flex-direction:column}
-.model-card-body h3{font-size:.96rem;margin-bottom:7px}
-.model-card-body p{font-size:13px;color:var(--text-2);line-height:1.65;flex:1}
+.model-card:hover .model-card-vis::after{opacity:1}
+.model-card-vis{aspect-ratio:16/10;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px 16px}
+.model-card-vis::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.05);opacity:0;transition:opacity var(--dur)}
+/* Format-specific patterns */
+.model-card-vis.cv-excel{background:#177245}
+.model-card-vis.cv-pdf{background:#C23B22}
+.model-card-vis.cv-word{background:#1358B0}
+.model-card-vis.cv-rpt{background:#6B4FAE}
+.model-card-vis.cv-atr{background:#0D3870}
+.model-card-vis.cv-excel .mc-pat{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:26px 26px}
+.model-card-vis.cv-word .mc-pat,.model-card-vis.cv-rpt .mc-pat,.model-card-vis.cv-atr .mc-pat{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 16px,rgba(255,255,255,.06) 16px,rgba(255,255,255,.06) 17px)}
+.model-card-vis.cv-pdf .mc-pat{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 22px,rgba(255,255,255,.05) 22px,rgba(255,255,255,.05) 23px),repeating-linear-gradient(90deg,transparent,transparent 58px,rgba(255,255,255,.04) 58px,rgba(255,255,255,.04) 59px)}
+.mc-badge{position:absolute;top:12px;right:12px;z-index:2;font-size:9.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.55);background:rgba(0,0,0,.18);padding:3px 8px;border-radius:10px}
+.mc-tag{font-size:44px;font-weight:900;color:rgba(255,255,255,.14);letter-spacing:-.02em;line-height:1;position:relative;z-index:1;user-select:none}
+.model-card-body{padding:15px 17px 18px;flex:1;display:flex;flex-direction:column}
+.model-card-body h3{font-size:.95rem;font-weight:700;margin-bottom:8px}
+.model-card-body p{font-size:12.5px;color:var(--text-2);line-height:1.65;flex:1}
+.mc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.mc-pill{font-size:10.5px;font-weight:600;color:var(--text-2);background:var(--bg);border:1px solid var(--border);padding:2px 8px;border-radius:8px}
 
 /* ── Services — overview cards ── */
 .svc-grid-card{
