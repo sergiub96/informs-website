@@ -61,7 +61,7 @@ function HomePage({ onNav }) {
   ];
 
   const domains = [
-    { icon: <IcoDoc size={24} />,      num: '01', label: 'Achiziții publice',                  desc: 'Documentații complete pentru proceduri de atribuire — servicii, produse și lucrări. Conformitate legislativă garantată.' },
+    { icon: <IcoDoc size={24} />,      num: '01', label: 'Achiziții publice',                  desc: 'Documentații complete pentru proceduri de atribuire - servicii, produse și lucrări. Conformitate legislativă garantată.' },
     { icon: <IcoHomeAlt size={24} />,  num: '02', label: 'Delegare servicii utilități publice', desc: 'Studii de oportunitate și documentații complete pentru gestiunea serviciilor de salubrizare, transport și iluminat.' },
     { icon: <IcoDash size={24} />,     num: '03', label: 'Management de proiect',               desc: 'Instrumente pentru planificarea, monitorizarea și raportarea proiectelor finanțate din fonduri publice sau europene.' },
     { icon: <IcoSyncLib size={24} />,  num: '04', label: 'Digitalizare',                        desc: 'Automatizarea fluxurilor documentare prin modele Excel, Word și PDF inteligent, adaptate activității tale specifice.' },
@@ -124,7 +124,7 @@ function HomePage({ onNav }) {
             startDelay={0.28}
           />
           <p className="hero-sub h-sub" style={{ animationDelay: '0.72s' }}>
-            Soluții adaptate pentru sectorul public și privat — modele de lucru conforme legislației,
+            Soluții adaptate pentru sectorul public și privat - modele de lucru conforme legislației,
             asistență tehnică de specialitate și documentații complete.
           </p>
           <div className="hero-actions h-actions" style={{ animationDelay: '0.92s', justifyContent: 'center' }}>
@@ -347,7 +347,7 @@ function HomePage({ onNav }) {
               <div>
                 <div className="badge" style={{ marginBottom: '14px' }}>Instrumente de lucru</div>
                 <h2>Asigură o imagine clară activității tale</h2>
-                <p style={{ fontSize: '1rem', color: 'var(--text-2)', marginTop: '10px' }}>Eficientizarea a devenit regula de bază, iar timpul — un bun personal.</p>
+                <p style={{ fontSize: '1rem', color: 'var(--text-2)', marginTop: '10px' }}>Eficientizarea a devenit regula de bază, iar timpul - un bun personal.</p>
               </div>
             </div>
           </FadeUp>
@@ -434,7 +434,7 @@ function HomePage({ onNav }) {
               <p className="badge" style={{ marginBottom: '14px' }}>Cum lucrăm</p>
               <h2>Un proces simplu, rezultate clare</h2>
               <p className="lead" style={{ maxWidth: 520, margin: '12px auto 0' }}>
-                De la prima discuție până la implementarea completă — fiecare pas este structurat și transparent.
+                De la prima discuție până la implementarea completă - fiecare pas este structurat și transparent.
               </p>
             </div>
           </FadeUp>

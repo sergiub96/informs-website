@@ -4,7 +4,7 @@ const SERVICE_PAGES = ['analiza-si-solutii', 'achizitii-publice', 'delegare-serv
 const POLICY_PAGES  = ['politica-confidentialitate', 'termeni-si-conditii'];
 
 const PAGE_META = {
-  'home':                       { title: 'INFORMS — Formulare inteligente. Documentații complete.', desc: 'Documentații complete, formulare și instrumente de lucru inteligente, într-un format intuitiv, standard și ușor de utilizat.' },
+  'home':                       { title: 'INFORMS - Formulare inteligente. Documentații complete.', desc: 'Documentații complete, formulare și instrumente de lucru inteligente, într-un format intuitiv, standard și ușor de utilizat.' },
   'despre-noi':                 { title: 'Despre noi | INFORMS', desc: '15 ani de experiență în achiziții publice, consultanță și digitalizare pentru instituții publice și companii private.' },
   'contact':                    { title: 'Contact | INFORMS', desc: 'Contactează echipa INFORMS pentru consultanță în achiziții publice, documentații și instrumente de lucru specializate.' },
   'servicii':                   { title: 'Servicii | INFORMS', desc: 'Soluții complete pentru instituții publice, companii și liber-profesioniști: achiziții publice, delegare servicii, instrumente de lucru.' },

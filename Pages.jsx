@@ -276,7 +276,7 @@ function ContactPage() {
                 <div className="card" style={{ padding: '28px', background: 'var(--blue-pale)', border: 'none' }}>
                   <h4 style={{ marginBottom: '10px', color: 'var(--navy)' }}>Agatha Plus</h4>
                   <p style={{ fontSize: '13.5px', color: 'var(--text-muted)', marginBottom: '18px', lineHeight: '1.65' }}>
-                    Partenerul nostru pentru soluții digitale avansate.
+                    Digitalizează achizițiile publice și simplifică modul de lucru.
                   </p>
                   <a href="https://agathaplus.ro/" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ fontSize: '14px', display:'inline-flex', alignItems:'center', gap:'6px' }}>
                     Vizitează <IcoShareLib size={13} />

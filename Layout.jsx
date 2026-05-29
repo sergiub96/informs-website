@@ -195,9 +195,9 @@ function Footer({ onNav }) {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2025 INFORMS — Toate drepturile rezervate. Parte a companiei MILBAC MANAGEMENT S.R.L.</span>
+          <span>© 2025 INFORMS - Toate drepturile rezervate. Parte a companiei MILBAC MANAGEMENT S.R.L.</span>
           <span style={{ fontStyle: 'italic', opacity: .7 }}>
-            „Există un singur tip de succes – acela de a-ți putea petrece timpul așa cum îți dorești." — Chr. Morley
+            „Există un singur tip de succes - acela de a-ți putea petrece timpul așa cum îți dorești." - Chr. Morley
           </span>
         </div>
       </div>
