@@ -443,7 +443,7 @@ function ServiceDetailPage({ onNav, service }) {
               </div>
               <div style={{ background: 'var(--blue-pale)', borderRadius: '16px', padding: '28px' }}>
                 <h4 style={{ marginBottom: '16px', color: 'var(--navy)' }}>Cui ne adresăm?</h4>
-                {['Instituții publice', 'Companii private', 'Liber-profesioniști', 'ONG-uri'].map((item, i, arr) => (
+                {['Instituții publice', 'Companii private', 'Liber-profesioniști'].map((item, i, arr) => (
                   <div key={i} style={{ padding: '12px 0', borderBottom: i < arr.length - 1 ? '1px solid var(--border)' : 'none', display: 'flex', alignItems: 'center', gap: '12px', fontSize: '14.5px', fontWeight: 500 }}>
                     <span className="bullet-dot"></span>{item}
                   </div>

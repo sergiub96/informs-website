@@ -68,16 +68,11 @@ function HomePage({ onNav }) {
   ];
 
   const models = [
-    { title: 'Modele EXCEL',              desc: 'Instrumente avansate de calcul. Complexitatea nu trebuie să fie un impediment.',
-      img: 'uploads/Caiet-de-sarcini-servicii.webp',        page: 'modele-excel' },
-    { title: 'Modele PDF inteligent',     desc: 'Formulare electronice interactive. Standardizare completă a documentelor.',
-      img: 'uploads/Formulare-servicii.webp',               page: 'modele-pdf' },
-    { title: 'Modele WORD',               desc: 'Formulare tipizate digitale. Cererile scanate sunt de domeniul trecutului.',
-      img: 'uploads/Clauze-contractuale-servicii.webp',     page: 'modele-word' },
-    { title: 'Procese verbale & Rapoarte', desc: 'Modele adaptate pentru situații complexe din domeniul achizițiilor.',
-      img: 'uploads/Ofertare-licitatii-servicii.webp',      page: 'contact' },
-    { title: 'Documentații de atribuire', desc: 'Documentații complete pentru proceduri de atribuire a contractelor publice.',
-      img: 'uploads/Strategie-de-contractare-servicii.webp', page: 'achizitii-publice' },
+    { title: 'Modele EXCEL',               desc: 'Instrumente avansate de calcul. Complexitatea nu trebuie să fie un impediment.',             page: 'modele-excel',     tag: 'XLS', accent: '#177245' },
+    { title: 'Modele PDF inteligent',      desc: 'Formulare electronice interactive. Standardizare completă a documentelor.',                  page: 'modele-pdf',       tag: 'PDF', accent: '#B83232' },
+    { title: 'Modele WORD',                desc: 'Formulare tipizate digitale. Cererile scanate sunt de domeniul trecutului.',                 page: 'modele-word',      tag: 'DOC', accent: '#1358B0' },
+    { title: 'Procese verbale & Rapoarte', desc: 'Modele adaptate pentru situații complexe din domeniul achizițiilor.',                        page: 'contact',          tag: 'RPT', accent: '#7B5CB8' },
+    { title: 'Documentații de atribuire',  desc: 'Documentații complete pentru proceduri de atribuire a contractelor publice.',                page: 'achizitii-publice', tag: 'ATR', accent: '#0D3870' },
   ];
 
   const objectives = [
@@ -128,11 +123,11 @@ function HomePage({ onNav }) {
             asistență tehnică de specialitate și documentații complete.
           </p>
           <div className="hero-actions h-actions" style={{ animationDelay: '0.92s', justifyContent: 'center' }}>
-            <button className="btn btn-primary" onClick={() => go('servicii')}>
-              Descoperă serviciile
+            <button className="btn btn-primary">
+              Autoritate contractantă
             </button>
-            <button className="btn btn-ghost" onClick={() => go('contact')}>
-              Solicită ofertă
+            <button className="btn btn-primary">
+              Ofertant
             </button>
           </div>
         </div>
@@ -355,8 +350,9 @@ function HomePage({ onNav }) {
             {models.map((m, i) => (
               <FadeUp key={i} delay={i * 65}>
                 <div className="model-card" onClick={() => go(m.page)}>
-                  <div className="model-card-img">
-                    <img src={m.img} alt={m.title} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
+                  <div className="model-card-vis" style={{ background: m.accent }}>
+                    <div className="model-card-vis-lines"></div>
+                    <span className="model-card-vis-tag">{m.tag}</span>
                   </div>
                   <div className="model-card-body">
                     <h3>{m.title}</h3>
