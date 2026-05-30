@@ -1,0 +1,19 @@
+{
+  "name": "agent-a87706cc73a6fb1a2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx babel Layout.jsx -o Layout.js && npx babel Icons.jsx -o Icons.js && npx babel Home.jsx -o Home.js && npx babel Pages.jsx -o Pages.js && npx babel Shop.jsx -o Shop.js && npx babel App.jsx -o App.js && node build-wrap.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-react": "^7.29.7"
+  }
+}

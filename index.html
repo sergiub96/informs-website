@@ -8,7 +8,7 @@
   <meta property="og:description" content="Soluții adaptate pentru achiziții publice, delegare servicii de utilități publice, management de proiect și digitalizare." />
   <title>INFORMS - Formulare inteligente. Documentații complete.</title>
 
-  <!-- Microsoft Clarity — înlocuiește CLARITY_ID_HERE cu ID-ul din clarity.microsoft.com/projects -->
+  <!-- Microsoft Clarity - înlocuiește CLARITY_ID_HERE cu ID-ul din clarity.microsoft.com/projects -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -21,49 +21,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="root"></div>
 
-  <!-- Smooth slow scroll (desktop only) -->
-  <script>
-  (function() {
-    if ('ontouchstart' in window) return;
-    var cur = window.scrollY, tgt = window.scrollY, raf = null;
-    function tick() {
-      var d = tgt - cur;
-      if (Math.abs(d) < 0.5) { window.scrollTo(0, tgt); raf = null; return; }
-      cur += d * 0.13;
-      window.scrollTo(0, Math.round(cur));
-      raf = requestAnimationFrame(tick);
-    }
-    window.addEventListener('wheel', function(e) {
-      var el = e.target;
-      while (el && el !== document.body) {
-        var s = getComputedStyle(el);
-        if (/auto|scroll/.test(s.overflow + s.overflowY) && el.scrollHeight > el.clientHeight + 2) return;
-        el = el.parentElement;
-      }
-      e.preventDefault();
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      tgt = Math.max(0, Math.min(max, tgt + e.deltaY));
-      cur = window.scrollY;
-      if (!raf) raf = requestAnimationFrame(tick);
-    }, { passive: false });
-    window.addEventListener('scroll', function() { if (!raf) { cur = window.scrollY; tgt = window.scrollY; } }, { passive: true });
-  })();
-  </script>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script type="text/babel" src="Layout.jsx"></script>
-  <script type="text/babel" src="Icons.jsx"></script>
-  <script type="text/babel" src="Home.jsx"></script>
-  <script type="text/babel" src="Pages.jsx"></script>
-  <script type="text/babel" src="App.jsx"></script>
+  <script src="Layout.js"></script>
+  <script src="Icons.js"></script>
+  <script src="Home.js"></script>
+  <script src="Pages.js"></script>
+  <script src="Shop.js"></script>
+  <script src="App.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@ const { useState, useEffect, useRef } = React;
 
 function FadeUp({ children, delay = 0, style = {}, className = '' }) {
   return (
-    <div data-aos="fade-up" data-aos-delay={delay} data-aos-once="true" className={className} style={style}>
+    <div className={`anim-fade-up ${className}`} style={{ animationDelay: `${delay}ms`, ...style }}>
       {children}
     </div>
   );
@@ -14,6 +14,8 @@ function Nav({ onNav, page }) {
   const [open, setOpen] = useState(false);
   const [ddOpen, setDdOpen] = useState(false);
   const ddTimer = useRef(null);
+  const [ddProdOpen, setDdProdOpen] = useState(false);
+  const ddProdTimer = useRef(null);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -36,6 +38,9 @@ function Nav({ onNav, page }) {
   const openDd  = () => { clearTimeout(ddTimer.current); setDdOpen(true); };
   const closeDd = () => { ddTimer.current = setTimeout(() => setDdOpen(false), 220); };
 
+  const openDdProd  = () => { clearTimeout(ddProdTimer.current); setDdProdOpen(true); };
+  const closeDdProd = () => { ddProdTimer.current = setTimeout(() => setDdProdOpen(false), 220); };
+
   const svcs = [
     ['analiza-si-solutii', 'Analiză și soluții personalizate'],
     ['achizitii-publice', 'Achiziții publice'],
@@ -45,6 +50,15 @@ function Nav({ onNav, page }) {
     ['modele-pdf', 'Modele de lucru PDF'],
   ];
   const svcPages = svcs.map(s => s[0]);
+
+  const prodCats = [
+    { cat: 'all',          label: 'Toate produsele' },
+    { cat: 'achizitii',    label: 'Achiziții publice' },
+    { cat: 'delegare',     label: 'Delegare servicii' },
+    { cat: 'management',   label: 'Management proiect' },
+    { cat: 'digitalizare', label: 'Digitalizare' },
+    { cat: 'gratuite',     label: 'Gratuite', green: true },
+  ];
 
   return (
     <>
@@ -78,9 +92,24 @@ function Nav({ onNav, page }) {
                 </div>
               </div>
 
-              <span className={`nav-link${page === 'materiale-gratuite' ? ' active' : ''}`} onClick={() => go('materiale-gratuite')}>
-                Materiale gratuite
-              </span>
+              <div
+                className={`nav-dd${ddProdOpen ? ' dd-open' : ''}`}
+                onMouseEnter={openDdProd}
+                onMouseLeave={closeDdProd}
+              >
+                <span className={`nav-link nav-dd-toggle${page === 'magazin' ? ' active' : ''}`}>
+                  Produse
+                </span>
+                <div className="nav-dd-menu" onMouseEnter={openDdProd} onMouseLeave={closeDdProd}>
+                  {prodCats.map(({ cat, label, green }) => (
+                    <span key={cat} className="nav-dd-item" style={green ? { color: '#16A34A' } : {}} onClick={() => {
+                      onNav('magazin', { category: cat });
+                      window.scrollTo({ top: 0, behavior: 'instant' });
+                      setDdProdOpen(false);
+                    }}>{label}</span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="nav-end">
@@ -102,7 +131,16 @@ function Nav({ onNav, page }) {
         {svcs.map(([p, l]) => (
           <span key={p} className="m-link" style={{ paddingLeft: '26px', fontSize: '14px' }} onClick={() => go(p)}>{l}</span>
         ))}
-        <span className="m-link" onClick={() => go('materiale-gratuite')}>Materiale gratuite</span>
+        <div className="m-section-title">Produse</div>
+        {prodCats.map(({ cat, label, green }) => (
+          <span key={cat} className="m-link"
+            style={{ paddingLeft: cat === 'all' ? '14px' : '26px', fontSize: cat === 'all' ? '15px' : '14px', ...(green ? { color: '#16A34A' } : {}) }}
+            onClick={() => {
+              onNav('magazin', { category: cat });
+              window.scrollTo({ top: 0, behavior: 'instant' });
+              setOpen(false);
+            }}>{label}</span>
+        ))}
         <div style={{ marginTop: '12px', padding: '0 2px' }}>
           <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => go('contact')}>
             Contact
@@ -130,7 +168,7 @@ function Footer({ onNav }) {
 
   return (
     <footer>
-      <video ref={videoRef} className="footer-vid" muted playsInline>
+      <video ref={videoRef} className="footer-vid" muted playsInline preload="none">
         <source src="assets/videos_library/footer.mp4" type="video/mp4" />
       </video>
       <div className="footer-content">
@@ -177,7 +215,7 @@ function Footer({ onNav }) {
             <h5>Link-uri rapide</h5>
             <a onClick={() => go('home')}>Pagina principală</a>
             <a onClick={() => go('despre-noi')}>Despre noi</a>
-            <a onClick={() => go('materiale-gratuite')}>Materiale gratuite</a>
+            <a onClick={() => go('magazin')}>Produse</a>
             <a onClick={() => go('contact')}>Contact</a>
           </div>
 

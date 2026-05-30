@@ -1,0 +1,9 @@
+﻿Adauga documentele in acest folder.
+
+Tip: Pachete complete delegare servicii utilități publice
+
+Dupa ce adaugi un fisier, copiaza calea relativa in Shop.jsx
+campul 'file' al produsului:
+
+  file: 'assets/produse/delegare-servicii/pachete-complete/<numele-fisierului>'
+

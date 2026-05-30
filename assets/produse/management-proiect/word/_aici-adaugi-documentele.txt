@@ -1,0 +1,8 @@
+﻿Adauga documentele in acest folder.
+
+Tip: Documente Word management proiect (.docx)
+
+Dupa ce adaugi un fisier, copiaza calea relativa in Shop.jsx
+campul 'file' al produsului:
+
+  file: 'assets/produse/management-proiect/word/<numele-fisierului>'

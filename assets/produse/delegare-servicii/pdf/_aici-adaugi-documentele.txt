@@ -1,0 +1,8 @@
+﻿Adauga documentele in acest folder.
+
+Tip: Formulare PDF delegare servicii (.pdf)
+
+Dupa ce adaugi un fisier, copiaza calea relativa in Shop.jsx
+campul 'file' al produsului:
+
+  file: 'assets/produse/delegare-servicii/pdf/<numele-fisierului>'

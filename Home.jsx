@@ -65,7 +65,7 @@ function HomePage({ onNav }) {
       </div>
       {/* ── HERO ── */}
       <section className="hero hero-video-section">
-        <video className="hero-video" autoPlay muted loop playsInline>
+        <video className="hero-video" autoPlay muted loop playsInline preload="none">
           <source src="assets/img_informs/animated-digital-data-network-with-cloud-and-file.mp4" type="video/mp4" />
         </video>
         <div className="hero-video-overlay"></div>
@@ -97,17 +97,20 @@ function HomePage({ onNav }) {
         <div className="container" style={{ padding: 0 }}>
           <div className="stats-strip-inner">
             {[
-              { to: 15,  suffix: '+', lbl: 'Ani în achiziții publice',  det: 'experiență acumulată' },
-              { to: 500, suffix: '+', lbl: 'Ore consultanță/an',        det: 'unu la unu' },
-              { to: 90,  suffix: '%', lbl: 'Reducere erori umane',      det: 'prin standardizare' },
-              { to: 3,   suffix: '',  lbl: 'Formate de lucru',          det: 'Excel · Word · PDF' },
+              { to: 15,  suffix: '+', lbl: 'Ani în achiziții publice',  det: 'experiență acumulată', icon: <IcoNote size={38} /> },
+              { to: 500, suffix: '+', lbl: 'Ore consultanță/an',        det: 'unu la unu',           icon: <IcoUserAlt size={38} /> },
+              { to: 90,  suffix: '%', lbl: 'Reducere erori umane',      det: 'prin standardizare',   icon: <IcoShieldLib size={38} /> },
+              { to: 3,   suffix: '',  lbl: 'Formate de lucru',          det: 'Excel · Word · PDF',   icon: <IcoDoc size={38} /> },
             ].map((s, i) => (
               <div key={i} className="stat-col">
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px', color: 'rgba(255,255,255,.6)' }}>
+                  {s.icon}
+                </div>
                 <div className="s-num">
                   <span className="stat-num-anim">{s.to}{s.suffix}</span>
                 </div>
-                <div className="s-lbl">{s.lbl}</div>
-                <div className="s-det">{s.det}</div>
+                <div className="s-lbl" style={{ fontSize: '16px' }}>{s.lbl}</div>
+                <div className="s-det" style={{ fontSize: '13px' }}>{s.det}</div>
               </div>
             ))}
           </div>

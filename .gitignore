@@ -3,3 +3,8 @@ Thumbs.db
 *.zip
 .gstack/
 assets/img_library/
+node_modules/
+.claude/
+design-preview-desktop.png
+design-preview-mobile.png
+assets/old/

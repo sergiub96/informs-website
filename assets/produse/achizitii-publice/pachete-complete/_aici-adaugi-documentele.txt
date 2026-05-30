@@ -1,0 +1,9 @@
+﻿Adauga documentele in acest folder.
+
+Tip: Pachete complete achiziții publice (.zip cu mai multe fișiere sau .pdf/.docx)
+
+Dupa ce adaugi un fisier, copiaza calea relativa in Shop.jsx
+campul 'file' al produsului:
+
+  file: 'assets/produse/achizitii-publice/pachete-complete/<numele-fisierului>'
+
