@@ -150,44 +150,47 @@ function HomePage({ onNav }) {
             </div>
           </FadeUp>
           <FadeUp delay={80}>
-            <div className="prov-compare">
-              <div className="prov-compare-header">
-                <div className="prov-header-left">
+            <div className="prov-two-cards">
+              <div className="prov-card prov-card-left">
+                <div className="prov-card-header">
                   <div className="prov-icon-x">✕</div>
-                  <span className="prov-header-label prov-header-label-left">Provocările voastre</span>
+                  <span className="prov-header-label prov-header-label-left">Provocări</span>
                 </div>
-                <div className="prov-header-mid"></div>
-                <div className="prov-header-right">
+                {[
+                  { title: 'Documentații cu lacune procedurale', desc: 'Absența unor elemente obligatorii în documentații generează vulnerabilități juridice și riscuri de contestație.' },
+                  { title: 'Inconsistențe generate de procesarea manuală', desc: 'Redactarea manuală a documentelor standardizate este susceptibilă la erori repetitive și neuniformitate în aplicare.' },
+                  { title: 'Cadru legislativ în continuă evoluție', desc: 'Modificările frecvente ale legislației impun actualizarea constantă a documentelor și procedurilor aplicabile.' },
+                  { title: 'Resurse temporale alocate documentației', desc: 'Elaborarea documentelor de rutină consumă resurse semnificative ce ar putea fi direcționate spre activități cu valoare adăugată superioară.' },
+                ].map((item, i) => (
+                  <div key={i} className="prov-card-row">
+                    <div className="prov-icon-x">✕</div>
+                    <div>
+                      <div className="prov-item-title">{item.title}</div>
+                      <div className="prov-item-desc">{item.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="prov-card prov-card-right">
+                <div className="prov-card-header">
                   <div className="prov-icon-check">✓</div>
                   <span className="prov-header-label prov-header-label-right">Cum rezolvă INFORMS</span>
                 </div>
-              </div>
-              {[
-                { num: '01', problem: 'Documentații cu lacune procedurale', problemDesc: 'Absența unor elemente obligatorii în documentații generează vulnerabilități juridice și riscuri de contestație.', solution: 'Modele integral verificate juridic', solutionDesc: 'Fiecare instrument respectă cerințele legale în vigoare, reducând expunerea instituțională la erori procedurale.' },
-                { num: '02', problem: 'Inconsistențe generate de procesarea manuală', problemDesc: 'Redactarea manuală a documentelor standardizate este susceptibilă la erori repetitive și neuniformitate în aplicare.', solution: 'Standardizare și automatizare', solutionDesc: 'Modelele structurate elimină variabilitatea umană, asigurând uniformitate și o rată de eroare redusă cu până la 90%.' },
-                { num: '03', problem: 'Cadru legislativ în continuă evoluție', problemDesc: 'Modificările frecvente ale legislației impun actualizarea constantă a documentelor și procedurilor aplicabile.', solution: 'Actualizare permanentă', solutionDesc: 'Instrumentele INFORMS sunt revizuite și actualizate în concordanță cu orice modificare legislativă relevantă.' },
-                { num: '04', problem: 'Resurse temporale alocate documentației', problemDesc: 'Elaborarea documentelor de rutină consumă resurse semnificative ce ar putea fi direcționate spre activități cu valoare adăugată superioară.', solution: 'Eficiență operațională imediată', solutionDesc: 'Aplicabilitatea directă a instrumentelor reduce substanțial timpul alocat documentației administrative.' },
-              ].map((item, i) => (
-                <div key={i} className="prov-row">
-                  <div className="prov-row-left">
-                    <div className="prov-icon-x">✕</div>
-                    <div>
-                      <div className="prov-item-title">{item.problem}</div>
-                      <div className="prov-item-desc">{item.problemDesc}</div>
-                    </div>
-                  </div>
-                  <div className="prov-row-mid">
-                    <div className="prov-num-badge">{item.num}</div>
-                  </div>
-                  <div className="prov-row-right">
+                {[
+                  { title: 'Modele integral verificate juridic', desc: 'Fiecare instrument respectă cerințele legale în vigoare, reducând expunerea instituțională la erori procedurale.' },
+                  { title: 'Standardizare și automatizare', desc: 'Modelele structurate elimină variabilitatea umană, asigurând uniformitate și o rată de eroare redusă cu până la 90%.' },
+                  { title: 'Actualizare permanentă', desc: 'Instrumentele INFORMS sunt revizuite și actualizate în concordanță cu orice modificare legislativă relevantă.' },
+                  { title: 'Eficiență operațională imediată', desc: 'Aplicabilitatea directă a instrumentelor reduce substanțial timpul alocat documentației administrative.' },
+                ].map((item, i) => (
+                  <div key={i} className="prov-card-row">
                     <div className="prov-icon-check">✓</div>
                     <div>
-                      <div className="prov-item-title">{item.solution}</div>
-                      <div className="prov-item-desc">{item.solutionDesc}</div>
+                      <div className="prov-item-title">{item.title}</div>
+                      <div className="prov-item-desc">{item.desc}</div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </FadeUp>
           <FadeUp delay={320}>

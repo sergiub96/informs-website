@@ -290,71 +290,66 @@ function HomePage({
   }, "Mediul administrativ \u0219i de achizi\u021Bii publice genereaz\u0103, \xEEn mod obiectiv, o serie de dificult\u0103\u021Bi recurente ce pot afecta eficien\u021Ba institu\u021Bional\u0103."))), /*#__PURE__*/React.createElement(FadeUp, {
     delay: 80
   }, /*#__PURE__*/React.createElement("div", {
-    className: "prov-compare"
+    className: "prov-two-cards"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "prov-compare-header"
+    className: "prov-card prov-card-left"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "prov-header-left"
+    className: "prov-card-header"
   }, /*#__PURE__*/React.createElement("div", {
     className: "prov-icon-x"
   }, "\u2715"), /*#__PURE__*/React.createElement("span", {
     className: "prov-header-label prov-header-label-left"
-  }, "Provoc\u0103rile voastre")), /*#__PURE__*/React.createElement("div", {
-    className: "prov-header-mid"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "prov-header-right"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "prov-icon-check"
-  }, "\u2713"), /*#__PURE__*/React.createElement("span", {
-    className: "prov-header-label prov-header-label-right"
-  }, "Cum rezolv\u0103 INFORMS"))), [{
-    num: '01',
-    problem: 'Documentații cu lacune procedurale',
-    problemDesc: 'Absența unor elemente obligatorii în documentații generează vulnerabilități juridice și riscuri de contestație.',
-    solution: 'Modele integral verificate juridic',
-    solutionDesc: 'Fiecare instrument respectă cerințele legale în vigoare, reducând expunerea instituțională la erori procedurale.'
+  }, "Provoc\u0103ri")), [{
+    title: 'Documentații cu lacune procedurale',
+    desc: 'Absența unor elemente obligatorii în documentații generează vulnerabilități juridice și riscuri de contestație.'
   }, {
-    num: '02',
-    problem: 'Inconsistențe generate de procesarea manuală',
-    problemDesc: 'Redactarea manuală a documentelor standardizate este susceptibilă la erori repetitive și neuniformitate în aplicare.',
-    solution: 'Standardizare și automatizare',
-    solutionDesc: 'Modelele structurate elimină variabilitatea umană, asigurând uniformitate și o rată de eroare redusă cu până la 90%.'
+    title: 'Inconsistențe generate de procesarea manuală',
+    desc: 'Redactarea manuală a documentelor standardizate este susceptibilă la erori repetitive și neuniformitate în aplicare.'
   }, {
-    num: '03',
-    problem: 'Cadru legislativ în continuă evoluție',
-    problemDesc: 'Modificările frecvente ale legislației impun actualizarea constantă a documentelor și procedurilor aplicabile.',
-    solution: 'Actualizare permanentă',
-    solutionDesc: 'Instrumentele INFORMS sunt revizuite și actualizate în concordanță cu orice modificare legislativă relevantă.'
+    title: 'Cadru legislativ în continuă evoluție',
+    desc: 'Modificările frecvente ale legislației impun actualizarea constantă a documentelor și procedurilor aplicabile.'
   }, {
-    num: '04',
-    problem: 'Resurse temporale alocate documentației',
-    problemDesc: 'Elaborarea documentelor de rutină consumă resurse semnificative ce ar putea fi direcționate spre activități cu valoare adăugată superioară.',
-    solution: 'Eficiență operațională imediată',
-    solutionDesc: 'Aplicabilitatea directă a instrumentelor reduce substanțial timpul alocat documentației administrative.'
+    title: 'Resurse temporale alocate documentației',
+    desc: 'Elaborarea documentelor de rutină consumă resurse semnificative ce ar putea fi direcționate spre activități cu valoare adăugată superioară.'
   }].map((item, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
-    className: "prov-row"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "prov-row-left"
+    className: "prov-card-row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "prov-icon-x"
   }, "\u2715"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "prov-item-title"
-  }, item.problem), /*#__PURE__*/React.createElement("div", {
+  }, item.title), /*#__PURE__*/React.createElement("div", {
     className: "prov-item-desc"
-  }, item.problemDesc))), /*#__PURE__*/React.createElement("div", {
-    className: "prov-row-mid"
+  }, item.desc))))), /*#__PURE__*/React.createElement("div", {
+    className: "prov-card prov-card-right"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "prov-num-badge"
-  }, item.num)), /*#__PURE__*/React.createElement("div", {
-    className: "prov-row-right"
+    className: "prov-card-header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "prov-icon-check"
+  }, "\u2713"), /*#__PURE__*/React.createElement("span", {
+    className: "prov-header-label prov-header-label-right"
+  }, "Cum rezolv\u0103 INFORMS")), [{
+    title: 'Modele integral verificate juridic',
+    desc: 'Fiecare instrument respectă cerințele legale în vigoare, reducând expunerea instituțională la erori procedurale.'
+  }, {
+    title: 'Standardizare și automatizare',
+    desc: 'Modelele structurate elimină variabilitatea umană, asigurând uniformitate și o rată de eroare redusă cu până la 90%.'
+  }, {
+    title: 'Actualizare permanentă',
+    desc: 'Instrumentele INFORMS sunt revizuite și actualizate în concordanță cu orice modificare legislativă relevantă.'
+  }, {
+    title: 'Eficiență operațională imediată',
+    desc: 'Aplicabilitatea directă a instrumentelor reduce substanțial timpul alocat documentației administrative.'
+  }].map((item, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "prov-card-row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "prov-icon-check"
   }, "\u2713"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "prov-item-title"
-  }, item.solution), /*#__PURE__*/React.createElement("div", {
+  }, item.title), /*#__PURE__*/React.createElement("div", {
     className: "prov-item-desc"
-  }, item.solutionDesc))))))), /*#__PURE__*/React.createElement(FadeUp, {
+  }, item.desc))))))), /*#__PURE__*/React.createElement(FadeUp, {
     delay: 320
   }, /*#__PURE__*/React.createElement("div", {
     style: {

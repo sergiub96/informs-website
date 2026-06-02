@@ -354,33 +354,22 @@ h4{font-size:1.02rem;font-weight:700;letter-spacing:.01em}
   .challenge-num{display:none}
 }
 
-/* ── Provocări — two-column compare layout ── */
-.prov-compare{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--s-sm)}
-.prov-compare-header{display:grid;grid-template-columns:1fr 52px 1fr;border-bottom:1px solid var(--border)}
-.prov-header-left{background:#FFF5F0;padding:18px 28px;display:flex;align-items:center;gap:12px}
-.prov-header-right{background:#EEF6FF;padding:18px 28px;display:flex;align-items:center;gap:12px;border-left:1px solid var(--border)}
-.prov-header-mid{background:#fff;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+/* ── Provocări — two separate cards ── */
+.prov-two-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.prov-card{border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(6,24,48,.10),0 1px 4px rgba(6,24,48,.06)}
+.prov-card-left{background:#FFF8F5}
+.prov-card-right{background:#EEF6FF}
+.prov-card-header{display:flex;align-items:center;gap:12px;padding:22px 28px 18px}
+.prov-card-row{display:flex;align-items:flex-start;gap:14px;padding:14px 28px}
+.prov-card-row:last-child{padding-bottom:28px}
 .prov-header-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
 .prov-header-label-left{color:#DC2626}
 .prov-header-label-right{color:#0D3870}
-.prov-row{display:grid;grid-template-columns:1fr 52px 1fr;border-top:1px solid var(--border)}
-.prov-row-left{background:#FFF8F5;padding:24px 28px;display:flex;align-items:flex-start;gap:14px}
-.prov-row-right{background:#EEF6FF;padding:24px 28px;display:flex;align-items:flex-start;gap:14px;border-left:1px solid var(--border)}
-.prov-row-mid{background:#fff;display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);border-right:1px solid var(--border);position:relative}
-.prov-row-mid::before{content:'';position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:1px;background:var(--border)}
-.prov-num-badge{width:36px;height:36px;border-radius:50%;background:#fff;border:1.5px solid var(--border-d);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;color:var(--navy);position:relative;z-index:1;letter-spacing:.02em;flex-shrink:0}
 .prov-icon-x{width:28px;height:28px;border-radius:50%;background:rgba(220,38,38,.1);display:flex;align-items:center;justify-content:center;color:#DC2626;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px}
 .prov-icon-check{width:28px;height:28px;border-radius:50%;background:rgba(22,163,74,.12);display:flex;align-items:center;justify-content:center;color:#16A34A;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px}
 .prov-item-title{font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:5px;line-height:1.38}
 .prov-item-desc{font-size:14px;color:var(--text-2);line-height:1.68}
-@media(max-width:768px){
-  .prov-compare-header{grid-template-columns:1fr}
-  .prov-header-mid{display:none}
-  .prov-header-right{border-left:none;border-top:1px solid var(--border)}
-  .prov-row{grid-template-columns:1fr}
-  .prov-row-mid{display:none}
-  .prov-row-right{border-left:none;border-top:1px solid var(--border)}
-}
+@media(max-width:768px){.prov-two-cards{grid-template-columns:1fr}}
 
 /* ── Feature strip ── */
 .feat-strip{background:var(--white);border-bottom:1px solid var(--border)}
