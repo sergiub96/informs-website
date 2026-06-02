@@ -163,7 +163,7 @@ function HomePage({
     muted: true,
     loop: true,
     playsInline: true,
-    preload: "none"
+    preload: "auto"
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/img_informs/animated-digital-data-network-with-cloud-and-file.mp4",
     type: "video/mp4"

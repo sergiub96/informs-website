@@ -26,7 +26,7 @@ function AboutPage({
     autoPlay: true,
     muted: true,
     playsInline: true,
-    preload: "none"
+    preload: "auto"
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4",
     type: "video/mp4"
@@ -351,7 +351,7 @@ function ContactPage() {
     autoPlay: true,
     muted: true,
     playsInline: true,
-    preload: "none"
+    preload: "auto"
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/contact-informs.mp4",
     type: "video/mp4"
@@ -623,7 +623,7 @@ function ServicesPage({
     autoPlay: true,
     muted: true,
     playsInline: true,
-    preload: "none"
+    preload: "auto"
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4",
     type: "video/mp4"
@@ -760,7 +760,7 @@ function ServiceDetailPage({
     autoPlay: true,
     muted: true,
     playsInline: true,
-    preload: "none"
+    preload: "auto"
   }, /*#__PURE__*/React.createElement("source", {
     src: d.video,
     type: "video/mp4"
@@ -900,7 +900,7 @@ function MaterialeGratuitePage({
     autoPlay: true,
     muted: true,
     playsInline: true,
-    preload: "none"
+    preload: "auto"
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4",
     type: "video/mp4"

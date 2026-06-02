@@ -65,7 +65,7 @@ function HomePage({ onNav }) {
       </div>
       {/* ── HERO ── */}
       <section className="hero hero-video-section">
-        <video className="hero-video" autoPlay muted loop playsInline preload="none">
+        <video className="hero-video" autoPlay muted loop playsInline preload="auto">
           <source src="assets/img_informs/animated-digital-data-network-with-cloud-and-file.mp4" type="video/mp4" />
         </video>
         <div className="hero-video-overlay"></div>

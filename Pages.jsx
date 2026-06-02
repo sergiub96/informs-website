@@ -11,7 +11,7 @@ function AboutPage({ onNav }) {
   return (
     <>
       <div className="pg-hero pg-hero-video">
-        <video className="pg-hero-vid" autoPlay muted playsInline preload="none">
+        <video className="pg-hero-vid" autoPlay muted playsInline preload="auto">
           <source src="assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4" type="video/mp4" />
         </video>
         <div className="pg-hero-overlay"></div>
@@ -191,7 +191,7 @@ function ContactPage() {
   return (
     <>
       <div className="pg-hero pg-hero-video">
-        <video className="pg-hero-vid" autoPlay muted playsInline preload="none">
+        <video className="pg-hero-vid" autoPlay muted playsInline preload="auto">
           <source src="assets/videos_library/contact-informs.mp4" type="video/mp4" />
         </video>
         <div className="pg-hero-overlay"></div>
@@ -313,7 +313,7 @@ function ServicesPage({ onNav }) {
   return (
     <>
       <div className="pg-hero pg-hero-video">
-        <video className="pg-hero-vid" autoPlay muted playsInline preload="none">
+        <video className="pg-hero-vid" autoPlay muted playsInline preload="auto">
           <source src="assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4" type="video/mp4" />
         </video>
         <div className="container">
@@ -414,7 +414,7 @@ function ServiceDetailPage({ onNav, service }) {
     <>
       <div className={`pg-hero${d.video ? ' pg-hero-video pg-hero-svc' : ''}`}>
         {d.video && (
-          <video key={d.video} className={`pg-hero-vid${d.split ? ' pg-hero-vid-right' : ''}`} autoPlay muted playsInline preload="none">
+          <video key={d.video} className={`pg-hero-vid${d.split ? ' pg-hero-vid-right' : ''}`} autoPlay muted playsInline preload="auto">
             <source src={d.video} type="video/mp4" />
           </video>
         )}
@@ -472,7 +472,7 @@ function MaterialeGratuitePage({ onNav }) {
   return (
     <>
       <div className="pg-hero pg-hero-video">
-        <video className="pg-hero-vid" autoPlay muted playsInline preload="none">
+        <video className="pg-hero-vid" autoPlay muted playsInline preload="auto">
           <source src="assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4" type="video/mp4" />
         </video>
         <div className="pg-hero-overlay"></div>
