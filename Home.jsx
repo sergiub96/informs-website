@@ -145,7 +145,7 @@ function HomePage({ onNav }) {
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
               <div className="badge" style={{ marginBottom: '14px' }}>Context operațional</div>
               <h2>Provocări frecvente în domeniu</h2>
-              <p style={{ maxWidth: '560px', margin: '12px auto 0', fontSize: '15px' }}>
+              <p style={{ maxWidth: '560px', margin: '12px auto 0', fontSize: '16.5px' }}>
                 Mediul administrativ și de achiziții publice generează, în mod obiectiv, o serie de dificultăți recurente ce pot afecta eficiența instituțională.
               </p>
             </div>
@@ -235,7 +235,7 @@ function HomePage({ onNav }) {
             <div style={{ textAlign: 'center', marginBottom: '56px' }}>
               <div className="badge badge-white" style={{ marginBottom: '16px' }}>Domenii de activitate</div>
               <h2 style={{ color: '#fff' }}>Expertiză în domenii-cheie</h2>
-              <p style={{ color: 'rgba(255,255,255,.58)', maxWidth: '520px', margin: '14px auto 0', fontSize: '15px', lineHeight: 1.75 }}>
+              <p style={{ color: 'rgba(255,255,255,.58)', maxWidth: '520px', margin: '14px auto 0', fontSize: '16.5px', lineHeight: 1.75 }}>
                 Peste 15 ani de experiență concentrată în domeniile cu cel mai mare impact pentru administrația publică.
               </p>
             </div>
@@ -265,7 +265,7 @@ function HomePage({ onNav }) {
               <div>
                 <div className="badge" style={{ marginBottom: '14px' }}>Ce oferim</div>
                 <h2>Serviciile noastre</h2>
-                <p style={{ fontSize: '1rem', color: 'var(--text-2)', marginTop: '10px', maxWidth: 480 }}>Soluții complete pentru instituții publice, companii și liber-profesioniști.</p>
+                <p style={{ fontSize: '1.12rem', color: 'var(--text-2)', marginTop: '10px', maxWidth: 480 }}>Soluții complete pentru instituții publice, companii și liber-profesioniști.</p>
               </div>
               <button className="btn btn-outline btn-sm" onClick={() => go('servicii')}>
                 Toate serviciile <IcoRightAlt size={14} />
@@ -283,8 +283,8 @@ function HomePage({ onNav }) {
                   <div style={{ width: 48, height: 48, borderRadius: '12px', background: 'var(--blue-lt)', color: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', flexShrink: 0 }}>
                     {s.icon}
                   </div>
-                  <h3 style={{ marginBottom: '10px', fontSize: '1.08rem' }}>{s.title}</h3>
-                  <p style={{ fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.72', marginBottom: '20px', flex: 1 }}>{s.desc}</p>
+                  <h3 style={{ marginBottom: '10px', fontSize: '1.22rem' }}>{s.title}</h3>
+                  <p style={{ fontSize: '15.5px', color: 'var(--text-2)', lineHeight: '1.72', marginBottom: '20px', flex: 1 }}>{s.desc}</p>
                   <ul className="bullet-list" style={{ marginBottom: '20px' }}>
                     {s.items.map((item, j) => <li key={j}><span className="bullet-dot"></span>{item}</li>)}
                   </ul>
@@ -304,7 +304,7 @@ function HomePage({ onNav }) {
               <div>
                 <div className="badge" style={{ marginBottom: '14px' }}>Instrumente de lucru</div>
                 <h2>Asigură o imagine clară activității tale</h2>
-                <p style={{ fontSize: '1rem', color: 'var(--text-2)', marginTop: '10px' }}>Eficientizarea a devenit regula de bază, iar timpul - un bun personal.</p>
+                <p style={{ fontSize: '1.12rem', color: 'var(--text-2)', marginTop: '10px' }}>Eficientizarea a devenit regula de bază, iar timpul - un bun personal.</p>
               </div>
             </div>
           </FadeUp>
@@ -362,7 +362,7 @@ function HomePage({ onNav }) {
             <div style={{ marginBottom: '48px' }}>
               <div className="badge" style={{ marginBottom: '14px' }}>Portofoliu servicii</div>
               <h2>Ce facem la INFORMS</h2>
-              <p style={{ fontSize: '1rem', color: 'var(--text-2)', marginTop: '10px', maxWidth: 520 }}>
+              <p style={{ fontSize: '1.12rem', color: 'var(--text-2)', marginTop: '10px', maxWidth: 520 }}>
                 Servicii specializate, structurate în funcție de rolul tău în procedura de achiziție.
               </p>
             </div>
@@ -373,8 +373,8 @@ function HomePage({ onNav }) {
                 <div className="audience-accent"></div>
                 <div style={{ padding: '32px' }}>
                   <div className="audience-type-badge">Autoritate contractantă</div>
-                  <h3 style={{ margin: '16px 0 8px', fontSize: '1.18rem' }}>Achizitor public</h3>
-                  <p style={{ fontSize: '13.5px', color: 'var(--text-2)', lineHeight: 1.72, marginBottom: '24px' }}>
+                  <h3 style={{ margin: '16px 0 8px', fontSize: '1.3rem' }}>Achizitor public</h3>
+                  <p style={{ fontSize: '15.5px', color: 'var(--text-2)', lineHeight: 1.72, marginBottom: '24px' }}>
                     Documentații complete și instrumente de lucru pentru organizarea și derularea procedurilor de achiziție publică.
                   </p>
                   <div className="audience-links">
@@ -405,8 +405,8 @@ function HomePage({ onNav }) {
                 <div className="audience-accent audience-accent-light"></div>
                 <div style={{ padding: '32px' }}>
                   <div className="audience-type-badge audience-type-badge-light">Ofertant</div>
-                  <h3 style={{ margin: '16px 0 8px', fontSize: '1.18rem', color: '#fff' }}>Participant la licitații</h3>
-                  <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,.6)', lineHeight: 1.72, marginBottom: '24px' }}>
+                  <h3 style={{ margin: '16px 0 8px', fontSize: '1.3rem', color: '#fff' }}>Participant la licitații</h3>
+                  <p style={{ fontSize: '15.5px', color: 'rgba(255,255,255,.6)', lineHeight: 1.72, marginBottom: '24px' }}>
                     Instrumente și servicii pentru pregătirea ofertelor, calificarea în proceduri și contestarea deciziilor nefavorabile.
                   </p>
                   <div className="audience-links">

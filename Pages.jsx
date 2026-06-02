@@ -31,13 +31,13 @@ function AboutPage({ onNav }) {
             <FadeUp>
               <div className="tag-label" style={{ marginBottom: '18px' }}>Experiență</div>
               <h2 style={{ marginBottom: '22px' }}>15 ani în achiziții</h2>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '16px' }}>
+              <p style={{ fontSize: '1.12rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '16px' }}>
                 Totul transpus în cunoștințe acumulate, testări, consultanță generală, cât și unu la unu, livrabile individuale și documentații complete.
               </p>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '16px' }}>
+              <p style={{ fontSize: '1.12rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '16px' }}>
                 Parteneri și colaboratori de încredere, dedicați serviciilor de calitate și îndeplinirii obiectivelor stabilite.
               </p>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.82', color: 'var(--text-muted)' }}>
+              <p style={{ fontSize: '1.12rem', lineHeight: '1.82', color: 'var(--text-muted)' }}>
                 Ne extindem continuu domeniile de expertiză și ne îmbunătățim constant serviciile în funcție de cerințele fiecărui beneficiar.
               </p>
             </FadeUp>
@@ -77,7 +77,7 @@ function AboutPage({ onNav }) {
             <FadeUp delay={160}>
               <div className="tag-label" style={{ marginBottom: '18px' }}>Echipa noastră</div>
               <h2 style={{ marginBottom: '22px' }}>O singură viziune</h2>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '24px' }}>
+              <p style={{ fontSize: '1.12rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '24px' }}>
                 O echipă de profesioniști cu specializări în domeniile juridic, economic, achiziții publice, IT, statistică și managementul afacerilor.
               </p>
               <blockquote style={{ borderLeft: '3px solid var(--blue-accent)', paddingLeft: '22px', fontStyle: 'italic', fontSize: '1.08rem', color: 'var(--navy)', lineHeight: '1.72' }}>
@@ -95,10 +95,10 @@ function AboutPage({ onNav }) {
             <FadeUp>
               <div className="tag-label" style={{ marginBottom: '18px' }}>Consultanță</div>
               <h2 style={{ marginBottom: '22px' }}>Peste 500 ore/an</h2>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '18px' }}>
+              <p style={{ fontSize: '1.12rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '18px' }}>
                 Consultanță unu la unu pentru instituțiile publice și companiile private care au apelat la serviciile noastre.
               </p>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '34px' }}>
+              <p style={{ fontSize: '1.12rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '34px' }}>
                 Asistență tehnico-economică de specialitate și instruirea personalului în asimilarea și utilizarea termenilor și a dispozițiilor legale cu grad ridicat de complexitate.
               </p>
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
@@ -141,7 +141,7 @@ function AboutPage({ onNav }) {
               <FadeUp key={i} delay={i * 100}>
                 <div className="card" style={{ padding: '28px', cursor: 'pointer', height: '100%', display: 'flex', flexDirection: 'column' }} onClick={() => go(item.page)}>
                   <h3 style={{ marginBottom: '10px' }}>{item.title}</h3>
-                  <p style={{ fontSize: '14px', color: 'var(--text-muted)', flex: 1 }}>{item.desc}</p>
+                  <p style={{ fontSize: '15.5px', color: 'var(--text-muted)', flex: 1 }}>{item.desc}</p>
                   <span className="card-link">Detalii <ArrowIcon /></span>
                 </div>
               </FadeUp>
@@ -431,7 +431,7 @@ function ServiceDetailPage({ onNav, service }) {
         <div className="container">
           <div className="two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
             <FadeUp>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '34px' }}>{d.desc}</p>
+              <p style={{ fontSize: '1.12rem', lineHeight: '1.82', color: 'var(--text-muted)', marginBottom: '34px' }}>{d.desc}</p>
               <h4 style={{ marginBottom: '18px', color: 'var(--navy)' }}>Ce include:</h4>
               <ul className="bullet-list" style={{ marginBottom: '38px' }}>
                 {d.items.map((item, i) => (

@@ -64,21 +64,21 @@ function AboutPage({
     }
   }, "15 ani \xEEn achizi\u021Bii"), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1.05rem',
+      fontSize: '1.12rem',
       lineHeight: '1.82',
       color: 'var(--text-muted)',
       marginBottom: '16px'
     }
   }, "Totul transpus \xEEn cuno\u0219tin\u021Be acumulate, test\u0103ri, consultan\u021B\u0103 general\u0103, c\xE2t \u0219i unu la unu, livrabile individuale \u0219i documenta\u021Bii complete."), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1.05rem',
+      fontSize: '1.12rem',
       lineHeight: '1.82',
       color: 'var(--text-muted)',
       marginBottom: '16px'
     }
   }, "Parteneri \u0219i colaboratori de \xEEncredere, dedica\u021Bi serviciilor de calitate \u0219i \xEEndeplinirii obiectivelor stabilite."), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1.05rem',
+      fontSize: '1.12rem',
       lineHeight: '1.82',
       color: 'var(--text-muted)'
     }
@@ -155,7 +155,7 @@ function AboutPage({
     }
   }, "O singur\u0103 viziune"), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1.05rem',
+      fontSize: '1.12rem',
       lineHeight: '1.82',
       color: 'var(--text-muted)',
       marginBottom: '24px'
@@ -192,14 +192,14 @@ function AboutPage({
     }
   }, "Peste 500 ore/an"), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1.05rem',
+      fontSize: '1.12rem',
       lineHeight: '1.82',
       color: 'var(--text-muted)',
       marginBottom: '18px'
     }
   }, "Consultan\u021B\u0103 unu la unu pentru institu\u021Biile publice \u0219i companiile private care au apelat la serviciile noastre."), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1.05rem',
+      fontSize: '1.12rem',
       lineHeight: '1.82',
       color: 'var(--text-muted)',
       marginBottom: '34px'
@@ -293,7 +293,7 @@ function AboutPage({
     }
   }, item.title), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '14px',
+      fontSize: '15.5px',
       color: 'var(--text-muted)',
       flex: 1
     }
@@ -802,7 +802,7 @@ function ServiceDetailPage({
     }
   }, /*#__PURE__*/React.createElement(FadeUp, null, /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1.05rem',
+      fontSize: '1.12rem',
       lineHeight: '1.82',
       color: 'var(--text-muted)',
       marginBottom: '34px'

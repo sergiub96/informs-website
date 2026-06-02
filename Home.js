@@ -285,7 +285,7 @@ function HomePage({
     style: {
       maxWidth: '560px',
       margin: '12px auto 0',
-      fontSize: '15px'
+      fontSize: '16.5px'
     }
   }, "Mediul administrativ \u0219i de achizi\u021Bii publice genereaz\u0103, \xEEn mod obiectiv, o serie de dificult\u0103\u021Bi recurente ce pot afecta eficien\u021Ba institu\u021Bional\u0103."))), /*#__PURE__*/React.createElement("div", {
     className: "challenges-grid"
@@ -379,7 +379,7 @@ function HomePage({
       color: 'rgba(255,255,255,.58)',
       maxWidth: '520px',
       margin: '14px auto 0',
-      fontSize: '15px',
+      fontSize: '16.5px',
       lineHeight: 1.75
     }
   }, "Peste 15 ani de experien\u021B\u0103 concentrat\u0103 \xEEn domeniile cu cel mai mare impact pentru administra\u021Bia public\u0103."))), /*#__PURE__*/React.createElement("div", {
@@ -419,7 +419,7 @@ function HomePage({
     }
   }, "Ce oferim"), /*#__PURE__*/React.createElement("h2", null, "Serviciile noastre"), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1rem',
+      fontSize: '1.12rem',
       color: 'var(--text-2)',
       marginTop: '10px',
       maxWidth: 480
@@ -488,11 +488,11 @@ function HomePage({
   }, s.icon), /*#__PURE__*/React.createElement("h3", {
     style: {
       marginBottom: '10px',
-      fontSize: '1.08rem'
+      fontSize: '1.22rem'
     }
   }, s.title), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '13.5px',
+      fontSize: '15.5px',
       color: 'var(--text-2)',
       lineHeight: '1.72',
       marginBottom: '20px',
@@ -534,7 +534,7 @@ function HomePage({
     }
   }, "Instrumente de lucru"), /*#__PURE__*/React.createElement("h2", null, "Asigur\u0103 o imagine clar\u0103 activit\u0103\u021Bii tale"), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1rem',
+      fontSize: '1.12rem',
       color: 'var(--text-2)',
       marginTop: '10px'
     }
@@ -612,7 +612,7 @@ function HomePage({
     }
   }, "Portofoliu servicii"), /*#__PURE__*/React.createElement("h2", null, "Ce facem la INFORMS"), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '1rem',
+      fontSize: '1.12rem',
       color: 'var(--text-2)',
       marginTop: '10px',
       maxWidth: 520
@@ -632,11 +632,11 @@ function HomePage({
   }, "Autoritate contractant\u0103"), /*#__PURE__*/React.createElement("h3", {
     style: {
       margin: '16px 0 8px',
-      fontSize: '1.18rem'
+      fontSize: '1.3rem'
     }
   }, "Achizitor public"), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '13.5px',
+      fontSize: '15.5px',
       color: 'var(--text-2)',
       lineHeight: 1.72,
       marginBottom: '24px'
@@ -680,12 +680,12 @@ function HomePage({
   }, "Ofertant"), /*#__PURE__*/React.createElement("h3", {
     style: {
       margin: '16px 0 8px',
-      fontSize: '1.18rem',
+      fontSize: '1.3rem',
       color: '#fff'
     }
   }, "Participant la licita\u021Bii"), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: '13.5px',
+      fontSize: '15.5px',
       color: 'rgba(255,255,255,.6)',
       lineHeight: 1.72,
       marginBottom: '24px'
