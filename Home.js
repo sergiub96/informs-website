@@ -328,7 +328,7 @@ function HomePage({
     className: "prov-icon-check"
   }, "\u2713"), /*#__PURE__*/React.createElement("span", {
     className: "prov-header-label prov-header-label-right"
-  }, "Cum rezolv\u0103 INFORMS")), [{
+  }, "Ce facem la INFORMS")), [{
     title: 'Modele integral verificate juridic',
     desc: 'Fiecare instrument respectă cerințele legale în vigoare, reducând expunerea instituțională la erori procedurale.'
   }, {

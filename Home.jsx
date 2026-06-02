@@ -174,7 +174,7 @@ function HomePage({ onNav }) {
               <div className="prov-card prov-card-right">
                 <div className="prov-card-header">
                   <div className="prov-icon-check">✓</div>
-                  <span className="prov-header-label prov-header-label-right">Cum rezolvă INFORMS</span>
+                  <span className="prov-header-label prov-header-label-right">Ce facem la INFORMS</span>
                 </div>
                 {[
                   { title: 'Modele integral verificate juridic', desc: 'Fiecare instrument respectă cerințele legale în vigoare, reducând expunerea instituțională la erori procedurale.' },
