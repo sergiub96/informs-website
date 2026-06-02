@@ -733,6 +733,60 @@ function ShopPage({
     value: query,
     onChange: e => setQuery(e.target.value)
   })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: '#F0F6FF',
+      borderBottom: '1px solid #C8DCEE'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container",
+    style: {
+      padding: '14px 28px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '16px',
+      flexWrap: 'wrap'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "https://www.e-licitatie.ro/pub",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    style: {
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "uploads/seap-sicap-logo.webp",
+    alt: "SEAP / SICAP",
+    style: {
+      height: '28px',
+      width: 'auto',
+      display: 'block'
+    }
+  })), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: '14px',
+      color: 'var(--text-2)',
+      lineHeight: '1.5'
+    }
+  }, /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: 'var(--navy)'
+    }
+  }, "Suntem \u0219i pe SEAP"), " \u2014 produsele \u0219i serviciile INFORMS pot fi achizi\u021Bionate prin sistemul electronic de achizi\u021Bii publice."), /*#__PURE__*/React.createElement("a", {
+    href: "https://www.e-licitatie.ro/pub",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    style: {
+      marginLeft: 'auto',
+      fontSize: '13px',
+      fontWeight: 600,
+      color: 'var(--blue-a)',
+      whiteSpace: 'nowrap',
+      flexShrink: 0
+    }
+  }, "Vezi pe SEAP \u2192")))), /*#__PURE__*/React.createElement("div", {
     className: "shop-filter-bar",
     id: "shop-filter-bar"
   }, /*#__PURE__*/React.createElement("div", {
