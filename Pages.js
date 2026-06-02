@@ -720,7 +720,7 @@ function ServiceDetailPage({
       desc: 'Elaborăm documentații complete pentru gestiunea serviciilor de utilități publice, adaptate conform legislației în vigoare.',
       items: ['Salubrizare', 'Transport public', 'Iluminat public', 'Alte servicii de utilitate publică'],
       img: 'https://static.wixstatic.com/media/ab6452_9bdced09566642e99bef512302a368d7~mv2.webp/v1/fill/w_954,h_972,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Layer%203.webp',
-      video: 'assets/videos_library/documentatii-delegare-servicii-utilitati-publice.mp4',
+      video: 'assets/videos_library/Delegare-Servicii-Utilitati-Publice.mp4',
       split: true
     },
     'modele-excel': {
