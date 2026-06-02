@@ -276,7 +276,7 @@ function VideoPreloader() {
   return (
     <div style={{ position: 'fixed', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none', zIndex: -1 }} aria-hidden="true">
       {HERO_VIDEOS.map(src => (
-        <video key={src} src={src} preload="auto" muted playsInline />
+        <video key={src} src={src} preload="auto" muted playsInline style={{ width: 0, height: 0, maxWidth: 0, maxHeight: 0, position: 'absolute' }} />
       ))}
     </div>
   );

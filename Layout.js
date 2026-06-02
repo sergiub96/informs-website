@@ -408,7 +408,14 @@ function VideoPreloader() {
     src: src,
     preload: "auto",
     muted: true,
-    playsInline: true
+    playsInline: true,
+    style: {
+      width: 0,
+      height: 0,
+      maxWidth: 0,
+      maxHeight: 0,
+      position: 'absolute'
+    }
   })));
 }
 Object.assign(window, {
