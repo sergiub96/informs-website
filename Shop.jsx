@@ -211,6 +211,14 @@ function ProductCard({ product, onClick }) {
 /* ─── Modal detalii produs ──────────────────────── */
 function ProductModal({ product, onClose, onNav }) {
   const fmt = FORMAT_META[product.format];
+  const isFree = product.price === 0;
+  const hasFreeFile = isFree && product.file;
+
+  const [email,       setEmail]       = useState('');
+  const [gdpr,        setGdpr]        = useState(false);
+  const [emailErr,    setEmailErr]    = useState('');
+  const [downloading, setDownloading] = useState(false);
+  const [downloaded,  setDownloaded]  = useState(false);
 
   useEffect(() => {
     const handleKey = e => { if (e.key === 'Escape') onClose(); };
@@ -222,6 +230,36 @@ function ProductModal({ product, onClose, onNav }) {
     };
   }, []);
 
+  const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+
+  const handleDownload = async e => {
+    e.preventDefault();
+    if (!validEmail(email)) { setEmailErr('Introdu o adresă de email validă.'); return; }
+    if (!gdpr) return;
+    setEmailErr('');
+    setDownloading(true);
+    try {
+      await fetch('/mail.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nume: 'Descărcare gratuită',
+          email: email.trim(),
+          subiect: 'Descărcare gratuită: ' + product.title,
+          mesaj: 'Descărcare produs gratuit\nProdus: ' + product.title + '\nEmail: ' + email.trim(),
+        }),
+      });
+    } catch (_) {}
+    const a = document.createElement('a');
+    a.href = product.file;
+    a.download = '';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setDownloading(false);
+    setDownloaded(true);
+  };
+
   const handleBuy = () => {
     const subject = encodeURIComponent('Comandă: ' + product.title);
     const body = encodeURIComponent(
@@ -232,11 +270,7 @@ function ProductModal({ product, onClose, onNav }) {
     window.open('mailto:office@informs.ro?subject=' + subject + '&body=' + body);
   };
 
-  const handleContact = () => {
-    onClose();
-    onNav('contact');
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  };
+  const canDownload = validEmail(email) && gdpr;
 
   return (
     <div className="shop-modal-overlay" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
@@ -300,44 +334,94 @@ function ProductModal({ product, onClose, onNav }) {
             </div>
           )}
 
-          {/* Preț + CTA */}
-          <div className="shop-modal-price-box" style={product.price === 0 ? { borderColor: '#86EFAC', background: '#F0FDF4' } : {}}>
-            <div>
-              {product.price === 0
-                ? <div className="shop-modal-price-note" style={{ fontSize: '15px', color: '#16A34A', fontWeight: 600 }}>
-                    Fără costuri. Disponibil imediat prin apăsarea butonului de mai jos.
-                  </div>
-                : <>
-                    <div className="shop-modal-price">
-                      {product.price} <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-2)' }}>RON</span>
-                    </div>
-                    <div className="shop-modal-price-note">Preț fără TVA · Livrare prin email în max. 24h</div>
-                  </>
-              }
-            </div>
-          </div>
-
-          <div className="shop-modal-actions">
-            {product.price === 0
-              ? product.file
-                ? <a className="btn btn-primary" href={product.file} download style={{ background: '#16A34A', borderColor: '#16A34A', justifyContent: 'center' }}>
-                    Descarcă gratuit
-                  </a>
-                : <button className="btn btn-primary" style={{ background: '#16A34A', borderColor: '#16A34A', justifyContent: 'center' }} onClick={handleBuy}>
-                    Solicită acces gratuit
-                  </button>
-              : <button className="btn btn-primary" style={{ justifyContent: 'center' }} onClick={handleBuy}>
-                  Comandă prin email
+          {/* ── Descărcare gratuită cu email + GDPR ── */}
+          {hasFreeFile ? (
+            downloaded ? (
+              <div style={{ textAlign: 'center', padding: '28px 20px', background: '#F0FDF4', borderRadius: '12px', border: '1px solid #86EFAC' }}>
+                <div style={{ fontSize: '2.2rem', marginBottom: '10px' }}>✓</div>
+                <div style={{ fontWeight: 700, color: '#16A34A', fontSize: '1.05rem', marginBottom: '6px' }}>Descărcare pornită!</div>
+                <div style={{ fontSize: '13.5px', color: 'var(--text-2)' }}>Verifică folderul de descărcări din browser.</div>
+              </div>
+            ) : (
+              <form onSubmit={handleDownload} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '14px', padding: '20px', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                <div className="shop-modal-lbl" style={{ marginBottom: '2px' }}>Descarcă gratuit</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                  <label style={{ fontSize: '13.5px', fontWeight: 600, color: 'var(--text)' }}>Adresă de email *</label>
+                  <input
+                    type="email"
+                    placeholder="exemplu@email.ro"
+                    value={email}
+                    onChange={e => { setEmail(e.target.value); setEmailErr(''); }}
+                    style={{
+                      padding: '10px 14px',
+                      border: '1.5px solid ' + (emailErr ? '#DC2626' : 'var(--border)'),
+                      borderRadius: '6px', fontSize: '15px', fontFamily: 'var(--font)',
+                      color: 'var(--text)', background: '#fff', outline: 'none', width: '100%',
+                    }}
+                  />
+                  {emailErr && <span style={{ fontSize: '12.5px', color: '#DC2626' }}>{emailErr}</span>}
+                </div>
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={gdpr}
+                    onChange={e => setGdpr(e.target.checked)}
+                    style={{ marginTop: '3px', flexShrink: 0, width: '15px', height: '15px', cursor: 'pointer', accentColor: '#1358B0' }}
+                  />
+                  <span style={{ fontSize: '12.5px', color: 'var(--text-2)', lineHeight: '1.65' }}>
+                    Am citit și accept <strong style={{ color: 'var(--navy)' }}>Politica de confidențialitate</strong> și sunt de acord cu prelucrarea datelor cu caracter personal în scopul furnizării documentului solicitat, conform GDPR (Regulamentul UE 2016/679). *
+                  </span>
+                </label>
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={!canDownload || downloading}
+                  style={{
+                    background: canDownload ? '#16A34A' : '#D1D5DB',
+                    borderColor: canDownload ? '#16A34A' : '#D1D5DB',
+                    justifyContent: 'center',
+                    cursor: canDownload ? 'pointer' : 'not-allowed',
+                  }}
+                >
+                  {downloading ? 'Se pregătește...' : 'Descarcă gratuit'}
                 </button>
-            }
-          </div>
-
-          <p style={{ fontSize: '12px', color: 'var(--text-2)', marginTop: '14px', textAlign: 'center', lineHeight: '1.6' }}>
-            {product.price === 0
-              ? 'Trimite-ne un email și îți livrăm documentul gratuit în cel mai scurt timp.'
-              : 'Documentele sunt livrate în format editabil la adresa de email furnizată. Plata se poate efectua prin transfer bancar sau online (Netopia Payments).'
-            }
-          </p>
+              </form>
+            )
+          ) : (
+            <>
+              <div className="shop-modal-price-box" style={isFree ? { borderColor: '#86EFAC', background: '#F0FDF4' } : {}}>
+                <div>
+                  {isFree
+                    ? <div className="shop-modal-price-note" style={{ fontSize: '15px', color: '#16A34A', fontWeight: 600 }}>
+                        Fără costuri. Trimite-ne un email și îți livrăm documentul gratuit.
+                      </div>
+                    : <>
+                        <div className="shop-modal-price">
+                          {product.price} <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-2)' }}>RON</span>
+                        </div>
+                        <div className="shop-modal-price-note">Preț fără TVA · Livrare prin email în max. 24h</div>
+                      </>
+                  }
+                </div>
+              </div>
+              <div className="shop-modal-actions">
+                {isFree
+                  ? <button className="btn btn-primary" style={{ background: '#16A34A', borderColor: '#16A34A', justifyContent: 'center' }} onClick={handleBuy}>
+                      Solicită acces gratuit
+                    </button>
+                  : <button className="btn btn-primary" style={{ justifyContent: 'center' }} onClick={handleBuy}>
+                      Comandă prin email
+                    </button>
+                }
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--text-2)', marginTop: '14px', textAlign: 'center', lineHeight: '1.6' }}>
+                {isFree
+                  ? 'Trimite-ne un email și îți livrăm documentul gratuit în cel mai scurt timp.'
+                  : 'Documentele sunt livrate în format editabil la adresa de email furnizată. Plata se poate efectua prin transfer bancar sau online (Netopia Payments).'
+                }
+              </p>
+            </>
+          )}
         </div>
       </div>
     </div>

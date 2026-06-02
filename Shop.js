@@ -337,6 +337,13 @@ function ProductModal({
   onNav
 }) {
   const fmt = FORMAT_META[product.format];
+  const isFree = product.price === 0;
+  const hasFreeFile = isFree && product.file;
+  const [email, setEmail] = useState('');
+  const [gdpr, setGdpr] = useState(false);
+  const [emailErr, setEmailErr] = useState('');
+  const [downloading, setDownloading] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
   useEffect(() => {
     const handleKey = e => {
       if (e.key === 'Escape') onClose();
@@ -348,19 +355,45 @@ function ProductModal({
       document.body.style.overflow = '';
     };
   }, []);
+  const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  const handleDownload = async e => {
+    e.preventDefault();
+    if (!validEmail(email)) {
+      setEmailErr('Introdu o adresă de email validă.');
+      return;
+    }
+    if (!gdpr) return;
+    setEmailErr('');
+    setDownloading(true);
+    try {
+      await fetch('/mail.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          nume: 'Descărcare gratuită',
+          email: email.trim(),
+          subiect: 'Descărcare gratuită: ' + product.title,
+          mesaj: 'Descărcare produs gratuit\nProdus: ' + product.title + '\nEmail: ' + email.trim()
+        })
+      });
+    } catch (_) {}
+    const a = document.createElement('a');
+    a.href = product.file;
+    a.download = '';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setDownloading(false);
+    setDownloaded(true);
+  };
   const handleBuy = () => {
     const subject = encodeURIComponent('Comandă: ' + product.title);
     const body = encodeURIComponent('Bună ziua,\n\nDoresc să achiziționez:\n' + product.title + '\nPreț: ' + product.price + ' RON\n\n' + 'Vă rog să-mi trimiteți detaliile de plată.\n\nCu stimă,');
     window.open('mailto:office@informs.ro?subject=' + subject + '&body=' + body);
   };
-  const handleContact = () => {
-    onClose();
-    onNav('contact');
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant'
-    });
-  };
+  const canDownload = validEmail(email) && gdpr;
   return /*#__PURE__*/React.createElement("div", {
     className: "shop-modal-overlay",
     onClick: e => {
@@ -470,20 +503,137 @@ function ProductModal({
     style: {
       color: 'var(--navy)'
     }
-  }, product.stats.pages), " pagini totale")))), /*#__PURE__*/React.createElement("div", {
+  }, product.stats.pages), " pagini totale")))), hasFreeFile ? downloaded ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: 'center',
+      padding: '28px 20px',
+      background: '#F0FDF4',
+      borderRadius: '12px',
+      border: '1px solid #86EFAC'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '2.2rem',
+      marginBottom: '10px'
+    }
+  }, "\u2713"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 700,
+      color: '#16A34A',
+      fontSize: '1.05rem',
+      marginBottom: '6px'
+    }
+  }, "Desc\u0103rcare pornit\u0103!"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '13.5px',
+      color: 'var(--text-2)'
+    }
+  }, "Verific\u0103 folderul de desc\u0103rc\u0103ri din browser.")) : /*#__PURE__*/React.createElement("form", {
+    onSubmit: handleDownload,
+    noValidate: true,
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '14px',
+      padding: '20px',
+      background: '#F8FAFC',
+      borderRadius: '12px',
+      border: '1px solid var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "shop-modal-lbl",
+    style: {
+      marginBottom: '2px'
+    }
+  }, "Descarc\u0103 gratuit"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '5px'
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    style: {
+      fontSize: '13.5px',
+      fontWeight: 600,
+      color: 'var(--text)'
+    }
+  }, "Adres\u0103 de email *"), /*#__PURE__*/React.createElement("input", {
+    type: "email",
+    placeholder: "exemplu@email.ro",
+    value: email,
+    onChange: e => {
+      setEmail(e.target.value);
+      setEmailErr('');
+    },
+    style: {
+      padding: '10px 14px',
+      border: '1.5px solid ' + (emailErr ? '#DC2626' : 'var(--border)'),
+      borderRadius: '6px',
+      fontSize: '15px',
+      fontFamily: 'var(--font)',
+      color: 'var(--text)',
+      background: '#fff',
+      outline: 'none',
+      width: '100%'
+    }
+  }), emailErr && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: '12.5px',
+      color: '#DC2626'
+    }
+  }, emailErr)), /*#__PURE__*/React.createElement("label", {
+    style: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      gap: '10px',
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    checked: gdpr,
+    onChange: e => setGdpr(e.target.checked),
+    style: {
+      marginTop: '3px',
+      flexShrink: 0,
+      width: '15px',
+      height: '15px',
+      cursor: 'pointer',
+      accentColor: '#1358B0'
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: '12.5px',
+      color: 'var(--text-2)',
+      lineHeight: '1.65'
+    }
+  }, "Am citit \u0219i accept ", /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: 'var(--navy)'
+    }
+  }, "Politica de confiden\u021Bialitate"), " \u0219i sunt de acord cu prelucrarea datelor cu caracter personal \xEEn scopul furniz\u0103rii documentului solicitat, conform GDPR (Regulamentul UE 2016/679). *")), /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    className: "btn btn-primary",
+    disabled: !canDownload || downloading,
+    style: {
+      background: canDownload ? '#16A34A' : '#D1D5DB',
+      borderColor: canDownload ? '#16A34A' : '#D1D5DB',
+      justifyContent: 'center',
+      cursor: canDownload ? 'pointer' : 'not-allowed'
+    }
+  }, downloading ? 'Se pregătește...' : 'Descarcă gratuit')) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "shop-modal-price-box",
-    style: product.price === 0 ? {
+    style: isFree ? {
       borderColor: '#86EFAC',
       background: '#F0FDF4'
     } : {}
-  }, /*#__PURE__*/React.createElement("div", null, product.price === 0 ? /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, isFree ? /*#__PURE__*/React.createElement("div", {
     className: "shop-modal-price-note",
     style: {
       fontSize: '15px',
       color: '#16A34A',
       fontWeight: 600
     }
-  }, "F\u0103r\u0103 costuri. Disponibil imediat prin ap\u0103sarea butonului de mai jos.") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  }, "F\u0103r\u0103 costuri. Trimite-ne un email \u0219i \xEE\u021Bi livr\u0103m documentul gratuit.") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "shop-modal-price"
   }, product.price, " ", /*#__PURE__*/React.createElement("span", {
     style: {
@@ -495,16 +645,7 @@ function ProductModal({
     className: "shop-modal-price-note"
   }, "Pre\u021B f\u0103r\u0103 TVA \xB7 Livrare prin email \xEEn max. 24h")))), /*#__PURE__*/React.createElement("div", {
     className: "shop-modal-actions"
-  }, product.price === 0 ? product.file ? /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-primary",
-    href: product.file,
-    download: true,
-    style: {
-      background: '#16A34A',
-      borderColor: '#16A34A',
-      justifyContent: 'center'
-    }
-  }, "Descarc\u0103 gratuit") : /*#__PURE__*/React.createElement("button", {
+  }, isFree ? /*#__PURE__*/React.createElement("button", {
     className: "btn btn-primary",
     style: {
       background: '#16A34A',
@@ -526,7 +667,7 @@ function ProductModal({
       textAlign: 'center',
       lineHeight: '1.6'
     }
-  }, product.price === 0 ? 'Trimite-ne un email și îți livrăm documentul gratuit în cel mai scurt timp.' : 'Documentele sunt livrate în format editabil la adresa de email furnizată. Plata se poate efectua prin transfer bancar sau online (Netopia Payments).'))));
+  }, isFree ? 'Trimite-ne un email și îți livrăm documentul gratuit în cel mai scurt timp.' : 'Documentele sunt livrate în format editabil la adresa de email furnizată. Plata se poate efectua prin transfer bancar sau online (Netopia Payments).')))));
 }
 
 /* ─── Pagina principală Shop ────────────────────── */
