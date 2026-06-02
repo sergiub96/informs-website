@@ -227,7 +227,8 @@ function Nav({
   }, "Contact"))));
 }
 function Footer({
-  onNav
+  onNav,
+  page
 }) {
   const go = p => {
     onNav(p);
@@ -237,9 +238,14 @@ function Footer({
     });
   };
   const videoRef = useRef(null);
+  const isHome = page === 'home' || page === undefined;
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
+    if (!isHome) {
+      el.pause();
+      return;
+    }
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) el.play().catch(() => {});
     }, {
@@ -253,7 +259,10 @@ function Footer({
     className: "footer-vid",
     muted: true,
     playsInline: true,
-    preload: "none"
+    preload: "none",
+    style: {
+      display: isHome ? '' : 'none'
+    }
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/footer.mp4",
     type: "video/mp4"

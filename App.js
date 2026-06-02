@@ -124,7 +124,8 @@ function App() {
       minHeight: '60vh'
     }
   }, renderPage()), /*#__PURE__*/React.createElement(Footer, {
-    onNav: navigate
+    onNav: navigate,
+    page: displayPage
   }));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));

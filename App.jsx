@@ -63,7 +63,7 @@ function App() {
       <main style={{ minHeight: '60vh' }}>
         {renderPage()}
       </main>
-      <Footer onNav={navigate} />
+      <Footer onNav={navigate} page={displayPage} />
     </div>
   );
 }

@@ -151,13 +151,15 @@ function Nav({ onNav, page }) {
   );
 }
 
-function Footer({ onNav }) {
+function Footer({ onNav, page }) {
   const go = (p) => { onNav(p); window.scrollTo({ top: 0, behavior: 'instant' }); };
   const videoRef = useRef(null);
+  const isHome = page === 'home' || page === undefined;
 
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
+    if (!isHome) { el.pause(); return; }
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) el.play().catch(() => {}); },
       { threshold: 0.05 }
@@ -168,7 +170,7 @@ function Footer({ onNav }) {
 
   return (
     <footer>
-      <video ref={videoRef} className="footer-vid" muted playsInline preload="none">
+      <video ref={videoRef} className="footer-vid" muted playsInline preload="none" style={{ display: isHome ? '' : 'none' }}>
         <source src="assets/videos_library/footer.mp4" type="video/mp4" />
       </video>
       <div className="footer-content">
