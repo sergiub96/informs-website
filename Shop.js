@@ -366,16 +366,14 @@ function ProductModal({
     setEmailErr('');
     setDownloading(true);
     try {
-      await fetch('/mail.php', {
+      await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          nume: 'Descărcare gratuită',
           email: email.trim(),
-          subiect: 'Descărcare gratuită: ' + product.title,
-          mesaj: 'Descărcare produs gratuit\nProdus: ' + product.title + '\nEmail: ' + email.trim()
+          product: product.title
         })
       });
     } catch (_) {}

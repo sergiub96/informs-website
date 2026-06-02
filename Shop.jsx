@@ -239,15 +239,10 @@ function ProductModal({ product, onClose, onNav }) {
     setEmailErr('');
     setDownloading(true);
     try {
-      await fetch('/mail.php', {
+      await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          nume: 'Descărcare gratuită',
-          email: email.trim(),
-          subiect: 'Descărcare gratuită: ' + product.title,
-          mesaj: 'Descărcare produs gratuit\nProdus: ' + product.title + '\nEmail: ' + email.trim(),
-        }),
+        body: JSON.stringify({ email: email.trim(), product: product.title }),
       });
     } catch (_) {}
     const a = document.createElement('a');
