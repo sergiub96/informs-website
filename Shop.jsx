@@ -440,15 +440,9 @@ function ShopPage({ onNav, initialCategory = 'all' }) {
           {filtered.length > 0 ? (
             <div className="shop-grid">
               {filtered.map((p, i) => (
-                <div
-                  key={p.id}
-                  data-aos="fade-up"
-                  data-aos-delay={Math.min(i, 5) * 70}
-                  data-aos-once="true"
-                  style={{ display: 'flex', flexDirection: 'column' }}
-                >
+                <FadeUp key={p.id} delay={Math.min(i, 5) * 70} style={{ display: 'flex', flexDirection: 'column' }}>
                   <ProductCard product={p} onClick={setSelected} />
-                </div>
+                </FadeUp>
               ))}
             </div>
           ) : (

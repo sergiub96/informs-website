@@ -630,11 +630,9 @@ function ShopPage({
     }
   }, "\u2715 Reseteaz\u0103 filtrele"))), filtered.length > 0 ? /*#__PURE__*/React.createElement("div", {
     className: "shop-grid"
-  }, filtered.map((p, i) => /*#__PURE__*/React.createElement("div", {
+  }, filtered.map((p, i) => /*#__PURE__*/React.createElement(FadeUp, {
     key: p.id,
-    "data-aos": "fade-up",
-    "data-aos-delay": Math.min(i, 5) * 70,
-    "data-aos-once": "true",
+    delay: Math.min(i, 5) * 70,
     style: {
       display: 'flex',
       flexDirection: 'column'
