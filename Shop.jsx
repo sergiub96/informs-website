@@ -523,7 +523,7 @@ function ShopPage({ onNav, initialCategory = 'all' }) {
       </div>
 
       {/* Grid */}
-      <section className="sec">
+      <section className="sec" style={{ paddingTop: '36px' }}>
         <div className="container">
 
           {/* Result bar */}

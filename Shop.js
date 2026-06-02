@@ -810,7 +810,10 @@ function ShopPage({
     className: `shop-fmt ${f.cls}${format === f.id ? ' active' : ''}`,
     onClick: () => setFormat(f.id)
   }, f.label))))), /*#__PURE__*/React.createElement("section", {
-    className: "sec"
+    className: "sec",
+    style: {
+      paddingTop: '36px'
+    }
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
