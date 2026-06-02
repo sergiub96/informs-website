@@ -385,6 +385,13 @@ function ProductModal({
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    if (typeof gtag === 'function') {
+      gtag('event', 'file_download', {
+        event_category: 'free_product',
+        event_label: product.title,
+        file_name: product.file.split('/').pop()
+      });
+    }
     setDownloading(false);
     setDownloaded(true);
   };
