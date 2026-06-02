@@ -281,15 +281,33 @@ function HomePage({
     style: {
       marginBottom: '14px'
     }
-  }, "Context opera\u021Bional"), /*#__PURE__*/React.createElement("h2", null, "Provoc\u0103ri frecvente \xEEn domeniu"), /*#__PURE__*/React.createElement("p", {
+  }, "Context opera\u021Bional"), /*#__PURE__*/React.createElement("h2", null, "Provoc\u0103ri"), /*#__PURE__*/React.createElement("p", {
     style: {
       maxWidth: '560px',
       margin: '12px auto 0',
       fontSize: '16.5px'
     }
-  }, "Mediul administrativ \u0219i de achizi\u021Bii publice genereaz\u0103, \xEEn mod obiectiv, o serie de dificult\u0103\u021Bi recurente ce pot afecta eficien\u021Ba institu\u021Bional\u0103."))), /*#__PURE__*/React.createElement("div", {
-    className: "challenges-grid"
-  }, [{
+  }, "Mediul administrativ \u0219i de achizi\u021Bii publice genereaz\u0103, \xEEn mod obiectiv, o serie de dificult\u0103\u021Bi recurente ce pot afecta eficien\u021Ba institu\u021Bional\u0103."))), /*#__PURE__*/React.createElement(FadeUp, {
+    delay: 80
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "prov-compare"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "prov-compare-header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "prov-header-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "prov-icon-x"
+  }, "\u2715"), /*#__PURE__*/React.createElement("span", {
+    className: "prov-header-label prov-header-label-left"
+  }, "Provoc\u0103rile voastre")), /*#__PURE__*/React.createElement("div", {
+    className: "prov-header-mid"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "prov-header-right"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "prov-icon-check"
+  }, "\u2713"), /*#__PURE__*/React.createElement("span", {
+    className: "prov-header-label prov-header-label-right"
+  }, "Cum rezolv\u0103 INFORMS"))), [{
     num: '01',
     problem: 'Documentații cu lacune procedurale',
     problemDesc: 'Absența unor elemente obligatorii în documentații generează vulnerabilități juridice și riscuri de contestație.',
@@ -313,26 +331,30 @@ function HomePage({
     problemDesc: 'Elaborarea documentelor de rutină consumă resurse semnificative ce ar putea fi direcționate spre activități cu valoare adăugată superioară.',
     solution: 'Eficiență operațională imediată',
     solutionDesc: 'Aplicabilitatea directă a instrumentelor reduce substanțial timpul alocat documentației administrative.'
-  }].map((item, i) => /*#__PURE__*/React.createElement(FadeUp, {
+  }].map((item, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
-    delay: i * 80
+    className: "prov-row"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "challenge-card"
+    className: "prov-row-left"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "challenge-num"
-  }, item.num), /*#__PURE__*/React.createElement("div", {
-    className: "challenge-body"
+    className: "prov-icon-x"
+  }, "\u2715"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "prov-item-title"
+  }, item.problem), /*#__PURE__*/React.createElement("div", {
+    className: "prov-item-desc"
+  }, item.problemDesc))), /*#__PURE__*/React.createElement("div", {
+    className: "prov-row-mid"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "challenge-problem"
+    className: "prov-num-badge"
+  }, item.num)), /*#__PURE__*/React.createElement("div", {
+    className: "prov-row-right"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "challenge-tag challenge-tag-problem"
-  }, "Provocare"), /*#__PURE__*/React.createElement("h4", null, item.problem), /*#__PURE__*/React.createElement("p", null, item.problemDesc)), /*#__PURE__*/React.createElement("div", {
-    className: "challenge-arrow"
-  }, "\u2192"), /*#__PURE__*/React.createElement("div", {
-    className: "challenge-solution"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "challenge-tag challenge-tag-solution"
-  }, "Abordare INFORMS"), /*#__PURE__*/React.createElement("h4", null, item.solution), /*#__PURE__*/React.createElement("p", null, item.solutionDesc))))))), /*#__PURE__*/React.createElement(FadeUp, {
+    className: "prov-icon-check"
+  }, "\u2713"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "prov-item-title"
+  }, item.solution), /*#__PURE__*/React.createElement("div", {
+    className: "prov-item-desc"
+  }, item.solutionDesc))))))), /*#__PURE__*/React.createElement(FadeUp, {
     delay: 320
   }, /*#__PURE__*/React.createElement("div", {
     style: {

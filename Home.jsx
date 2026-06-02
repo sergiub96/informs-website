@@ -137,70 +137,59 @@ function HomePage({ onNav }) {
         </div>
       </div>
 
-      {/* ── PAIN / SOLUTION ── */}
-      {/* ── CHALLENGES & SOLUTIONS ── */}
+      {/* ── PROVOCĂRI ── */}
       <section className="sec sec-white">
         <div className="container">
           <FadeUp>
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
               <div className="badge" style={{ marginBottom: '14px' }}>Context operațional</div>
-              <h2>Provocări frecvente în domeniu</h2>
+              <h2>Provocări</h2>
               <p style={{ maxWidth: '560px', margin: '12px auto 0', fontSize: '16.5px' }}>
                 Mediul administrativ și de achiziții publice generează, în mod obiectiv, o serie de dificultăți recurente ce pot afecta eficiența instituțională.
               </p>
             </div>
           </FadeUp>
-          <div className="challenges-grid">
-            {[
-              {
-                num: '01',
-                problem: 'Documentații cu lacune procedurale',
-                problemDesc: 'Absența unor elemente obligatorii în documentații generează vulnerabilități juridice și riscuri de contestație.',
-                solution: 'Modele integral verificate juridic',
-                solutionDesc: 'Fiecare instrument respectă cerințele legale în vigoare, reducând expunerea instituțională la erori procedurale.',
-              },
-              {
-                num: '02',
-                problem: 'Inconsistențe generate de procesarea manuală',
-                problemDesc: 'Redactarea manuală a documentelor standardizate este susceptibilă la erori repetitive și neuniformitate în aplicare.',
-                solution: 'Standardizare și automatizare',
-                solutionDesc: 'Modelele structurate elimină variabilitatea umană, asigurând uniformitate și o rată de eroare redusă cu până la 90%.',
-              },
-              {
-                num: '03',
-                problem: 'Cadru legislativ în continuă evoluție',
-                problemDesc: 'Modificările frecvente ale legislației impun actualizarea constantă a documentelor și procedurilor aplicabile.',
-                solution: 'Actualizare permanentă',
-                solutionDesc: 'Instrumentele INFORMS sunt revizuite și actualizate în concordanță cu orice modificare legislativă relevantă.',
-              },
-              {
-                num: '04',
-                problem: 'Resurse temporale alocate documentației',
-                problemDesc: 'Elaborarea documentelor de rutină consumă resurse semnificative ce ar putea fi direcționate spre activități cu valoare adăugată superioară.',
-                solution: 'Eficiență operațională imediată',
-                solutionDesc: 'Aplicabilitatea directă a instrumentelor reduce substanțial timpul alocat documentației administrative.',
-              },
-            ].map((item, i) => (
-              <FadeUp key={i} delay={i * 80}>
-                <div className="challenge-card">
-                  <div className="challenge-num">{item.num}</div>
-                  <div className="challenge-body">
-                    <div className="challenge-problem">
-                      <div className="challenge-tag challenge-tag-problem">Provocare</div>
-                      <h4>{item.problem}</h4>
-                      <p>{item.problemDesc}</p>
+          <FadeUp delay={80}>
+            <div className="prov-compare">
+              <div className="prov-compare-header">
+                <div className="prov-header-left">
+                  <div className="prov-icon-x">✕</div>
+                  <span className="prov-header-label prov-header-label-left">Provocările voastre</span>
+                </div>
+                <div className="prov-header-mid"></div>
+                <div className="prov-header-right">
+                  <div className="prov-icon-check">✓</div>
+                  <span className="prov-header-label prov-header-label-right">Cum rezolvă INFORMS</span>
+                </div>
+              </div>
+              {[
+                { num: '01', problem: 'Documentații cu lacune procedurale', problemDesc: 'Absența unor elemente obligatorii în documentații generează vulnerabilități juridice și riscuri de contestație.', solution: 'Modele integral verificate juridic', solutionDesc: 'Fiecare instrument respectă cerințele legale în vigoare, reducând expunerea instituțională la erori procedurale.' },
+                { num: '02', problem: 'Inconsistențe generate de procesarea manuală', problemDesc: 'Redactarea manuală a documentelor standardizate este susceptibilă la erori repetitive și neuniformitate în aplicare.', solution: 'Standardizare și automatizare', solutionDesc: 'Modelele structurate elimină variabilitatea umană, asigurând uniformitate și o rată de eroare redusă cu până la 90%.' },
+                { num: '03', problem: 'Cadru legislativ în continuă evoluție', problemDesc: 'Modificările frecvente ale legislației impun actualizarea constantă a documentelor și procedurilor aplicabile.', solution: 'Actualizare permanentă', solutionDesc: 'Instrumentele INFORMS sunt revizuite și actualizate în concordanță cu orice modificare legislativă relevantă.' },
+                { num: '04', problem: 'Resurse temporale alocate documentației', problemDesc: 'Elaborarea documentelor de rutină consumă resurse semnificative ce ar putea fi direcționate spre activități cu valoare adăugată superioară.', solution: 'Eficiență operațională imediată', solutionDesc: 'Aplicabilitatea directă a instrumentelor reduce substanțial timpul alocat documentației administrative.' },
+              ].map((item, i) => (
+                <div key={i} className="prov-row">
+                  <div className="prov-row-left">
+                    <div className="prov-icon-x">✕</div>
+                    <div>
+                      <div className="prov-item-title">{item.problem}</div>
+                      <div className="prov-item-desc">{item.problemDesc}</div>
                     </div>
-                    <div className="challenge-arrow">→</div>
-                    <div className="challenge-solution">
-                      <div className="challenge-tag challenge-tag-solution">Abordare INFORMS</div>
-                      <h4>{item.solution}</h4>
-                      <p>{item.solutionDesc}</p>
+                  </div>
+                  <div className="prov-row-mid">
+                    <div className="prov-num-badge">{item.num}</div>
+                  </div>
+                  <div className="prov-row-right">
+                    <div className="prov-icon-check">✓</div>
+                    <div>
+                      <div className="prov-item-title">{item.solution}</div>
+                      <div className="prov-item-desc">{item.solutionDesc}</div>
                     </div>
                   </div>
                 </div>
-              </FadeUp>
-            ))}
-          </div>
+              ))}
+            </div>
+          </FadeUp>
           <FadeUp delay={320}>
             <div style={{ textAlign: 'center', marginTop: '40px' }}>
               <button className="btn btn-primary" onClick={() => go('contact')}>
