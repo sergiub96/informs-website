@@ -484,10 +484,6 @@ function ShopPage({ onNav, initialCategory = 'all' }) {
             <span style={{ fontSize: '14px', color: 'var(--text-2)', lineHeight: '1.5' }}>
               <strong style={{ color: 'var(--navy)' }}>Suntem și pe SEAP</strong> — produsele și serviciile INFORMS pot fi achiziționate prin sistemul electronic de achiziții publice.
             </span>
-            <a href="https://www.e-licitatie.ro/pub" target="_blank" rel="noopener noreferrer"
-              style={{ marginLeft: 'auto', fontSize: '13px', fontWeight: 600, color: 'var(--blue-a)', whiteSpace: 'nowrap', flexShrink: 0 }}>
-              Vezi pe SEAP →
-            </a>
           </div>
         </div>
       </div>

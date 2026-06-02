@@ -774,19 +774,7 @@ function ShopPage({
     style: {
       color: 'var(--navy)'
     }
-  }, "Suntem \u0219i pe SEAP"), " \u2014 produsele \u0219i serviciile INFORMS pot fi achizi\u021Bionate prin sistemul electronic de achizi\u021Bii publice."), /*#__PURE__*/React.createElement("a", {
-    href: "https://www.e-licitatie.ro/pub",
-    target: "_blank",
-    rel: "noopener noreferrer",
-    style: {
-      marginLeft: 'auto',
-      fontSize: '13px',
-      fontWeight: 600,
-      color: 'var(--blue-a)',
-      whiteSpace: 'nowrap',
-      flexShrink: 0
-    }
-  }, "Vezi pe SEAP \u2192")))), /*#__PURE__*/React.createElement("div", {
+  }, "Suntem \u0219i pe SEAP"), " \u2014 produsele \u0219i serviciile INFORMS pot fi achizi\u021Bionate prin sistemul electronic de achizi\u021Bii publice.")))), /*#__PURE__*/React.createElement("div", {
     className: "shop-filter-bar",
     id: "shop-filter-bar"
   }, /*#__PURE__*/React.createElement("div", {
