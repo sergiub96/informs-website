@@ -21,9 +21,9 @@
   <link rel="preload" href="main.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="main.css" /></noscript>
 
-  <!-- Google Fonts — async, fără render blocking -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+  <!-- Google Fonts — async, display=optional elimina font-swap CLS -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=optional" rel="stylesheet" /></noscript>
 
   <!-- Cookie Consent CSS — async -->
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -88,9 +88,10 @@
 <body>
   <div id="root"></div>
 
-  <!-- Cookie Consent init — module este auto-deferred -->
+  <!-- Cookie Consent init — dynamic import dupa load, complet in afara critical path -->
   <script type="module">
-    import 'https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.esm.js';
+    window.addEventListener('load', async function() {
+    await import('https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.esm.js');
 
     CookieConsent.run({
       guiOptions: {
@@ -144,6 +145,7 @@
         },
       },
     });
+    }); // end load listener
   </script>
 </body>
 </html>

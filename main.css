@@ -26,7 +26,12 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:18px}
-body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--font);color:var(--text);background:#061830;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* #root incepe cu fundalul hero (dark) si min-height viewport.
+   Cand React randeaza hero-ul (tot dark), tranzitia este invizibila = CLS ~0 */
+#root{background:#061830;min-height:100svh}
+/* Paginile interne (non-hero) au background light din pagina lor */
+.pg-content{background:var(--bg)}
 /* Prevent grid/flex items from overflowing their containers */
 .anim-fade-up{min-width:0}
 img{max-width:100%;height:auto;display:block}
@@ -160,6 +165,7 @@ h4{font-size:1.02rem;font-weight:700;letter-spacing:.01em}
     linear-gradient(90deg,rgba(59,128,202,.028) 1px,transparent 1px);
   background-size:64px 64px;
   transform:rotate(12deg);
+  will-change:transform;
 }
 .hbg-b1{
   position:absolute;
@@ -212,7 +218,7 @@ h4{font-size:1.02rem;font-weight:700;letter-spacing:.01em}
 .home-page .obj-section{background:rgba(255,255,255,.86)}
 
 /* ── Sections ── */
-.sec{padding:88px 0}
+.sec{padding:88px 0;background:var(--bg)}
 .sec-sm{padding:52px 0}
 .sec-white{background:var(--white)}
 .sec-pale{background:var(--bg)}
