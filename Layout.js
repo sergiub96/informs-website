@@ -390,40 +390,11 @@ function fmtTitle(text) {
     }
   }, p) : p);
 }
-const HERO_VIDEOS = ['assets/img_informs/animated-digital-data-network-with-cloud-and-file.mp4', 'assets/videos_library/contact-informs.mp4', 'assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4', 'assets/videos_library/achizitii-publice.mp4', 'assets/videos_library/Delegare-Servicii-Utilitati-Publice.mp4', 'assets/videos_library/excel-doc.mp4', 'assets/videos_library/word-doc.mp4', 'assets/videos_library/pdf-doc.mp4', 'assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4', 'assets/videos_library/portofoliu-produse-informs.mp4'];
-function VideoPreloader() {
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: 'fixed',
-      width: 0,
-      height: 0,
-      overflow: 'hidden',
-      opacity: 0,
-      pointerEvents: 'none',
-      zIndex: -1
-    },
-    "aria-hidden": "true"
-  }, HERO_VIDEOS.map(src => /*#__PURE__*/React.createElement("video", {
-    key: src,
-    src: src,
-    preload: "auto",
-    muted: true,
-    playsInline: true,
-    style: {
-      width: 0,
-      height: 0,
-      maxWidth: 0,
-      maxHeight: 0,
-      position: 'absolute'
-    }
-  })));
-}
 Object.assign(window, {
   FadeUp,
   Nav,
   Footer,
-  fmtTitle,
-  VideoPreloader
+  fmtTitle
 });
 
 })();

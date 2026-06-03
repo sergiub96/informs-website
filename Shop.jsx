@@ -456,7 +456,7 @@ function ShopPage({ onNav, initialCategory = 'all' }) {
     <>
       {/* Hero */}
       <div className="pg-hero pg-hero-video" style={{ textAlign: 'center' }}>
-        <video className="pg-hero-vid" autoPlay muted playsInline loop>
+        <video className="pg-hero-vid" autoPlay muted playsInline loop preload="none">
           <source src="assets/videos_library/portofoliu-produse-informs.mp4" type="video/mp4" />
         </video>
         <div className="pg-hero-overlay"></div>

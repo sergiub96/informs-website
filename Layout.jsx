@@ -259,27 +259,4 @@ function fmtTitle(text) {
   );
 }
 
-const HERO_VIDEOS = [
-  'assets/img_informs/animated-digital-data-network-with-cloud-and-file.mp4',
-  'assets/videos_library/contact-informs.mp4',
-  'assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4',
-  'assets/videos_library/achizitii-publice.mp4',
-  'assets/videos_library/Delegare-Servicii-Utilitati-Publice.mp4',
-  'assets/videos_library/excel-doc.mp4',
-  'assets/videos_library/word-doc.mp4',
-  'assets/videos_library/pdf-doc.mp4',
-  'assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4',
-  'assets/videos_library/portofoliu-produse-informs.mp4',
-];
-
-function VideoPreloader() {
-  return (
-    <div style={{ position: 'fixed', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none', zIndex: -1 }} aria-hidden="true">
-      {HERO_VIDEOS.map(src => (
-        <video key={src} src={src} preload="auto" muted playsInline style={{ width: 0, height: 0, maxWidth: 0, maxHeight: 0, position: 'absolute' }} />
-      ))}
-    </div>
-  );
-}
-
-Object.assign(window, { FadeUp, Nav, Footer, fmtTitle, VideoPreloader });
+Object.assign(window, { FadeUp, Nav, Footer, fmtTitle });

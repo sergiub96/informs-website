@@ -58,7 +58,6 @@ function App() {
 
   return (
     <div>
-      <VideoPreloader />
       <Nav onNav={navigate} page={page} />
       <main style={{ minHeight: '60vh' }}>
         {renderPage()}

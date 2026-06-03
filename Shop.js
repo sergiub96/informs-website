@@ -707,7 +707,8 @@ function ShopPage({
     autoPlay: true,
     muted: true,
     playsInline: true,
-    loop: true
+    loop: true,
+    preload: "none"
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/portofoliu-produse-informs.mp4",
     type: "video/mp4"

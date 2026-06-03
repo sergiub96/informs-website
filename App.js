@@ -116,7 +116,7 @@ function App() {
         });
     }
   };
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(VideoPreloader, null), /*#__PURE__*/React.createElement(Nav, {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Nav, {
     onNav: navigate,
     page: page
   }), /*#__PURE__*/React.createElement("main", {
