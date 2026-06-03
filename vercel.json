@@ -1,5 +1,8 @@
 {
   "outputDirectory": ".",
+  "functions": {
+    "api/chat.js": { "memory": 128, "maxDuration": 30 }
+  },
   "headers": [
     {
       "source": "/(.*)",
@@ -25,7 +28,7 @@
       ]
     },
     {
-      "source": "/(.*\\.js)",
+      "source": "/(?!api/).*\\.js",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
       ]
