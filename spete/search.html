@@ -1451,6 +1451,16 @@ function cnscSearch(q) {
   renderCnsc(results, q);
 }
 
+function findPageForQuery(pagini, q) {
+  if (!pagini || !pagini.length || !q) return 1;
+  const terms = q.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').split(/\s+/).filter(t => t.length >= 3);
+  for (const p of pagini) {
+    const hay = (p.text || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    if (terms.some(t => hay.includes(t))) return p.nr;
+  }
+  return 1;
+}
+
 function cnscExcerpt(text, q) {
   const terms = q.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').split(/\s+/).filter(t => t.length >= 2);
   const norm = text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -1535,13 +1545,21 @@ function renderCnsc(items, q) {
       const cat = `<span class="cat-badge" style="background:#e8f5e920;color:#2e7d32;border:1px solid #c8e6c9;">
         <i class="bi bi-folder2 me-1"></i>${esc(d.categorie)}</span>`;
       const excerpt = q ? cnscExcerpt(d.continut_complet || '', q) : (d.continut_complet || '').slice(0, 300) + '…';
+      const pdfPage = q ? findPageForQuery(d.pagini, q) : 1;
+      const pdfBase = location.hostname === 'localhost' ? '../baza-de-date/jurisprudenta/decizii-cnsc' : './pdf';
+      const pdfUrl  = `${pdfBase}/${d.fisier}#page=${pdfPage}`;
+      const pdfBtn  = `<a href="${pdfUrl}" target="_blank" rel="noopener"
+        class="btn btn-sm ms-2" style="border-radius:20px;font-size:.75rem;background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9;white-space:nowrap;">
+        <i class="bi bi-file-earmark-pdf me-1"></i>PDF p.${pdfPage}
+      </a>`;
       return `
 <div class="card cnsc-card">
   <div class="card-body p-4">
     <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
       <div class="d-flex align-items-center flex-wrap gap-1">${cat}${sol}</div>
-      <div class="d-flex align-items-center gap-2">${nr}${dt}
+      <div class="d-flex align-items-center gap-2 flex-wrap">${nr}${dt}
         <span class="badge bg-light text-dark border" style="font-size:.7rem;">${d.nr_pagini} pag.</span>
+        ${pdfBtn}
       </div>
     </div>
     <div class="cnsc-excerpt">${excerpt}</div>
