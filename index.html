@@ -8,121 +8,56 @@
   <meta property="og:description" content="Soluții adaptate pentru achiziții publice, delegare servicii de utilități publice, management de proiect și digitalizare." />
   <title>INFORMS - Formulare inteligente. Documentații complete.</title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G2RJ4GKPJ1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-G2RJ4GKPJ1');
-  </script>
-
-  <!-- Microsoft Clarity - înlocuiește CLARITY_ID_HERE cu ID-ul din clarity.microsoft.com/projects -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","CLARITY_ID_HERE");
-  </script>
-
-  <!-- Cookie Consent (orestbida/vanilla-cookieconsent) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css" />
-
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="uploads/informs-website-favicon-color-removebg-preview-removebg-preview.png" />
+
+  <!-- Preconnect pentru resurse externe critice -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-  <link rel="dns-prefetch" href="https://unpkg.com" />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="preload" href="main.css" as="style" />
-  <link rel="stylesheet" href="main.css" />
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-</head>
-<body>
-  <div id="root"></div>
+  <!-- CSS critic — inline pentru a evita render blocking -->
+  <link rel="preload" href="main.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="main.css" /></noscript>
 
-  <script src="Layout.js"></script>
-  <script src="Icons.js"></script>
-  <script src="Home.js"></script>
-  <script src="Pages.js"></script>
-  <script src="Shop.js"></script>
-  <script src="App.js"></script>
+  <!-- Google Fonts — async, fără render blocking -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
 
-  <!-- Cookie Consent init -->
-  <script type="module">
-    import 'https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.esm.js';
+  <!-- Cookie Consent CSS — async -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css" /></noscript>
 
-    CookieConsent.run({
-      guiOptions: {
-        consentModal: {
-          layout: 'bar',
-          position: 'bottom',
-          equalWeightButtons: false,
-          flipButtons: false,
-        },
-        preferencesModal: {
-          layout: 'box',
-          equalWeightButtons: true,
-        },
-      },
+  <!-- React self-hosted — defer elimină render blocking -->
+  <script defer src="vendor/react.production.min.js"></script>
+  <script defer src="vendor/react-dom.production.min.js"></script>
 
-      categories: {
-        necessary: {
-          enabled: true,
-          readOnly: true,
-        },
-        analytics: {
-          enabled: false,
-        },
-      },
+  <!-- Aplicație — defer, se execută în ordine după parsarea HTML -->
+  <script defer src="Layout.js"></script>
+  <script defer src="Icons.js"></script>
+  <script defer src="Home.js"></script>
+  <script defer src="Pages.js"></script>
+  <script defer src="Shop.js"></script>
+  <script defer src="App.js"></script>
 
-      language: {
-        default: 'ro',
-        translations: {
-          ro: {
-            consentModal: {
-              title: 'Folosim cookie-uri',
-              description:
-                'Utilizăm cookie-uri necesare pentru funcționarea site-ului și, opțional, cookie-uri de analiză (Google Analytics) pentru a înțelege cum este utilizat site-ul. Datele de analiză sunt anonimizate.',
-              acceptAllBtn: 'Acceptă toate',
-              acceptNecessaryBtn: 'Doar necesare',
-              showPreferencesBtn: 'Setări',
-              footer:
-                '<a href="#politica-confidentialitate">Politica de confidențialitate</a> · <a href="#termeni-si-conditii">Termeni și condiții</a>',
-            },
-            preferencesModal: {
-              title: 'Preferințe cookie-uri',
-              acceptAllBtn: 'Acceptă toate',
-              acceptNecessaryBtn: 'Doar necesare',
-              savePreferencesBtn: 'Salvează preferințele',
-              closeIconLabel: 'Închide',
-              sections: [
-                {
-                  title: 'Cookie-uri necesare',
-                  description:
-                    'Aceste cookie-uri sunt esențiale pentru funcționarea corectă a site-ului și nu pot fi dezactivate.',
-                  linkedCategory: 'necessary',
-                },
-                {
-                  title: 'Cookie-uri de analiză',
-                  description:
-                    'Utilizăm Google Analytics pentru a înțelege cum este utilizat site-ul (pagini vizitate, durata sesiunii, dispozitiv). Datele sunt anonimizate și nu sunt partajate cu terți în scop comercial.',
-                  linkedCategory: 'analytics',
-                },
-              ],
-            },
-          },
-        },
-      },
+  <!-- Google Analytics — încărcat după load, nu blochează LCP -->
+  <script>
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-G2RJ4GKPJ1';
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-G2RJ4GKPJ1');
     });
   </script>
 
+  <!-- Stil cookie bar aliniat cu tema site-ului -->
   <style>
-    /* Stil cookie bar aliniat cu tema site-ului */
     :root {
       --cc-bg: #061830;
       --cc-primary-color: #fff;
@@ -149,5 +84,66 @@
       box-shadow: 0 -4px 32px rgba(0,0,0,.25);
     }
   </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Cookie Consent init — module este auto-deferred -->
+  <script type="module">
+    import 'https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.esm.js';
+
+    CookieConsent.run({
+      guiOptions: {
+        consentModal: {
+          layout: 'bar',
+          position: 'bottom',
+          equalWeightButtons: false,
+          flipButtons: false,
+        },
+        preferencesModal: {
+          layout: 'box',
+          equalWeightButtons: true,
+        },
+      },
+      categories: {
+        necessary: { enabled: true, readOnly: true },
+        analytics: { enabled: false },
+      },
+      language: {
+        default: 'ro',
+        translations: {
+          ro: {
+            consentModal: {
+              title: 'Folosim cookie-uri',
+              description: 'Utilizăm cookie-uri necesare pentru funcționarea site-ului și, opțional, cookie-uri de analiză (Google Analytics) pentru a înțelege cum este utilizat site-ul. Datele de analiză sunt anonimizate.',
+              acceptAllBtn: 'Acceptă toate',
+              acceptNecessaryBtn: 'Doar necesare',
+              showPreferencesBtn: 'Setări',
+              footer: '<a href="#politica-confidentialitate">Politica de confidențialitate</a> · <a href="#termeni-si-conditii">Termeni și condiții</a>',
+            },
+            preferencesModal: {
+              title: 'Preferințe cookie-uri',
+              acceptAllBtn: 'Acceptă toate',
+              acceptNecessaryBtn: 'Doar necesare',
+              savePreferencesBtn: 'Salvează preferințele',
+              closeIconLabel: 'Închide',
+              sections: [
+                {
+                  title: 'Cookie-uri necesare',
+                  description: 'Aceste cookie-uri sunt esențiale pentru funcționarea corectă a site-ului și nu pot fi dezactivate.',
+                  linkedCategory: 'necessary',
+                },
+                {
+                  title: 'Cookie-uri de analiză',
+                  description: 'Utilizăm Google Analytics pentru a înțelege cum este utilizat site-ul (pagini vizitate, durata sesiunii, dispozitiv). Datele sunt anonimizate și nu sunt partajate cu terți în scop comercial.',
+                  linkedCategory: 'analytics',
+                },
+              ],
+            },
+          },
+        },
+      },
+    });
+  </script>
 </body>
 </html>

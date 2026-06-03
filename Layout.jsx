@@ -33,7 +33,7 @@ function Nav({ onNav, page }) {
     return () => window.removeEventListener('scroll', h);
   }, []);
 
-  const go = (p) => { onNav(p); setOpen(false); window.scrollTo({ top: 0, behavior: 'instant' }); };
+  const go = (p, e) => { if (e) e.preventDefault(); onNav(p); setOpen(false); window.scrollTo({ top: 0, behavior: 'instant' }); };
 
   const openDd  = () => { clearTimeout(ddTimer.current); setDdOpen(true); };
   const closeDd = () => { ddTimer.current = setTimeout(() => setDdOpen(false), 220); };
@@ -65,29 +65,29 @@ function Nav({ onNav, page }) {
       <nav className={`main-nav${scrolled ? ' scrolled' : ''}${hidden ? ' nav-hidden' : ''}`}>
         <div className="nav-island">
           <div className="nav-inner">
-            <div className="nav-logo" onClick={() => go('home')}>
+            <a className="nav-logo" href="/" onClick={(e) => go('home', e)}>
               <img
                 src="logo/png/logo-no-background.png"
                 alt="INFORMS"
                 style={{ height: '28px', width: 'auto', display: 'block' }}
               />
-            </div>
+            </a>
 
             <div className="nav-links">
-              <span className={`nav-link${page === 'home' ? ' active' : ''}`} onClick={() => go('home')}>Acasă</span>
-              <span className={`nav-link${page === 'despre-noi' ? ' active' : ''}`} onClick={() => go('despre-noi')}>Despre noi</span>
+              <a className={`nav-link${page === 'home' ? ' active' : ''}`} href="/" onClick={(e) => go('home', e)}>Acasă</a>
+              <a className={`nav-link${page === 'despre-noi' ? ' active' : ''}`} href="/despre-noi" onClick={(e) => go('despre-noi', e)}>Despre noi</a>
 
               <div
                 className={`nav-dd${ddOpen ? ' dd-open' : ''}`}
                 onMouseEnter={openDd}
                 onMouseLeave={closeDd}
               >
-                <span className={`nav-link nav-dd-toggle${svcPages.includes(page) || page === 'servicii' ? ' active' : ''}`}>
+                <a className={`nav-link nav-dd-toggle${svcPages.includes(page) || page === 'servicii' ? ' active' : ''}`} href="/servicii" onClick={(e) => { e.preventDefault(); go('servicii'); }}>
                   Servicii
-                </span>
+                </a>
                 <div className="nav-dd-menu" onMouseEnter={openDd} onMouseLeave={closeDd}>
                   {svcs.map(([p, l]) => (
-                    <span key={p} className="nav-dd-item" onClick={() => go(p)}>{l}</span>
+                    <a key={p} className="nav-dd-item" href={`/${p}`} onClick={(e) => go(p, e)}>{l}</a>
                   ))}
                 </div>
               </div>
@@ -97,25 +97,26 @@ function Nav({ onNav, page }) {
                 onMouseEnter={openDdProd}
                 onMouseLeave={closeDdProd}
               >
-                <span className={`nav-link nav-dd-toggle${page === 'magazin' ? ' active' : ''}`}>
+                <a className={`nav-link nav-dd-toggle${page === 'magazin' ? ' active' : ''}`} href="/magazin" onClick={(e) => { e.preventDefault(); go('magazin'); }}>
                   Produse
-                </span>
+                </a>
                 <div className="nav-dd-menu" onMouseEnter={openDdProd} onMouseLeave={closeDdProd}>
                   {prodCats.map(({ cat, label, green }) => (
-                    <span key={cat} className="nav-dd-item" style={green ? { color: '#16A34A' } : {}} onClick={() => {
+                    <a key={cat} className="nav-dd-item" href={`/magazin`} style={green ? { color: '#16A34A' } : {}} onClick={(e) => {
+                      e.preventDefault();
                       onNav('magazin', { category: cat });
                       window.scrollTo({ top: 0, behavior: 'instant' });
                       setDdProdOpen(false);
-                    }}>{label}</span>
+                    }}>{label}</a>
                   ))}
                 </div>
               </div>
             </div>
 
             <div className="nav-end">
-              <span className={`nav-link nav-cta${page === 'contact' ? ' active' : ''}`} onClick={() => go('contact')}>
+              <a className={`nav-link nav-cta${page === 'contact' ? ' active' : ''}`} href="/contact" onClick={(e) => go('contact', e)}>
                 Contact
-              </span>
+              </a>
               <button className={`hamburger${open ? ' open' : ''}`} onClick={() => setOpen(!open)} aria-label="Meniu">
                 <span></span><span></span><span></span>
               </button>
@@ -125,21 +126,22 @@ function Nav({ onNav, page }) {
       </nav>
 
       <div className={`mobile-menu${open ? ' open' : ''}`}>
-        <span className="m-link" onClick={() => go('home')}>Acasă</span>
-        <span className="m-link" onClick={() => go('despre-noi')}>Despre noi</span>
+        <a className="m-link" href="/" onClick={(e) => go('home', e)}>Acasă</a>
+        <a className="m-link" href="/despre-noi" onClick={(e) => go('despre-noi', e)}>Despre noi</a>
         <div className="m-section-title">Servicii</div>
         {svcs.map(([p, l]) => (
-          <span key={p} className="m-link" style={{ paddingLeft: '26px', fontSize: '14px' }} onClick={() => go(p)}>{l}</span>
+          <a key={p} className="m-link" href={`/${p}`} style={{ paddingLeft: '26px', fontSize: '14px' }} onClick={(e) => go(p, e)}>{l}</a>
         ))}
         <div className="m-section-title">Produse</div>
         {prodCats.map(({ cat, label, green }) => (
-          <span key={cat} className="m-link"
+          <a key={cat} className="m-link" href="/magazin"
             style={{ paddingLeft: cat === 'all' ? '14px' : '26px', fontSize: cat === 'all' ? '15px' : '14px', ...(green ? { color: '#16A34A' } : {}) }}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               onNav('magazin', { category: cat });
               window.scrollTo({ top: 0, behavior: 'instant' });
               setOpen(false);
-            }}>{label}</span>
+            }}>{label}</a>
         ))}
         <div style={{ marginTop: '12px', padding: '0 2px' }}>
           <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => go('contact')}>
@@ -172,6 +174,7 @@ function Footer({ onNav, page }) {
     <footer>
       <video ref={videoRef} className="footer-vid" muted playsInline preload="none" style={{ display: isHome ? '' : 'none' }}>
         <source src="assets/videos_library/footer.mp4" type="video/mp4" />
+        <track kind="captions" src="" label="Română" srclang="ro" default />
       </video>
       <div className="footer-content">
       <div className="footer-gradient-line"></div>

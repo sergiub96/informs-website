@@ -30,6 +30,12 @@ function AboutPage({
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4",
     type: "video/mp4"
+  }), /*#__PURE__*/React.createElement("track", {
+    kind: "captions",
+    src: "",
+    label: "Rom\xE2n\u0103",
+    srclang: "ro",
+    default: true
   })), /*#__PURE__*/React.createElement("div", {
     className: "pg-hero-overlay"
   }), /*#__PURE__*/React.createElement("div", {
@@ -355,6 +361,12 @@ function ContactPage() {
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/contact-informs.mp4",
     type: "video/mp4"
+  }), /*#__PURE__*/React.createElement("track", {
+    kind: "captions",
+    src: "",
+    label: "Rom\xE2n\u0103",
+    srclang: "ro",
+    default: true
   })), /*#__PURE__*/React.createElement("div", {
     className: "pg-hero-overlay"
   }), /*#__PURE__*/React.createElement("div", {
@@ -764,6 +776,12 @@ function ServiceDetailPage({
   }, /*#__PURE__*/React.createElement("source", {
     src: d.video,
     type: "video/mp4"
+  }), /*#__PURE__*/React.createElement("track", {
+    kind: "captions",
+    src: "",
+    label: "Rom\xE2n\u0103",
+    srclang: "ro",
+    default: true
   })), /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -904,6 +922,12 @@ function MaterialeGratuitePage({
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4",
     type: "video/mp4"
+  }), /*#__PURE__*/React.createElement("track", {
+    kind: "captions",
+    src: "",
+    label: "Rom\xE2n\u0103",
+    srclang: "ro",
+    default: true
   })), /*#__PURE__*/React.createElement("div", {
     className: "pg-hero-overlay"
   }), /*#__PURE__*/React.createElement("div", {

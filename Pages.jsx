@@ -13,6 +13,7 @@ function AboutPage({ onNav }) {
       <div className="pg-hero pg-hero-video">
         <video className="pg-hero-vid" autoPlay muted playsInline preload="none">
           <source src="assets/videos_library/documentatii-achizitii-publice-digitale-informs.mp4" type="video/mp4" />
+          <track kind="captions" src="" label="Română" srclang="ro" default />
         </video>
         <div className="pg-hero-overlay"></div>
         <div className="container">
@@ -193,6 +194,7 @@ function ContactPage() {
       <div className="pg-hero pg-hero-video">
         <video className="pg-hero-vid" autoPlay muted playsInline preload="none">
           <source src="assets/videos_library/contact-informs.mp4" type="video/mp4" />
+          <track kind="captions" src="" label="Română" srclang="ro" default />
         </video>
         <div className="pg-hero-overlay"></div>
         <div className="container">
@@ -416,6 +418,7 @@ function ServiceDetailPage({ onNav, service }) {
         {d.video && (
           <video key={d.video} className={`pg-hero-vid${d.split ? ' pg-hero-vid-right' : ''}`} autoPlay muted playsInline preload="none">
             <source src={d.video} type="video/mp4" />
+            <track kind="captions" src="" label="Română" srclang="ro" default />
           </video>
         )}
         <div className="container">
@@ -474,6 +477,7 @@ function MaterialeGratuitePage({ onNav }) {
       <div className="pg-hero pg-hero-video">
         <video className="pg-hero-vid" autoPlay muted playsInline preload="none">
           <source src="assets/videos_library/formulare-pdf-inteligent-institutii-publice.mp4" type="video/mp4" />
+          <track kind="captions" src="" label="Română" srclang="ro" default />
         </video>
         <div className="pg-hero-overlay"></div>
         <div className="container">

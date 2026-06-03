@@ -59,7 +59,7 @@ nav.main-nav.scrolled .nav-island{background:transparent;box-shadow:none}
   height:58px;display:flex;align-items:center;
   padding:0 28px;position:relative;
 }
-.nav-logo{display:flex;align-items:center;cursor:pointer;user-select:none;flex-shrink:0}
+.nav-logo{display:flex;align-items:center;cursor:pointer;user-select:none;flex-shrink:0;text-decoration:none}
 .nav-links{
   position:absolute;left:50%;transform:translateX(-50%);
   display:flex;align-items:center;gap:2px;
@@ -69,6 +69,7 @@ nav.main-nav.scrolled .nav-island{background:transparent;box-shadow:none}
   padding:7px 12px;border-radius:var(--r);
   font-size:15.5px;font-weight:500;color:var(--text-2);
   transition:all var(--dur) var(--ease);cursor:pointer;white-space:nowrap;
+  text-decoration:none;
 }
 .nav-link:hover{color:var(--blue)}
 .nav-link.active{color:var(--blue);font-weight:600}
@@ -99,7 +100,7 @@ nav.main-nav.scrolled .nav-island{background:transparent;box-shadow:none}
 .nav-dd-item{
   display:block;padding:9px 13px;border-radius:6px;
   font-size:15px;color:var(--text-2);cursor:pointer;font-weight:500;
-  transition:all var(--dur) var(--ease);
+  transition:all var(--dur) var(--ease);text-decoration:none;
 }
 .nav-dd-item:hover{background:var(--blue-lt);color:var(--blue)}
 
@@ -120,7 +121,7 @@ nav.main-nav.scrolled .nav-island{background:transparent;box-shadow:none}
   border-top:1px solid rgba(59,128,202,.15);
 }
 .mobile-menu.open{display:flex}
-.m-link{display:block;padding:12px 14px;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;transition:all var(--dur) var(--ease);color:rgba(255,255,255,.68)}
+.m-link{display:block;padding:12px 14px;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;transition:all var(--dur) var(--ease);color:rgba(255,255,255,.68);text-decoration:none}
 .m-link:hover{background:rgba(59,128,202,.18);color:#fff}
 .m-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.3);padding:14px 14px 5px}
 

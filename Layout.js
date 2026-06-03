@@ -46,7 +46,8 @@ function Nav({
     });
     return () => window.removeEventListener('scroll', h);
   }, []);
-  const go = p => {
+  const go = (p, e) => {
+    if (e) e.preventDefault();
     onNav(p);
     setOpen(false);
     window.scrollTo({
@@ -96,9 +97,10 @@ function Nav({
     className: "nav-island"
   }, /*#__PURE__*/React.createElement("div", {
     className: "nav-inner"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("a", {
     className: "nav-logo",
-    onClick: () => go('home')
+    href: "/",
+    onClick: e => go('home', e)
   }, /*#__PURE__*/React.createElement("img", {
     src: "logo/png/logo-no-background.png",
     alt: "INFORMS",
@@ -109,32 +111,45 @@ function Nav({
     }
   })), /*#__PURE__*/React.createElement("div", {
     className: "nav-links"
-  }, /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("a", {
     className: `nav-link${page === 'home' ? ' active' : ''}`,
-    onClick: () => go('home')
-  }, "Acas\u0103"), /*#__PURE__*/React.createElement("span", {
+    href: "/",
+    onClick: e => go('home', e)
+  }, "Acas\u0103"), /*#__PURE__*/React.createElement("a", {
     className: `nav-link${page === 'despre-noi' ? ' active' : ''}`,
-    onClick: () => go('despre-noi')
+    href: "/despre-noi",
+    onClick: e => go('despre-noi', e)
   }, "Despre noi"), /*#__PURE__*/React.createElement("div", {
     className: `nav-dd${ddOpen ? ' dd-open' : ''}`,
     onMouseEnter: openDd,
     onMouseLeave: closeDd
-  }, /*#__PURE__*/React.createElement("span", {
-    className: `nav-link nav-dd-toggle${svcPages.includes(page) || page === 'servicii' ? ' active' : ''}`
+  }, /*#__PURE__*/React.createElement("a", {
+    className: `nav-link nav-dd-toggle${svcPages.includes(page) || page === 'servicii' ? ' active' : ''}`,
+    href: "/servicii",
+    onClick: e => {
+      e.preventDefault();
+      go('servicii');
+    }
   }, "Servicii"), /*#__PURE__*/React.createElement("div", {
     className: "nav-dd-menu",
     onMouseEnter: openDd,
     onMouseLeave: closeDd
-  }, svcs.map(([p, l]) => /*#__PURE__*/React.createElement("span", {
+  }, svcs.map(([p, l]) => /*#__PURE__*/React.createElement("a", {
     key: p,
     className: "nav-dd-item",
-    onClick: () => go(p)
+    href: `/${p}`,
+    onClick: e => go(p, e)
   }, l)))), /*#__PURE__*/React.createElement("div", {
     className: `nav-dd${ddProdOpen ? ' dd-open' : ''}`,
     onMouseEnter: openDdProd,
     onMouseLeave: closeDdProd
-  }, /*#__PURE__*/React.createElement("span", {
-    className: `nav-link nav-dd-toggle${page === 'magazin' ? ' active' : ''}`
+  }, /*#__PURE__*/React.createElement("a", {
+    className: `nav-link nav-dd-toggle${page === 'magazin' ? ' active' : ''}`,
+    href: "/magazin",
+    onClick: e => {
+      e.preventDefault();
+      go('magazin');
+    }
   }, "Produse"), /*#__PURE__*/React.createElement("div", {
     className: "nav-dd-menu",
     onMouseEnter: openDdProd,
@@ -143,13 +158,15 @@ function Nav({
     cat,
     label,
     green
-  }) => /*#__PURE__*/React.createElement("span", {
+  }) => /*#__PURE__*/React.createElement("a", {
     key: cat,
     className: "nav-dd-item",
+    href: `/magazin`,
     style: green ? {
       color: '#16A34A'
     } : {},
-    onClick: () => {
+    onClick: e => {
+      e.preventDefault();
       onNav('magazin', {
         category: cat
       });
@@ -161,40 +178,45 @@ function Nav({
     }
   }, label))))), /*#__PURE__*/React.createElement("div", {
     className: "nav-end"
-  }, /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("a", {
     className: `nav-link nav-cta${page === 'contact' ? ' active' : ''}`,
-    onClick: () => go('contact')
+    href: "/contact",
+    onClick: e => go('contact', e)
   }, "Contact"), /*#__PURE__*/React.createElement("button", {
     className: `hamburger${open ? ' open' : ''}`,
     onClick: () => setOpen(!open),
     "aria-label": "Meniu"
   }, /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null)))))), /*#__PURE__*/React.createElement("div", {
     className: `mobile-menu${open ? ' open' : ''}`
-  }, /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("a", {
     className: "m-link",
-    onClick: () => go('home')
-  }, "Acas\u0103"), /*#__PURE__*/React.createElement("span", {
+    href: "/",
+    onClick: e => go('home', e)
+  }, "Acas\u0103"), /*#__PURE__*/React.createElement("a", {
     className: "m-link",
-    onClick: () => go('despre-noi')
+    href: "/despre-noi",
+    onClick: e => go('despre-noi', e)
   }, "Despre noi"), /*#__PURE__*/React.createElement("div", {
     className: "m-section-title"
-  }, "Servicii"), svcs.map(([p, l]) => /*#__PURE__*/React.createElement("span", {
+  }, "Servicii"), svcs.map(([p, l]) => /*#__PURE__*/React.createElement("a", {
     key: p,
     className: "m-link",
+    href: `/${p}`,
     style: {
       paddingLeft: '26px',
       fontSize: '14px'
     },
-    onClick: () => go(p)
+    onClick: e => go(p, e)
   }, l)), /*#__PURE__*/React.createElement("div", {
     className: "m-section-title"
   }, "Produse"), prodCats.map(({
     cat,
     label,
     green
-  }) => /*#__PURE__*/React.createElement("span", {
+  }) => /*#__PURE__*/React.createElement("a", {
     key: cat,
     className: "m-link",
+    href: "/magazin",
     style: {
       paddingLeft: cat === 'all' ? '14px' : '26px',
       fontSize: cat === 'all' ? '15px' : '14px',
@@ -202,7 +224,8 @@ function Nav({
         color: '#16A34A'
       } : {})
     },
-    onClick: () => {
+    onClick: e => {
+      e.preventDefault();
       onNav('magazin', {
         category: cat
       });
@@ -266,6 +289,12 @@ function Footer({
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/footer.mp4",
     type: "video/mp4"
+  }), /*#__PURE__*/React.createElement("track", {
+    kind: "captions",
+    src: "",
+    label: "Rom\xE2n\u0103",
+    srclang: "ro",
+    default: true
   })), /*#__PURE__*/React.createElement("div", {
     className: "footer-content"
   }, /*#__PURE__*/React.createElement("div", {

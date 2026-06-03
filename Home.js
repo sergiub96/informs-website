@@ -167,6 +167,12 @@ function HomePage({
   }, /*#__PURE__*/React.createElement("source", {
     src: "assets/videos_library/retea-date-digitala-achizitii-publice-informs.mp4",
     type: "video/mp4"
+  }), /*#__PURE__*/React.createElement("track", {
+    kind: "captions",
+    src: "",
+    label: "Rom\xE2n\u0103",
+    srclang: "ro",
+    default: true
   })), /*#__PURE__*/React.createElement("div", {
     className: "hero-video-overlay"
   }), /*#__PURE__*/React.createElement("div", {
