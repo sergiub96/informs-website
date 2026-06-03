@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Focus by Agatha Plus â€” SpeÈ›e ANAP & Decizii CNSC</title>
+  <title>Focus by Agatha Plus — Spețe ANAP & Decizii CNSC</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
     }
     body { background: #f4f6fb; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; padding-top: 58px; }
 
-    /* â”€â”€ Nav informs.ro â”€â”€ */
+    /* ── Nav informs.ro ── */
     :root { --navy:#061830; --blue:#1358B0; --blue-a:#3B80CA; --blue-lt:#E8F3FC; --text-2:#4A6278; --dur:0.20s; --ease:cubic-bezier(.4,0,.2,1); }
     nav.main-nav { position:fixed; top:0; left:0; right:0; z-index:200; background:#fff; box-shadow:0 2px 12px rgba(6,24,48,.09); transition:transform .3s ease; }
     nav.main-nav.nav-hidden { transform:translateY(-100%); }
@@ -31,7 +31,7 @@
     .nav-cta:hover { background:#5294D4 !important; transform:translateY(-1px); }
     .nav-dd { position:relative; }
     .nav-dd::after { content:''; position:absolute; top:100%; left:0; right:0; height:8px; }
-    .nav-dd-toggle::after { content:' â–¾'; font-size:9px; opacity:.45; }
+    .nav-dd-toggle::after { content:' ▾'; font-size:9px; opacity:.45; }
     .nav-dd-menu { position:absolute; top:calc(100% + 4px); left:0; min-width:260px; background:rgba(255,255,255,.97); backdrop-filter:blur(20px); border:1px solid rgba(59,128,202,.18); border-radius:12px; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-6px); transition:all var(--dur) var(--ease); padding:6px; z-index:201; }
     .nav-dd.dd-open .nav-dd-menu { opacity:1; visibility:visible; transform:translateY(0); pointer-events:all; }
     .nav-dd-item { display:block; padding:9px 13px; border-radius:6px; font-size:15px; color:var(--text-2); font-weight:500; transition:all var(--dur) var(--ease); text-decoration:none; }
@@ -107,7 +107,7 @@
     .tab-mode:hover { background: rgba(255,255,255,.25); }
     .tab-mode.active { background: #fff; color: var(--anap-blue); font-weight: 600; border-color: #fff; }
 
-    /* Hero search bar â€” vizibil doar Ã®n keyword mode */
+    /* Hero search bar — vizibil doar în keyword mode */
     body:not(.mode-keyword) .search-input-wrap { display: none !important; }
     body:not(.mode-keyword) #searchHint        { display: none !important; }
 
@@ -143,7 +143,7 @@
     .keyword-reset { font-size: .78rem; color: rgba(255,255,255,.7); cursor: pointer; background: none; border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: .25rem .8rem; margin-left: .5rem; transition: all .15s; }
     .keyword-reset:hover { background: rgba(255,255,255,.15); color: #fff; }
 
-    /* Vizibilitate panouri per mod â€” !important bate orice style inline */
+    /* Vizibilitate panouri per mod — !important bate orice style inline */
     body.mode-keyword  #semanticPanel,
     body.mode-keyword  #chatPanel,
     body.mode-keyword  #cnscPanel,
@@ -215,14 +215,14 @@
         <img src="../logo/png/logo-no-background.png" alt="INFORMS" style="height:28px;width:auto;">
       </a>
       <div class="nav-links">
-        <a class="nav-link" href="../">AcasÄƒ</a>
+        <a class="nav-link" href="../">Acasă</a>
         <a class="nav-link" href="../despre-noi">Despre noi</a>
         <div class="nav-dd" id="ddSvc">
           <a class="nav-link nav-dd-toggle" href="../servicii">Servicii</a>
           <div class="nav-dd-menu">
-            <a class="nav-dd-item" href="../analiza-si-solutii">AnalizÄƒ È™i soluÈ›ii personalizate</a>
-            <a class="nav-dd-item" href="../achizitii-publice">AchiziÈ›ii publice</a>
-            <a class="nav-dd-item" href="../delegare-servicii">Delegare servicii de utilitÄƒÈ›i publice</a>
+            <a class="nav-dd-item" href="../analiza-si-solutii">Analiză și soluții personalizate</a>
+            <a class="nav-dd-item" href="../achizitii-publice">Achiziții publice</a>
+            <a class="nav-dd-item" href="../delegare-servicii">Delegare servicii de utilități publice</a>
             <a class="nav-dd-item" href="../modele-excel">Modele de lucru EXCEL</a>
             <a class="nav-dd-item" href="../modele-word">Modele de lucru WORD</a>
             <a class="nav-dd-item" href="../modele-pdf">Modele de lucru PDF</a>
@@ -232,7 +232,7 @@
           <a class="nav-link nav-dd-toggle" href="../magazin">Produse</a>
           <div class="nav-dd-menu">
             <a class="nav-dd-item" href="../magazin">Toate produsele</a>
-            <a class="nav-dd-item" href="../magazin">AchiziÈ›ii publice</a>
+            <a class="nav-dd-item" href="../magazin">Achiziții publice</a>
             <a class="nav-dd-item" href="../magazin">Delegare servicii</a>
             <a class="nav-dd-item" href="../magazin">Management proiect</a>
             <a class="nav-dd-item" href="../magazin" style="color:#16A34A;">Gratuite</a>
@@ -252,15 +252,15 @@
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a class="m-link" href="../">AcasÄƒ</a>
+  <a class="m-link" href="../">Acasă</a>
   <a class="m-link" href="../despre-noi">Despre noi</a>
   <div class="m-section-title">Servicii</div>
-  <a class="m-link" href="../analiza-si-solutii" style="padding-left:26px;font-size:14px;">AnalizÄƒ È™i soluÈ›ii</a>
-  <a class="m-link" href="../achizitii-publice" style="padding-left:26px;font-size:14px;">AchiziÈ›ii publice</a>
+  <a class="m-link" href="../analiza-si-solutii" style="padding-left:26px;font-size:14px;">Analiză și soluții</a>
+  <a class="m-link" href="../achizitii-publice" style="padding-left:26px;font-size:14px;">Achiziții publice</a>
   <a class="m-link" href="../delegare-servicii" style="padding-left:26px;font-size:14px;">Delegare servicii</a>
   <div class="m-section-title">Produse</div>
   <a class="m-link" href="../magazin">Toate produsele</a>
-  <a class="m-link active" href="./" style="color:#60a5fa;">Focus â€” SpeÈ›e ANAP</a>
+  <a class="m-link active" href="./" style="color:#60a5fa;">Focus — Spețe ANAP</a>
   <a class="m-link" href="../contact" style="margin-top:12px;">Contact</a>
 </div>
 
@@ -301,25 +301,25 @@
         <div class="search-input-wrap">
           <i class="bi bi-search text-muted me-2" style="flex-shrink:0"></i>
           <input type="text" id="searchInput"
-                 placeholder="CautÄƒ speÈ›e: Ã®ntrebare, rÄƒspuns, categorie, tag, codâ€¦"
+                 placeholder="Caută spețe: întrebare, răspuns, categorie, tag, cod…"
                  autocomplete="off" spellcheck="false">
-          <button id="clearBtn" style="display:none" title="È˜terge cÄƒutarea">
+          <button id="clearBtn" style="display:none" title="Șterge căutarea">
             <i class="bi bi-x-lg"></i>
           </button>
           <button class="search-btn ms-2" onclick="doSearch()">
-            <i class="bi bi-search me-1"></i>CautÄƒ
+            <i class="bi bi-search me-1"></i>Caută
           </button>
-          <button class="keyword-reset ms-1" onclick="resetKeyword()" title="ReseteazÄƒ filtre">
+          <button class="keyword-reset ms-1" onclick="resetKeyword()" title="Resetează filtre">
             <i class="bi bi-x-circle me-1"></i>Reset
           </button>
         </div>
         <div class="text-center mt-2" style="font-size:.8rem; color:rgba(255,255,255,.55);" id="searchHint">
-          Minim 2 caractere Â· CautÄƒ È™i cu cod spetÄƒ (#1095) Â· Click pe tag pentru filtrare
+          Minim 2 caractere · Caută și cu cod spetă (#1095) · Click pe tag pentru filtrare
         </div>
         <!-- Tab-uri mod cautare -->
         <div class="d-flex justify-content-center gap-2 mt-3">
           <button id="tabKeyword" class="tab-mode active" onclick="setMode('keyword')">
-            <i class="bi bi-search me-1"></i>CÄƒutare text
+            <i class="bi bi-search me-1"></i>Căutare text
           </button>
           <button id="tabSemantic" class="tab-mode" onclick="setMode('semantic')">
             <i class="bi bi-stars me-1"></i>Semantic AI
@@ -349,13 +349,13 @@
           <div class="sidebar-title"><i class="bi bi-funnel me-1"></i>Status</div>
           <div class="d-flex flex-wrap gap-2">
             <button class="btn btn-sm btn-primary status-btn" id="btnAll" onclick="setStatus('all')">
-              Toate <span id="cntAll" class="badge bg-white text-primary ms-1">â€”</span>
+              Toate <span id="cntAll" class="badge bg-white text-primary ms-1">—</span>
             </button>
             <button class="btn btn-sm btn-outline-success status-btn" id="btnActive" onclick="setStatus('active')">
-              Active <span id="cntActive" class="badge bg-success text-white ms-1">â€”</span>
+              Active <span id="cntActive" class="badge bg-success text-white ms-1">—</span>
             </button>
             <button class="btn btn-sm btn-outline-secondary status-btn" id="btnArchived" onclick="setStatus('archived')">
-              Arhivate <span id="cntArchived" class="badge bg-secondary text-white ms-1">â€”</span>
+              Arhivate <span id="cntArchived" class="badge bg-secondary text-white ms-1">—</span>
             </button>
           </div>
         </div>
@@ -371,9 +371,9 @@
             </button>
           </div>
           <input type="text" id="catSearch" class="form-control form-control-sm mb-2"
-                 placeholder="FiltreazÄƒ categoriiâ€¦" oninput="filterCategories(this.value)">
+                 placeholder="Filtrează categorii…" oninput="filterCategories(this.value)">
           <div class="category-scroll" id="categoryList">
-            <div class="text-muted text-center py-3" style="font-size:.8rem;">Se Ã®ncarcÄƒâ€¦</div>
+            <div class="text-muted text-center py-3" style="font-size:.8rem;">Se încarcă…</div>
           </div>
         </div>
       </div>
@@ -406,14 +406,14 @@
 
       <div id="pagination" class="d-flex justify-content-center mt-4 mb-2"></div>
 
-      <!-- â•â•â• PANOUL CHAT AI â•â•â• -->
+      <!-- ═══ PANOUL CHAT AI ═══ -->
       <div id="chatPanel" style="display:none;">
         <div id="chatApiStatus" class="mb-3" style="font-size:.82rem;"></div>
         <div id="chatHistory" class="mb-3"></div>
         <div class="card" style="border-radius:14px;border:none;box-shadow:0 2px 10px rgba(0,0,0,.07);">
           <div class="card-body p-3">
             <div class="d-flex gap-2">
-              <input type="text" id="chatInput" class="form-control" placeholder="Pune o Ã®ntrebare despre achiziÈ›ii publice..."
+              <input type="text" id="chatInput" class="form-control" placeholder="Pune o întrebare despre achiziții publice..."
                      style="border-radius:20px;" onkeydown="if(event.key==='Enter')sendChat()">
               <button class="btn btn-primary px-4" onclick="sendChat()" id="chatBtn" style="border-radius:20px;white-space:nowrap;">
                 <i class="bi bi-send me-1"></i>Trimite
@@ -421,7 +421,7 @@
             </div>
             <div class="mt-2 d-flex align-items-center gap-3" style="font-size:.78rem;color:#888;">
               <label class="d-flex align-items-center gap-1 mb-0" style="cursor:pointer;">
-                <input type="checkbox" id="chatActiv"> Doar speÈ›e active
+                <input type="checkbox" id="chatActiv"> Doar spețe active
               </label>
               <span id="chatStatus"></span>
             </div>
@@ -429,26 +429,26 @@
         </div>
       </div>
 
-      <!-- â•â•â• PANOUL DECIZII CNSC â•â•â• -->
+      <!-- ═══ PANOUL DECIZII CNSC ═══ -->
       <div id="cnscPanel" style="display:none;">
         <!-- Input dedicat CNSC -->
         <div class="panel-search-wrap">
           <i class="bi bi-journal-richtext text-muted me-2" style="flex-shrink:0;color:#2e7d32 !important;"></i>
-          <input type="text" id="cnscInput" placeholder="CautÄƒ Ã®n deciziile CNSC: proporÈ›ionalitate, ofertÄƒ, evaluareâ€¦" autocomplete="off">
+          <input type="text" id="cnscInput" placeholder="Caută în deciziile CNSC: proporționalitate, ofertă, evaluare…" autocomplete="off">
           <button class="panel-search-btn ms-2" style="background:#2e7d32;" onclick="cnscSearch(document.getElementById('cnscInput').value.trim())">
-            <i class="bi bi-search me-1"></i>CautÄƒ
+            <i class="bi bi-search me-1"></i>Caută
           </button>
         </div>
         <!-- Filtre CNSC -->
         <div class="cnsc-filter-bar">
           <select id="cnscFiltSolutie" onchange="cnscApplyFilters()">
-            <option value="">Toate soluÈ›iile</option>
-            <option value="admite">Admite contestaÈ›ia</option>
-            <option value="respinge">Respinge contestaÈ›ia</option>
-            <option value="anuleazÄƒ">Anulare / Obligare AC</option>
+            <option value="">Toate soluțiile</option>
+            <option value="admite">Admite contestația</option>
+            <option value="respinge">Respinge contestația</option>
+            <option value="anulează">Anulare / Obligare AC</option>
           </select>
           <select id="cnscFiltAn" onchange="cnscApplyFilters()">
-            <option value="">ToÈ›i anii</option>
+            <option value="">Toți anii</option>
             <option value="2026">2026</option>
             <option value="2025">2025</option>
             <option value="2024">2024</option>
@@ -456,40 +456,45 @@
             <option value="2015">2015</option>
           </select>
           <button class="panel-reset-btn-light" onclick="resetCnsc()">
-            <i class="bi bi-x-circle me-1"></i>ReseteazÄƒ
+            <i class="bi bi-x-circle me-1"></i>Resetează
           </button>
+          <label class="d-flex align-items-center gap-1 mb-0 ms-2" style="cursor:pointer;font-size:.82rem;">
+            <input type="checkbox" id="cnscAiToggle" checked>
+            <span><i class="bi bi-cpu me-1 text-success"></i>Răspuns AI</span>
+          </label>
           <div id="cnscStatus" style="font-size:.82rem;margin-left:auto;"></div>
         </div>
+        <div id="cnscAiAnswer" class="mb-3" style="display:none;"></div>
         <div id="cnscResults"></div>
       </div>
 
-      <!-- â•â•â• PANOUL SEMANTIC â•â•â• -->
+      <!-- ═══ PANOUL SEMANTIC ═══ -->
       <div id="semanticPanel">
         <!-- Input dedicat Semantic -->
         <div class="panel-search-wrap">
           <i class="bi bi-stars text-muted me-2" style="flex-shrink:0;color:var(--anap-accent) !important;"></i>
-          <input type="text" id="semInput" placeholder="Descrie problema juridicÄƒ Ã®n cuvinte propriiâ€¦" autocomplete="off"
+          <input type="text" id="semInput" placeholder="Descrie problema juridică în cuvinte proprii…" autocomplete="off"
                  onkeydown="if(event.key==='Enter') semanticSearch(this.value.trim())">
           <button class="panel-search-btn ms-2" onclick="semanticSearch(document.getElementById('semInput').value.trim())">
-            <i class="bi bi-stars me-1"></i>CautÄƒ
+            <i class="bi bi-stars me-1"></i>Caută
           </button>
         </div>
         <!-- Exemple clickabile -->
         <div class="mb-3" style="font-size:.78rem;color:#888;">
           <span class="me-1">Exemple:</span>
-          <span class="sem-example-light" onclick="semRunExample(this)">criteriu discriminatoriu Ã®n caietul de sarcini</span>
-          <span class="sem-example-light" onclick="semRunExample(this)">DUAE completat greÈ™it de ofertant</span>
+          <span class="sem-example-light" onclick="semRunExample(this)">criteriu discriminatoriu în caietul de sarcini</span>
+          <span class="sem-example-light" onclick="semRunExample(this)">DUAE completat greșit de ofertant</span>
           <span class="sem-example-light" onclick="semRunExample(this)">subcontractant declarat ulterior</span>
-          <span class="sem-example-light" onclick="semRunExample(this)">clarificÄƒri dupÄƒ termenul limitÄƒ</span>
+          <span class="sem-example-light" onclick="semRunExample(this)">clarificări după termenul limită</span>
         </div>
-        <!-- Toggle RÄƒspuns AI -->
+        <!-- Toggle Răspuns AI -->
         <div class="d-flex align-items-center gap-3 mb-3" style="font-size:.82rem;">
           <label class="d-flex align-items-center gap-2 mb-0" style="cursor:pointer;">
             <input type="checkbox" id="semAiToggle" checked>
-            <span><i class="bi bi-cpu me-1 text-primary"></i>RÄƒspuns AI (Groq sintetizeazÄƒ din rezultate)</span>
+            <span><i class="bi bi-cpu me-1 text-primary"></i>Răspuns AI (Groq sintetizează din rezultate)</span>
           </label>
           <button class="panel-reset-btn-light" onclick="resetSemantic()">
-            <i class="bi bi-x-circle me-1"></i>ReseteazÄƒ
+            <i class="bi bi-x-circle me-1"></i>Resetează
           </button>
         </div>
         <!-- Status + AI answer + rezultate -->
@@ -513,11 +518,11 @@ const PER_PAGE   = 25;
 const DATA_FILE  = './spete_anap.json';
 
 /* ==============================================================
-   STARE GLOBALÄ‚
+   STARE GLOBALĂ
 ============================================================== */
 const S = {
   items:      [],   // toate spetele (augmentate)
-  filtered:   [],   // dupÄƒ filtre + cÄƒutare
+  filtered:   [],   // după filtre + căutare
   categories: [],   // lista categorii pentru sidebar
   allCats:    [],   // toate categoriile (nefiltrate)
   query:      '',
@@ -532,7 +537,7 @@ const S = {
 ============================================================== */
 function norm(s) {
   if (!s) return '';
-  return String(s).toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '');
+  return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 }
 
 function esc(s) {
@@ -544,7 +549,7 @@ function stripHTML(html) {
 }
 
 function sanitizeHTML(html) {
-  // Elimina elemente periculoase, pastreazÄƒ formatare
+  // Elimina elemente periculoase, pastrează formatare
   return (html || '')
     .replace(/<script\b[\s\S]*?<\/script>/gi, '')
     .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
@@ -556,11 +561,11 @@ function sanitizeHTML(html) {
 function trunc(s, n) {
   if (!s || s.length <= n) return s || '';
   const cut = s.lastIndexOf(' ', n);
-  return s.slice(0, cut > n - 30 ? cut : n) + 'â€¦';
+  return s.slice(0, cut > n - 30 ? cut : n) + '…';
 }
 
 function fmtDate(iso) {
-  if (!iso) return 'â€”';
+  if (!iso) return '—';
   const [date] = iso.split('T');
   const [y, m, d] = date.split('-');
   return `${d}.${m}.${y}`;
@@ -609,13 +614,13 @@ function highlight(text, terms) {
 }
 
 /* ==============================================================
-   ÃŽNCÄ‚RCARE DATE
+   ÎNCĂRCARE DATE
 ============================================================== */
 function updateNavStats() {
-  const spete = S.items.length ? `${S.items.length} speÈ›e ANAP` : '';
+  const spete = S.items.length ? `${S.items.length} spețe ANAP` : '';
   const cnsc  = CNSC.data.length ? `${CNSC.data.length} decizii CNSC` : '';
   const parts = [spete, cnsc].filter(Boolean);
-  document.getElementById('navStats').textContent = parts.join(' Â· ') || 'Se Ã®ncarcÄƒâ€¦';
+  document.getElementById('navStats').textContent = parts.join(' · ') || 'Se încarcă…';
 }
 
 async function loadData() {
@@ -669,13 +674,13 @@ async function loadData() {
     const nCats = S.allCats.length;
     const nTags = new Set(all.flatMap(q => (q.questionTags || []).map(t => t.tagName))).size;
     document.getElementById('statsPanel').innerHTML = `
-      <div><i class="bi bi-file-earmark-text me-2 text-primary"></i><strong>${all.length}</strong> speÈ›e totale</div>
-      <div><i class="bi bi-check-circle me-2 text-success"></i><strong>${data.questions_active.length}</strong> speÈ›e active</div>
-      <div><i class="bi bi-archive me-2 text-secondary"></i><strong>${data.questions_archived.length}</strong> speÈ›e arhivate</div>
+      <div><i class="bi bi-file-earmark-text me-2 text-primary"></i><strong>${all.length}</strong> spețe totale</div>
+      <div><i class="bi bi-check-circle me-2 text-success"></i><strong>${data.questions_active.length}</strong> spețe active</div>
+      <div><i class="bi bi-archive me-2 text-secondary"></i><strong>${data.questions_archived.length}</strong> spețe arhivate</div>
       <div><i class="bi bi-folder2 me-2 text-warning"></i><strong>${nCats}</strong> categorii</div>
       <div><i class="bi bi-tags me-2 text-info"></i><strong>${nTags}</strong> tag-uri unice</div>
       <div class="text-muted mt-1" style="font-size:.72rem;">
-        <i class="bi bi-clock-history me-1"></i>SursÄƒ: ${data.meta.crawled_at ? data.meta.crawled_at.split('T')[0] : 'â€”'}
+        <i class="bi bi-clock-history me-1"></i>Sursă: ${data.meta.crawled_at ? data.meta.crawled_at.split('T')[0] : '—'}
       </div>`;
 
     buildCategoryList(S.categories);
@@ -686,17 +691,17 @@ async function loadData() {
       <div class="alert alert-danger d-flex align-items-start gap-2 mt-2">
         <i class="bi bi-exclamation-triangle-fill mt-1"></i>
         <div>
-          <strong>Eroare la Ã®ncÄƒrcarea datelor</strong><br>
+          <strong>Eroare la încărcarea datelor</strong><br>
           ${esc(err.message)}<br>
-          <small class="text-muted">AsiguraÈ›i-vÄƒ cÄƒ XAMPP ruleazÄƒ È™i cÄƒ fiÈ™ierul <code>spete_anap.json</code> existÄƒ Ã®n acelaÈ™i folder.</small>
+          <small class="text-muted">Asigurați-vă că XAMPP rulează și că fișierul <code>spete_anap.json</code> există în același folder.</small>
         </div>
       </div>`;
-    document.getElementById('navStats').textContent = 'Eroare la Ã®ncÄƒrcare';
+    document.getElementById('navStats').textContent = 'Eroare la încărcare';
   }
 }
 
 /* ==============================================================
-   SIDEBAR â€” CATEGORII
+   SIDEBAR — CATEGORII
 ============================================================== */
 function buildCategoryList(cats) {
   if (!cats.length) {
@@ -720,7 +725,7 @@ function filterCategories(v) {
 }
 
 /* ==============================================================
-   CÄ‚UTARE È˜I FILTRARE
+   CĂUTARE ȘI FILTRARE
 ============================================================== */
 function doSearch() {
   const rawQ = S.query.trim();
@@ -738,7 +743,7 @@ function doSearch() {
   /* Filtru categorie */
   if (S.catId !== null) items = items.filter(q => q._categoryId === S.catId);
 
-  /* CÄƒutare text */
+  /* Căutare text */
   if (normTerms.length) {
     items = items
       .filter(q => normTerms.every(t => q._idx.includes(t)))
@@ -764,13 +769,13 @@ function doSearch() {
   renderResults(terms);
   renderPagination();
 
-  const catLabel = S.catId ? ` Ã®n categoria selectatÄƒ` : '';
+  const catLabel = S.catId ? ` în categoria selectată` : '';
   const qLabel   = rawQ.length >= 2 ? ` pentru <strong>"${esc(rawQ)}"</strong>` : '';
   const stLabel  = S.status === 'active' ? ' active' : S.status === 'archived' ? ' arhivate' : '';
   document.getElementById('resultCount').innerHTML =
-    `<strong>${items.length}</strong> speÈ›e${stLabel}${catLabel}${qLabel}`;
+    `<strong>${items.length}</strong> spețe${stLabel}${catLabel}${qLabel}`;
   document.getElementById('sortLabel').textContent =
-    rawQ.length >= 2 ? 'Sortate dupÄƒ relevanÈ›Äƒ' : 'Sortare implicitÄƒ';
+    rawQ.length >= 2 ? 'Sortate după relevanță' : 'Sortare implicită';
 }
 
 /* ==============================================================
@@ -785,10 +790,10 @@ function renderResults(terms) {
     const noQuery = S.query.trim().length < 2 && S.catId === null && S.status === 'all';
     document.getElementById('results').innerHTML = `
       <div class="empty-state">
-        <div class="empty-icon">${noQuery ? 'ðŸ“š' : 'ðŸ”'}</div>
+        <div class="empty-icon">${noQuery ? '📚' : '🔍'}</div>
         ${noQuery
-          ? `<p class="mt-3 text-muted">IntroduceÈ›i cel puÈ›in 2 caractere<br>sau selectaÈ›i o categorie pentru a explora speÈ›ele.</p>`
-          : `<p class="mt-3 text-muted">Nu s-au gÄƒsit rezultate pentru <strong>"${esc(S.query)}"</strong><br><small>ÃŽncercaÈ›i termeni diferiÈ›i, verificaÈ›i ortografia sau resetaÈ›i filtrele.</small></p>`
+          ? `<p class="mt-3 text-muted">Introduceți cel puțin 2 caractere<br>sau selectați o categorie pentru a explora spețele.</p>`
+          : `<p class="mt-3 text-muted">Nu s-au găsit rezultate pentru <strong>"${esc(S.query)}"</strong><br><small>Încercați termeni diferiți, verificați ortografia sau resetați filtrele.</small></p>`
         }
       </div>`;
     return;
@@ -796,7 +801,7 @@ function renderResults(terms) {
 
   document.getElementById('results').innerHTML = slice.map(q => renderCard(q, terms)).join('');
 
-  /* Expand/collapse rÄƒspuns */
+  /* Expand/collapse răspuns */
   document.querySelectorAll('.expand-btn').forEach(btn => {
     btn.addEventListener('click', function () {
       const id  = this.dataset.id;
@@ -806,8 +811,8 @@ function renderResults(terms) {
       pre.style.display = vis ? '' : 'none';
       ful.style.display = vis ? 'none' : '';
       this.innerHTML = vis
-        ? '<i class="bi bi-chevron-down me-1"></i>CiteÈ™te tot rÄƒspunsul'
-        : '<i class="bi bi-chevron-up me-1"></i>RestrÃ¢nge';
+        ? '<i class="bi bi-chevron-down me-1"></i>Citește tot răspunsul'
+        : '<i class="bi bi-chevron-up me-1"></i>Restrânge';
     });
   });
 
@@ -845,7 +850,7 @@ function renderCard(q, terms) {
     .map(t => `<span class="tag-pill" data-tag="${esc(t.tagName)}">${esc(t.tagName)}</span>`)
     .join('');
 
-  /* RÄƒspuns extins: HTML dacÄƒ existÄƒ, altfel plain text */
+  /* Răspuns extins: HTML dacă există, altfel plain text */
   const fullContent = q._ansHTML
     ? `<div class="answer-html">${q._ansHTML}</div>`
     : `<div class="answer-text">${highlight(ansPlain, terms)}</div>`;
@@ -868,19 +873,19 @@ function renderCard(q, terms) {
       </div>
     </div>
 
-    <!-- ÃŽntrebare -->
+    <!-- Întrebare -->
     <p class="q-text">${qHtml}</p>
 
-    <!-- RÄƒspuns preview -->
+    <!-- Răspuns preview -->
     <div class="answer-text mb-1" id="apre-${id}">${preHtml}</div>
 
-    <!-- RÄƒspuns complet (ascuns) -->
+    <!-- Răspuns complet (ascuns) -->
     <div style="display:none" id="aful-${id}">${fullContent}</div>
 
     <!-- Buton expand -->
     ${isLong ? `
       <button class="expand-btn mt-1 mb-2" data-id="${id}">
-        <i class="bi bi-chevron-down me-1"></i>CiteÈ™te tot rÄƒspunsul
+        <i class="bi bi-chevron-down me-1"></i>Citește tot răspunsul
       </button>` : ''}
 
     <!-- Tags -->
@@ -910,7 +915,7 @@ function renderPagination() {
 
   let last = 0, items = '';
   for (const n of nums) {
-    if (last && n - last > 1) items += `<li class="page-item disabled"><span class="page-link">â€¦</span></li>`;
+    if (last && n - last > 1) items += `<li class="page-item disabled"><span class="page-link">…</span></li>`;
     items += `<li class="page-item ${n === cur ? 'active' : ''}">
       <a class="page-link" href="#" onclick="goPage(${n});return false;">${n}</a></li>`;
     last = n;
@@ -981,7 +986,7 @@ document.getElementById('clearBtn').addEventListener('click', () => {
   doSearch();
 });
 
-/* '/' focuseazÄƒ search-ul */
+/* '/' focusează search-ul */
 document.addEventListener('keydown', e => {
   if (e.key === '/' && document.activeElement !== document.getElementById('searchInput')) {
     e.preventDefault();
@@ -992,10 +997,10 @@ document.addEventListener('keydown', e => {
 /* ==============================================================
    MOD SEMANTIC
 ============================================================== */
-const CHAT_API = location.hostname === 'localhost' ? './chat.php' : '/api/chat';
+const CHAT_API = './chat.php';
 let semMode   = false;
 
-// â”€â”€ Stare motor semantic browser â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Stare motor semantic browser ──────────────────────────────
 const SEM = { ready: false, loading: false, embeddings: null, meta: null, dims: 0 };
 
 function semStatus(html) {
@@ -1010,16 +1015,16 @@ async function initSemantic() {
 
   semStatus(`<div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
     <div class="spinner-border spinner-border-sm"></div>
-    Se Ã®ncarcÄƒ datele semantice (prima datÄƒ ~120 MB model, apoi instant din cache)â€¦
+    Se încarcă datele semantice (prima dată ~120 MB model, apoi instant din cache)…
   </div>`);
 
   try {
-    // 1. Embeddings + metadata Ã®n paralel
+    // 1. Embeddings + metadata în paralel
     const [binResp, metaResp] = await Promise.all([
       fetch('./embeddings.bin'),
       fetch('./sem_meta.json'),
     ]);
-    if (!binResp.ok || !metaResp.ok) throw new Error('FiÈ™ierele embeddings.bin / sem_meta.json lipsesc.');
+    if (!binResp.ok || !metaResp.ok) throw new Error('Fișierele embeddings.bin / sem_meta.json lipsesc.');
 
     const [buf, meta] = await Promise.all([binResp.arrayBuffer(), metaResp.json()]);
     const hdr = new Uint32Array(buf, 0, 2);
@@ -1029,7 +1034,7 @@ async function initSemantic() {
 
     semStatus(`<div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
       <div class="spinner-border spinner-border-sm"></div>
-      Date Ã®ncÄƒrcate â€” se iniÈ›ializeazÄƒ modelul AI (prima datÄƒ poate dura 1-2 min)â€¦
+      Date încărcate — se inițializează modelul AI (prima dată poate dura 1-2 min)…
     </div>`);
 
     // 2. Model transformers.js (din modulul de mai jos)
@@ -1039,14 +1044,14 @@ async function initSemantic() {
     SEM.loading = false;
     semStatus(`<span class="badge bg-success me-2">
       <i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i>Semantic AI activ
-    </span><span class="text-muted">${meta.length} speÈ›e indexate Â· ruleazÄƒ complet Ã®n browser</span>`);
+    </span><span class="text-muted">${meta.length} spețe indexate · rulează complet în browser</span>`);
     return true;
 
   } catch(e) {
     SEM.loading = false;
     semStatus(`<div class="api-offline">
       <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
-      <strong>Eroare Ã®ncÄƒrcare:</strong> ${esc(e.message)}
+      <strong>Eroare încărcare:</strong> ${esc(e.message)}
     </div>`);
     return false;
   }
@@ -1058,7 +1063,7 @@ async function semanticSearch(q) {
   document.getElementById('semanticResults').innerHTML = `
     <div class="text-center py-5 text-muted">
       <div class="spinner-border spinner-border-sm me-2"></div>
-      ${SEM.ready ? 'Caut Ã®n 1223 speÈ›eâ€¦' : 'Se iniÈ›ializeazÄƒ motorul semanticâ€¦'}
+      ${SEM.ready ? 'Caut în 1223 spețe…' : 'Se inițializează motorul semantic…'}
     </div>`;
   document.getElementById('semAiAnswer').style.display = 'none';
 
@@ -1084,7 +1089,7 @@ async function semanticSearch(q) {
 
     renderSemantic(top, q);
 
-    // RÄƒspuns AI Groq dacÄƒ toggle-ul e activ
+    // Răspuns AI Groq dacă toggle-ul e activ
     if (document.getElementById('semAiToggle').checked) {
       semAiAnswer(q, top);
     }
@@ -1098,9 +1103,9 @@ async function semAiAnswer(q, context) {
   const box = document.getElementById('semAiAnswer');
   box.style.display = 'block';
   box.innerHTML = `<div class="ai-answer-box">
-    <div class="ai-label"><i class="bi bi-cpu me-1"></i>RÄƒspuns AI â€” se genereazÄƒâ€¦</div>
+    <div class="ai-label"><i class="bi bi-cpu me-1"></i>Răspuns AI — se generează…</div>
     <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
-      <div class="spinner-border spinner-border-sm"></div> Groq analizeazÄƒ speÈ›ele relevanteâ€¦
+      <div class="spinner-border spinner-border-sm"></div> Groq analizează spețele relevante…
     </div>
   </div>`;
   try {
@@ -1115,7 +1120,7 @@ async function semAiAnswer(q, context) {
     const surseHtml = (data.surse || [])
       .map(s => `<span class="badge bg-light text-dark border me-1">#${s.cod}</span>`).join('');
     box.innerHTML = `<div class="ai-answer-box">
-      <div class="ai-label"><i class="bi bi-cpu me-1"></i>RÄƒspuns AI bazat pe speÈ›ele de mai jos</div>
+      <div class="ai-label"><i class="bi bi-cpu me-1"></i>Răspuns AI bazat pe spețele de mai jos</div>
       <div class="ai-text">${esc(data.raspuns).replace(/\n/g,'<br>')}</div>
       ${surseHtml ? `<div class="ai-surse"><i class="bi bi-journal-text me-1"></i>Surse: ${surseHtml}</div>` : ''}
     </div>`;
@@ -1127,7 +1132,7 @@ async function semAiAnswer(q, context) {
 function setMode(mode) {
   semMode = (mode === 'semantic');
 
-  // Seteaza clasa pe body â€” CSS !important gestioneaza vizibilitatea
+  // Seteaza clasa pe body — CSS !important gestioneaza vizibilitatea
   document.body.className = 'mode-' + mode;
 
   // Activeaza tab-ul corect
@@ -1137,10 +1142,10 @@ function setMode(mode) {
   );
 
   const hints = {
-    keyword:  'Minim 2 caractere Â· CautÄƒ È™i cu cod spetÄƒ (#1095) Â· Click pe tag pentru filtrare',
-    semantic: 'Pune o Ã®ntrebare Ã®n romÃ¢nÄƒ â€” agentul cautÄƒ semantic Ã®n 1223 speÈ›e',
-    chat:     'Pune o Ã®ntrebare liberÄƒ â€” AI-ul cautÄƒ Ã®n speÈ›e È™i formuleazÄƒ rÄƒspunsul',
-    cnsc:     'CautÄƒ Ã®n textul complet al deciziilor CNSC Â· minim 3 caractere',
+    keyword:  'Minim 2 caractere · Caută și cu cod spetă (#1095) · Click pe tag pentru filtrare',
+    semantic: 'Pune o întrebare în română — agentul caută semantic în 1223 spețe',
+    chat:     'Pune o întrebare liberă — AI-ul caută în spețe și formulează răspunsul',
+    cnsc:     'Caută în textul complet al deciziilor CNSC · minim 3 caractere',
   };
   document.getElementById('searchHint').textContent = hints[mode] || hints.keyword;
 
@@ -1182,6 +1187,7 @@ function resetCnsc() {
   document.getElementById('cnscFiltSolutie').value = '';
   document.getElementById('cnscFiltAn').value = '';
   document.getElementById('cnscResults').innerHTML = '';
+  document.getElementById('cnscAiAnswer').style.display = 'none';
 }
 
 function semRunExample(el) {
@@ -1199,13 +1205,13 @@ function cnscApplyFilters() {
 function renderSemantic(rezultate, q) {
   if (!rezultate.length) {
     document.getElementById('semanticResults').innerHTML =
-      '<div class="text-center text-muted py-4">Nu s-au gÄƒsit rezultate relevante.</div>';
+      '<div class="text-center text-muted py-4">Nu s-au găsit rezultate relevante.</div>';
     return;
   }
 
   document.getElementById('semanticResults').innerHTML = `
     <div class="mb-3 text-muted" style="font-size:.85rem;">
-      <strong>${rezultate.length}</strong> speÈ›e relevante semantic pentru
+      <strong>${rezultate.length}</strong> spețe relevante semantic pentru
       <strong>"${esc(q)}"</strong>
     </div>
     ${rezultate.map((r, i) => renderSemCard(r, i)).join('')}`;
@@ -1216,8 +1222,8 @@ function renderSemantic(rezultate, q) {
       const collapsed = ans.classList.contains('collapsed');
       ans.classList.toggle('collapsed', !collapsed);
       this.innerHTML = collapsed
-        ? '<i class="bi bi-chevron-up me-1"></i>RestrÃ¢nge'
-        : '<i class="bi bi-chevron-down me-1"></i>CiteÈ™te tot';
+        ? '<i class="bi bi-chevron-up me-1"></i>Restrânge'
+        : '<i class="bi bi-chevron-down me-1"></i>Citește tot';
     });
   });
 }
@@ -1247,13 +1253,13 @@ function renderSemCard(r, i) {
       <div class="d-flex align-items-center gap-2">
         <span class="sem-score ${cls}"><i class="bi bi-stars me-1"></i>${pct}% relevant</span>
         <span class="code-badge">#${r.cod}</span>
-        <span class="date-meta"><i class="bi bi-calendar3 me-1"></i>${r.data || 'â€”'}</span>
+        <span class="date-meta"><i class="bi bi-calendar3 me-1"></i>${r.data || '—'}</span>
       </div>
     </div>
     <p class="q-text">${esc(intrebare)}</p>
     <div class="sem-answer collapsed" id="ans-${i}">${esc(raspuns)}</div>
     <button class="expand-btn mt-2 sem-expand" data-i="${i}">
-      <i class="bi bi-chevron-down me-1"></i>CiteÈ™te tot
+      <i class="bi bi-chevron-down me-1"></i>Citește tot
     </button>
     ${tags ? `<div class="mt-2">${tags}</div>` : ''}
   </div>
@@ -1269,19 +1275,19 @@ async function checkChatApi() {
   if (SEM.ready) {
     document.getElementById('chatApiStatus').innerHTML =
       `<span class="badge bg-success me-2"><i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i>RAG activ</span>
-       <span class="text-muted">${SEM.meta.length} speÈ›e indexate Â· Groq AI</span>`;
+       <span class="text-muted">${SEM.meta.length} spețe indexate · Groq AI</span>`;
     return true;
   }
   document.getElementById('chatApiStatus').innerHTML = `
     <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
       <div class="spinner-border spinner-border-sm"></div>
-      Se iniÈ›ializeazÄƒ motorul de cÄƒutare semanticÄƒâ€¦
+      Se inițializează motorul de căutare semantică…
     </div>`;
   const ok = await initSemantic();
   if (ok) {
     document.getElementById('chatApiStatus').innerHTML =
       `<span class="badge bg-success me-2"><i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i>RAG activ</span>
-       <span class="text-muted">${SEM.meta.length} speÈ›e indexate Â· Groq AI</span>`;
+       <span class="text-muted">${SEM.meta.length} spețe indexate · Groq AI</span>`;
   }
   return ok;
 }
@@ -1306,13 +1312,13 @@ async function sendChat() {
 
   input.value = '';
   document.getElementById('chatBtn').disabled = true;
-  document.getElementById('chatStatus').textContent = 'Se gÃ¢ndeÈ™te...';
+  document.getElementById('chatStatus').textContent = 'Se gândește...';
 
   appendBubble(q, 'user');
 
   const thinkDiv = document.createElement('div');
   thinkDiv.className = 'd-flex justify-content-start';
-  thinkDiv.innerHTML = '<div class="chat-bubble chat-ai chat-thinking"><i class="bi bi-three-dots me-1"></i>Caut Ã®n speÈ›e È™i formulez rÄƒspunsul...</div>';
+  thinkDiv.innerHTML = '<div class="chat-bubble chat-ai chat-thinking"><i class="bi bi-three-dots me-1"></i>Caut în spețe și formulez răspunsul...</div>';
   document.getElementById('chatHistory').appendChild(thinkDiv);
   thinkDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
@@ -1321,14 +1327,14 @@ async function sendChat() {
       const ok = await initSemantic();
       if (!ok) {
         thinkDiv.remove();
-        appendBubble('Motorul semantic nu s-a putut iniÈ›ializa. ReÃ®ncarcÄƒ pagina È™i Ã®ncearcÄƒ din nou.', 'ai');
+        appendBubble('Motorul semantic nu s-a putut inițializa. Reîncarcă pagina și încearcă din nou.', 'ai');
         document.getElementById('chatBtn').disabled = false;
         document.getElementById('chatStatus').textContent = '';
         return;
       }
     }
 
-    // RAG Ã®n browser â€” vector search cu embeddings-urile deja Ã®ncÄƒrcate
+    // RAG în browser — vector search cu embeddings-urile deja încărcate
     const qEmb = await window._semEncode(q);
     const activ = document.getElementById('chatActiv').checked;
     const n = SEM.meta.length, d = SEM.dims;
@@ -1361,7 +1367,7 @@ async function sendChat() {
     }
   } catch (err) {
     thinkDiv.remove();
-    appendBubble('Timeout sau eroare de reÈ›ea.', 'ai');
+    appendBubble('Timeout sau eroare de rețea.', 'ai');
   }
 
   document.getElementById('chatBtn').disabled = false;
@@ -1382,12 +1388,12 @@ async function initCnsc() {
   document.getElementById('cnscStatus').innerHTML = `
     <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
       <div class="spinner-border spinner-border-sm"></div>
-      Se Ã®ncarcÄƒ deciziile CNSCâ€¦
+      Se încarcă deciziile CNSC…
     </div>`;
 
   try {
     const r = await fetch('./decizii_cnsc.json');
-    if (!r.ok) throw new Error('decizii_cnsc.json lipseÈ™te de pe server.');
+    if (!r.ok) throw new Error('decizii_cnsc.json lipsește de pe server.');
     CNSC.data = await r.json();
     CNSC.ready = true;
     CNSC.loading = false;
@@ -1407,7 +1413,7 @@ function showCnscReady() {
     `<span class="badge bg-success me-2" style="background:#2e7d32 !important;">
        <i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i>CNSC activ
      </span>
-     <span class="text-muted">${CNSC.data.length} decizii indexate Â· cÄƒutare Ã®n text complet</span>`;
+     <span class="text-muted">${CNSC.data.length} decizii indexate · căutare în text complet</span>`;
 }
 
 function cnscSearch(q) {
@@ -1416,7 +1422,7 @@ function cnscSearch(q) {
 
   let pool = CNSC.data;
 
-  // Filtru soluÈ›ie
+  // Filtru soluție
   if (filtSol) {
     pool = pool.filter(d => (d.solutie || '').toLowerCase().includes(filtSol));
   }
@@ -1430,12 +1436,12 @@ function cnscSearch(q) {
     return;
   }
 
-  const terms = q.toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '').split(/\s+/).filter(t => t.length >= 2);
+  const terms = q.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').split(/\s+/).filter(t => t.length >= 2);
   const results = pool
     .map(d => {
       const hay = (d.nr_decizie + ' ' + d.data + ' ' + d.categorie + ' ' +
                    d.solutie + ' ' + d.continut_complet)
-        .toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '');
+        .toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
       const hits = terms.filter(t => hay.includes(t)).length;
       return { ...d, _hits: hits };
     })
@@ -1446,8 +1452,8 @@ function cnscSearch(q) {
 }
 
 function cnscExcerpt(text, q) {
-  const terms = q.toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '').split(/\s+/).filter(t => t.length >= 2);
-  const norm = text.toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '');
+  const terms = q.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').split(/\s+/).filter(t => t.length >= 2);
+  const norm = text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   let pos = -1;
   for (const t of terms) {
     pos = norm.indexOf(t);
@@ -1455,7 +1461,7 @@ function cnscExcerpt(text, q) {
   }
   if (pos < 0) pos = 0;
   const start = Math.max(0, pos - 80);
-  let excerpt = (start > 0 ? 'â€¦' : '') + text.slice(start, start + 350) + 'â€¦';
+  let excerpt = (start > 0 ? '…' : '') + text.slice(start, start + 350) + '…';
   terms.forEach(t => {
     excerpt = excerpt.replace(new RegExp(t, 'gi'), m => `<mark>${m}</mark>`);
   });
@@ -1467,19 +1473,59 @@ function solutieCls(s) {
   const sl = s.toLowerCase();
   if (sl.includes('admite')) return 'cnsc-solutie-admis';
   if (sl.includes('respinge')) return 'cnsc-solutie-respins';
-  if (sl.includes('anuleazÄƒ') || sl.includes('anuleaza') || sl.includes('obligÄƒ') || sl.includes('obliga')) return 'cnsc-solutie-anulare';
+  if (sl.includes('anulează') || sl.includes('anuleaza') || sl.includes('obligă') || sl.includes('obliga')) return 'cnsc-solutie-anulare';
   return '';
+}
+
+async function cnscAiAnswer(q, decisions) {
+  const box = document.getElementById('cnscAiAnswer');
+  box.style.display = 'block';
+  box.innerHTML = `<div class="ai-answer-box" style="border-color:#c8e6c9;background:linear-gradient(135deg,#e8f5e9,#f1f8f1);">
+    <div class="ai-label" style="color:#2e7d32;"><i class="bi bi-cpu me-1"></i>Răspuns AI — analizez deciziile CNSC…</div>
+    <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
+      <div class="spinner-border spinner-border-sm"></div> Groq procesează deciziile relevante…
+    </div>
+  </div>`;
+
+  const context = decisions.slice(0, 4).map(d => ({
+    cod:  d.nr_decizie || d.cod,
+    cat:  d.categorie,
+    q:    `Decizie CNSC ${d.nr_decizie || d.cod} din ${d.data || '?'}. Soluție: ${d.solutie || '?'}`,
+    a:    (d.motivare || d.continut_complet || '').slice(0, 800),
+  }));
+
+  const promptQ = `Pe baza deciziilor CNSC de mai jos, răspunde la întrebarea: "${q}"`;
+
+  try {
+    const r = await fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ q: promptQ, context }),
+      signal: AbortSignal.timeout(25000),
+    });
+    const data = await r.json();
+    if (data.error) { box.style.display = 'none'; return; }
+    const surseHtml = decisions.slice(0, 4)
+      .map(d => `<span class="badge bg-light border me-1" style="color:#2e7d32;">${esc(d.nr_decizie || d.cod)}</span>`).join('');
+    box.innerHTML = `<div class="ai-answer-box" style="border-color:#c8e6c9;background:linear-gradient(135deg,#e8f5e9,#f1f8f1);">
+      <div class="ai-label" style="color:#2e7d32;"><i class="bi bi-cpu me-1"></i>Răspuns AI bazat pe deciziile CNSC de mai jos</div>
+      <div class="ai-text">${esc(data.raspuns).replace(/\n/g,'<br>')}</div>
+      ${surseHtml ? `<div class="ai-surse"><i class="bi bi-journal-text me-1"></i>Surse: ${surseHtml}</div>` : ''}
+    </div>`;
+  } catch(e) {
+    box.style.display = 'none';
+  }
 }
 
 function renderCnsc(items, q) {
   const el = document.getElementById('cnscResults');
   if (!items.length) {
-    el.innerHTML = '<div class="text-center text-muted py-4">Nu s-au gÄƒsit decizii pentru aceastÄƒ cÄƒutare.</div>';
+    el.innerHTML = '<div class="text-center text-muted py-4">Nu s-au găsit decizii pentru această căutare.</div>';
     return;
   }
   el.innerHTML = `
     <div class="mb-3 text-muted" style="font-size:.85rem;">
-      <strong>${items.length}</strong> ${items.length === 1 ? 'decizie gÄƒsitÄƒ' : 'decizii gÄƒsite'}
+      <strong>${items.length}</strong> ${items.length === 1 ? 'decizie găsită' : 'decizii găsite'}
       ${q ? `pentru <strong>"${esc(q)}"</strong>` : ''}
     </div>
     ${items.map(d => {
@@ -1488,7 +1534,7 @@ function renderCnsc(items, q) {
       const sol = d.solutie ? `<span class="cat-badge ${solutieCls(d.solutie)} me-2">${esc(d.solutie.slice(0,60))}</span>` : '';
       const cat = `<span class="cat-badge" style="background:#e8f5e920;color:#2e7d32;border:1px solid #c8e6c9;">
         <i class="bi bi-folder2 me-1"></i>${esc(d.categorie)}</span>`;
-      const excerpt = q ? cnscExcerpt(d.continut_complet || '', q) : (d.continut_complet || '').slice(0, 300) + 'â€¦';
+      const excerpt = q ? cnscExcerpt(d.continut_complet || '', q) : (d.continut_complet || '').slice(0, 300) + '…';
       return `
 <div class="card cnsc-card">
   <div class="card-body p-4">
@@ -1502,6 +1548,12 @@ function renderCnsc(items, q) {
   </div>
 </div>`;
     }).join('')}`;
+
+  if (q && items.length && document.getElementById('cnscAiToggle')?.checked) {
+    cnscAiAnswer(q, items);
+  } else {
+    document.getElementById('cnscAiAnswer').style.display = 'none';
+  }
 }
 
 /* Hook debounce pe inputurile dedicate */
@@ -1524,12 +1576,12 @@ document.getElementById('cnscInput').addEventListener('keydown', e => {
 ============================================================== */
 loadData();
 </script>
-<!-- â•â•â• TRANSFORMERS.JS â€” motor semantic complet Ã®n browser â•â•â• -->
+<!-- ═══ TRANSFORMERS.JS — motor semantic complet în browser ═══ -->
 <script type="module">
 import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2';
 
 env.allowLocalModels  = false;
-env.useBrowserCache   = true;   // cache model in IndexedDB dupÄƒ primul download
+env.useBrowserCache   = true;   // cache model in IndexedDB după primul download
 
 const MODEL = 'Xenova/paraphrase-multilingual-MiniLM-L12-v2';
 let extractor = null;
@@ -1547,4 +1599,3 @@ window._semEncode = async function(text) {
 </script>
 </body>
 </html>
-
