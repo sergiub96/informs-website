@@ -1,0 +1,1550 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Focus by Agatha Plus â€” SpeÈ›e ANAP & Decizii CNSC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --anap-blue: #003087;
+      --anap-light: #dce8ff;
+      --anap-accent: #1a73e8;
+    }
+    body { background: #f4f6fb; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; padding-top: 58px; }
+
+    /* â”€â”€ Nav informs.ro â”€â”€ */
+    :root { --navy:#061830; --blue:#1358B0; --blue-a:#3B80CA; --blue-lt:#E8F3FC; --text-2:#4A6278; --dur:0.20s; --ease:cubic-bezier(.4,0,.2,1); }
+    nav.main-nav { position:fixed; top:0; left:0; right:0; z-index:200; background:#fff; box-shadow:0 2px 12px rgba(6,24,48,.09); transition:transform .3s ease; }
+    nav.main-nav.nav-hidden { transform:translateY(-100%); }
+    .nav-island { max-width:1200px; margin:0 auto; }
+    .nav-inner { height:58px; display:flex; align-items:center; padding:0 28px; position:relative; }
+    .nav-logo { display:flex; align-items:center; flex-shrink:0; text-decoration:none; }
+    .nav-links { position:absolute; left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:2px; }
+    .nav-end { margin-left:auto; display:flex; align-items:center; gap:8px; }
+    .nav-link { padding:7px 12px; border-radius:6px; font-size:15.5px; font-weight:500; color:var(--text-2); transition:all var(--dur) var(--ease); cursor:pointer; white-space:nowrap; text-decoration:none; }
+    .nav-link:hover { color:var(--blue); }
+    .nav-link.active { color:var(--blue); font-weight:600; }
+    .nav-cta { padding:7px 18px; background:var(--blue-a); color:#fff !important; border-radius:6px; font-weight:600; font-size:14.5px; transition:all var(--dur) var(--ease); }
+    .nav-cta:hover { background:#5294D4 !important; transform:translateY(-1px); }
+    .nav-dd { position:relative; }
+    .nav-dd::after { content:''; position:absolute; top:100%; left:0; right:0; height:8px; }
+    .nav-dd-toggle::after { content:' â–¾'; font-size:9px; opacity:.45; }
+    .nav-dd-menu { position:absolute; top:calc(100% + 4px); left:0; min-width:260px; background:rgba(255,255,255,.97); backdrop-filter:blur(20px); border:1px solid rgba(59,128,202,.18); border-radius:12px; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-6px); transition:all var(--dur) var(--ease); padding:6px; z-index:201; }
+    .nav-dd.dd-open .nav-dd-menu { opacity:1; visibility:visible; transform:translateY(0); pointer-events:all; }
+    .nav-dd-item { display:block; padding:9px 13px; border-radius:6px; font-size:15px; color:var(--text-2); font-weight:500; transition:all var(--dur) var(--ease); text-decoration:none; }
+    .nav-dd-item:hover { background:var(--blue-lt); color:var(--blue); }
+    .nav-badge { font-size:10px; font-weight:700; background:#e8f5e9; color:#2e7d32; border-radius:10px; padding:1px 7px; margin-left:6px; }
+    .hamburger { display:none; flex-direction:column; gap:5px; padding:8px; border-radius:6px; transition:background var(--dur); border:none; background:none; cursor:pointer; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--navy); border-radius:2px; transition:all var(--dur) var(--ease); }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; inset:58px 0 0; background:rgba(5,20,42,.97); backdrop-filter:blur(18px); z-index:199; overflow-y:auto; padding:12px 14px 40px; flex-direction:column; gap:2px; border-top:1px solid rgba(59,128,202,.15); }
+    .mobile-menu.open { display:flex; }
+    .m-link { display:block; padding:12px 14px; border-radius:8px; font-size:15px; font-weight:500; color:rgba(255,255,255,.68); text-decoration:none; transition:all var(--dur) var(--ease); }
+    .m-link:hover { background:rgba(59,128,202,.18); color:#fff; }
+    .m-section-title { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:rgba(255,255,255,.3); padding:14px 14px 5px; }
+    @media(max-width:768px) { .nav-links { display:none; } .nav-end .nav-cta { display:none; } .hamburger { display:flex; } }
+    .topbar { background: var(--anap-blue); }
+    .search-hero { background: linear-gradient(135deg, #003087 0%, #1a4fa8 100%); padding: 2.2rem 0 2rem; }
+    .search-input-wrap { background: #fff; border-radius: 50px; box-shadow: 0 6px 28px rgba(0,0,0,.22); display: flex; align-items: center; padding: .2rem .2rem .2rem 1.2rem; }
+    #searchInput { border: none; outline: none; font-size: 1.05rem; flex: 1; background: transparent; min-width: 0; }
+    #searchInput::placeholder { color: #aaa; }
+    .search-btn { background: var(--anap-accent); border: none; border-radius: 50px; color: #fff; padding: .5rem 1.4rem; font-weight: 600; white-space: nowrap; }
+    .search-btn:hover { background: #1557b0; }
+    #clearBtn { background: none; border: none; color: #aaa; padding: .3rem .6rem; border-radius: 50%; cursor: pointer; }
+    #clearBtn:hover { color: #555; background: #f0f0f0; }
+
+    /* Sidebar */
+    .sidebar-card { border: none; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.07); margin-bottom: 1rem; }
+    .sidebar-title { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: #888; margin-bottom: .6rem; }
+    .category-scroll { max-height: 380px; overflow-y: auto; }
+    .cat-item { cursor: pointer; padding: .32rem .6rem; border-radius: 8px; font-size: .84rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; transition: background .12s; }
+    .cat-item:hover { background: var(--anap-light); }
+    .cat-item.active { background: var(--anap-blue); color: #fff; font-weight: 600; }
+    .cat-item.active .badge { background: rgba(255,255,255,.25) !important; color: #fff !important; }
+    .cat-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .status-btn { font-size: .82rem; }
+
+    /* Result cards */
+    .result-card { border: none; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.07); margin-bottom: .85rem; transition: box-shadow .15s, transform .15s; }
+    .result-card:hover { box-shadow: 0 6px 24px rgba(0,48,135,.13); transform: translateY(-1px); }
+    mark { background: #fff176; padding: 0 2px; border-radius: 2px; font-style: normal; }
+    .cat-badge { font-size: .73rem; font-weight: 600; border-radius: 6px; padding: .22rem .55rem; }
+    .code-badge { font-size: .72rem; font-family: 'Courier New', monospace; background: #f0f2f5; color: #555; border-radius: 5px; padding: .18rem .5rem; border: 1px solid #e0e3e8; }
+    .date-meta { font-size: .74rem; color: #999; }
+    .q-text { font-size: .95rem; font-weight: 600; color: #1a1a2e; line-height: 1.5; margin-bottom: .5rem; }
+    .answer-text { font-size: .88rem; color: #444; line-height: 1.65; }
+    .answer-html { font-size: .88rem; color: #444; line-height: 1.65; }
+    .answer-html p { margin-bottom: .5rem; }
+    .answer-html ul, .answer-html ol { padding-left: 1.4rem; margin-bottom: .5rem; }
+    .tag-pill { font-size: .7rem; cursor: pointer; background: #eef2ff; color: #3b4fc4; border-radius: 20px; padding: .18rem .65rem; border: 1px solid #c9d4f9; transition: background .12s; display: inline-block; margin: 0 .2rem .2rem 0; }
+    .tag-pill:hover { background: #dce4ff; }
+    .expand-btn { font-size: .8rem; color: var(--anap-accent); background: none; border: none; padding: 0; cursor: pointer; }
+    .expand-btn:hover { text-decoration: underline; }
+    .archived-pill { font-size: .68rem; background: #f3f4f6; color: #6b7280; border-radius: 20px; padding: .15rem .55rem; border: 1px solid #e5e7eb; }
+
+    /* Stats & empty */
+    .stats-row { font-size: .88rem; color: #666; margin-bottom: .85rem; }
+    .empty-state { text-align: center; padding: 3.5rem 2rem; color: #aaa; }
+    .empty-icon { font-size: 3.5rem; }
+    .loader-wrap { display: flex; justify-content: center; align-items: center; padding: 4rem; }
+
+    /* Pagination */
+    .pagination .page-link { border-radius: 8px !important; margin: 0 2px; font-size: .85rem; }
+    .pagination .page-item.active .page-link { background: var(--anap-blue); border-color: var(--anap-blue); }
+
+    /* Scrollbar for category list */
+    .category-scroll::-webkit-scrollbar { width: 4px; }
+    .category-scroll::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 2px; }
+    .category-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+
+    /* Tab-uri mod cautare */
+    .tab-mode { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); color: #fff; border-radius: 20px; padding: .3rem 1rem; font-size: .82rem; cursor: pointer; transition: all .15s; }
+    .tab-mode:hover { background: rgba(255,255,255,.25); }
+    .tab-mode.active { background: #fff; color: var(--anap-blue); font-weight: 600; border-color: #fff; }
+
+    /* Hero search bar â€” vizibil doar Ã®n keyword mode */
+    body:not(.mode-keyword) .search-input-wrap { display: none !important; }
+    body:not(.mode-keyword) #searchHint        { display: none !important; }
+
+    /* Input dedicat per panel */
+    .panel-search-wrap { background: #fff; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,.12); display: flex; align-items: center; padding: .25rem .25rem .25rem 1.2rem; margin-bottom: 1rem; }
+    .panel-search-wrap input { border: none; outline: none; font-size: 1rem; flex: 1; background: transparent; min-width: 0; }
+    .panel-search-wrap input::placeholder { color: #aaa; }
+    .panel-search-btn { background: var(--anap-accent); border: none; border-radius: 50px; color: #fff; padding: .45rem 1.2rem; font-weight: 600; white-space: nowrap; font-size: .9rem; }
+    .panel-search-btn:hover { background: #1557b0; }
+    .panel-reset-btn { background: none; border: 1px solid rgba(255,255,255,.4); border-radius: 50px; color: rgba(255,255,255,.8); padding: .3rem .9rem; font-size: .78rem; cursor: pointer; transition: all .15s; }
+    .panel-reset-btn:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .panel-reset-btn-light { background: none; border: 1px solid #ddd; border-radius: 50px; color: #888; padding: .28rem .85rem; font-size: .78rem; cursor: pointer; transition: all .15s; }
+    .panel-reset-btn-light:hover { background: #f5f5f5; color: #555; }
+
+    /* Exemple queries */
+    .sem-example { font-size: .76rem; cursor: pointer; background: rgba(255,255,255,.12); color: rgba(255,255,255,.85); border-radius: 20px; padding: .2rem .7rem; border: 1px solid rgba(255,255,255,.25); transition: all .12s; display: inline-block; margin: .15rem; }
+    .sem-example:hover { background: rgba(255,255,255,.25); color: #fff; }
+    .sem-example-light { font-size: .76rem; cursor: pointer; background: #eef2ff; color: #3b4fc4; border-radius: 20px; padding: .2rem .7rem; border: 1px solid #c9d4f9; transition: all .12s; display: inline-block; margin: .15rem; }
+    .sem-example-light:hover { background: #dce4ff; }
+
+    /* AI Answer box */
+    .ai-answer-box { background: linear-gradient(135deg,#e8f0fe,#f0f7ff); border: 1px solid #c5d8fb; border-radius: 14px; padding: 1.2rem 1.5rem; margin-bottom: 1.2rem; }
+    .ai-answer-box .ai-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--anap-accent); margin-bottom: .5rem; }
+    .ai-answer-box .ai-text  { font-size: .9rem; color: #222; line-height: 1.7; }
+    .ai-answer-box .ai-surse { font-size: .75rem; color: #888; margin-top: .6rem; }
+
+    /* CNSC filters */
+    .cnsc-filter-bar { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+    .cnsc-filter-bar select { border: 1px solid #dde3ee; border-radius: 20px; padding: .3rem .85rem; font-size: .82rem; color: #444; background: #fff; cursor: pointer; }
+    .cnsc-filter-bar select:focus { outline: none; border-color: var(--anap-accent); }
+
+    /* Reset keyword mode */
+    .keyword-reset { font-size: .78rem; color: rgba(255,255,255,.7); cursor: pointer; background: none; border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: .25rem .8rem; margin-left: .5rem; transition: all .15s; }
+    .keyword-reset:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+    /* Vizibilitate panouri per mod â€” !important bate orice style inline */
+    body.mode-keyword  #semanticPanel,
+    body.mode-keyword  #chatPanel,
+    body.mode-keyword  #cnscPanel,
+    body.mode-semantic #results,
+    body.mode-semantic #pagination,
+    body.mode-semantic #statsRow,
+    body.mode-semantic #chatPanel,
+    body.mode-semantic #cnscPanel,
+    body.mode-chat     #results,
+    body.mode-chat     #pagination,
+    body.mode-chat     #statsRow,
+    body.mode-chat     #semanticPanel,
+    body.mode-chat     #cnscPanel,
+    body.mode-cnsc     #results,
+    body.mode-cnsc     #pagination,
+    body.mode-cnsc     #statsRow,
+    body.mode-cnsc     #semanticPanel,
+    body.mode-cnsc     #chatPanel { display: none !important; }
+    body.mode-semantic aside,
+    body.mode-chat     aside,
+    body.mode-cnsc     aside { display: none !important; }
+
+    /* Chat AI */
+    .chat-bubble { border-radius: 14px; padding: .75rem 1rem; margin-bottom: .75rem; max-width: 85%; font-size: .9rem; line-height: 1.6; }
+    .chat-user { background: var(--anap-blue); color: #fff; margin-left: auto; border-bottom-right-radius: 4px; }
+    .chat-ai { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.08); border-bottom-left-radius: 4px; }
+    .chat-ai .surse { font-size: .75rem; color: #888; margin-top: .5rem; padding-top: .5rem; border-top: 1px solid #f0f0f0; }
+    .chat-thinking { color: #aaa; font-style: italic; font-size: .85rem; }
+
+    /* Panoul semantic */
+    #semanticPanel { display: none; }
+    body.mode-semantic #semanticPanel { display: block !important; }
+    body.mode-chat     #chatPanel     { display: block !important; }
+    body.mode-cnsc     #cnscPanel     { display: block !important; }
+
+    /* Decizii CNSC */
+    #cnscPanel { display: none; }
+    .cnsc-card { border: none; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.07); margin-bottom: .85rem; border-left: 4px solid #2e7d32; transition: box-shadow .15s, transform .15s; }
+    .cnsc-card:hover { box-shadow: 0 6px 24px rgba(46,125,50,.15); transform: translateY(-1px); }
+    .cnsc-nr { font-size: .72rem; font-family: 'Courier New', monospace; background: #e8f5e9; color: #2e7d32; border-radius: 5px; padding: .18rem .5rem; border: 1px solid #c8e6c9; }
+    .cnsc-solutie-admis  { background: #e8f5e9; color: #2e7d32; }
+    .cnsc-solutie-respins { background: #fce4ec; color: #c62828; }
+    .cnsc-solutie-anulare { background: #fff3e0; color: #e65100; }
+    .cnsc-excerpt { font-size: .85rem; color: #555; line-height: 1.65; }
+    .cnsc-excerpt mark { background: #fff176; padding: 0 2px; border-radius: 2px; }
+    .sem-card { border: none; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.07); margin-bottom: .85rem; border-left: 4px solid var(--anap-accent); }
+    .sem-card:hover { box-shadow: 0 6px 24px rgba(0,48,135,.13); }
+    .sem-score { font-size: .72rem; font-weight: 700; padding: .18rem .55rem; border-radius: 20px; }
+    .sem-score.high  { background: #d1fae5; color: #065f46; }
+    .sem-score.med   { background: #fef9c3; color: #854d0e; }
+    .sem-score.low   { background: #fee2e2; color: #991b1b; }
+    .sem-answer { font-size: .88rem; color: #333; line-height: 1.7; }
+    .sem-answer.collapsed { max-height: 5em; overflow: hidden; position: relative; }
+    .sem-answer.collapsed::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2em; background: linear-gradient(transparent, #fff); }
+    .api-offline { background: #fff3cd; border: 1px solid #ffc107; border-radius: 12px; padding: 1.2rem 1.5rem; font-size: .9rem; }
+
+    @media (max-width: 768px) {
+      .search-hero { padding: 1.5rem 0; }
+    }
+  </style>
+</head>
+<body class="mode-keyword">
+
+<!-- NAV informs.ro -->
+<nav class="main-nav" id="mainNav">
+  <div class="nav-island">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../">
+        <img src="../logo/png/logo-no-background.png" alt="INFORMS" style="height:28px;width:auto;">
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="../">AcasÄƒ</a>
+        <a class="nav-link" href="../despre-noi">Despre noi</a>
+        <div class="nav-dd" id="ddSvc">
+          <a class="nav-link nav-dd-toggle" href="../servicii">Servicii</a>
+          <div class="nav-dd-menu">
+            <a class="nav-dd-item" href="../analiza-si-solutii">AnalizÄƒ È™i soluÈ›ii personalizate</a>
+            <a class="nav-dd-item" href="../achizitii-publice">AchiziÈ›ii publice</a>
+            <a class="nav-dd-item" href="../delegare-servicii">Delegare servicii de utilitÄƒÈ›i publice</a>
+            <a class="nav-dd-item" href="../modele-excel">Modele de lucru EXCEL</a>
+            <a class="nav-dd-item" href="../modele-word">Modele de lucru WORD</a>
+            <a class="nav-dd-item" href="../modele-pdf">Modele de lucru PDF</a>
+          </div>
+        </div>
+        <div class="nav-dd" id="ddProd">
+          <a class="nav-link nav-dd-toggle" href="../magazin">Produse</a>
+          <div class="nav-dd-menu">
+            <a class="nav-dd-item" href="../magazin">Toate produsele</a>
+            <a class="nav-dd-item" href="../magazin">AchiziÈ›ii publice</a>
+            <a class="nav-dd-item" href="../magazin">Delegare servicii</a>
+            <a class="nav-dd-item" href="../magazin">Management proiect</a>
+            <a class="nav-dd-item" href="../magazin" style="color:#16A34A;">Gratuite</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-end">
+        <span id="navStats" style="font-size:12px;color:var(--text-2);margin-right:8px;"></span>
+        <a class="nav-link nav-cta" href="../contact">Contact</a>
+        <button class="hamburger" id="hamburger" aria-label="Meniu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a class="m-link" href="../">AcasÄƒ</a>
+  <a class="m-link" href="../despre-noi">Despre noi</a>
+  <div class="m-section-title">Servicii</div>
+  <a class="m-link" href="../analiza-si-solutii" style="padding-left:26px;font-size:14px;">AnalizÄƒ È™i soluÈ›ii</a>
+  <a class="m-link" href="../achizitii-publice" style="padding-left:26px;font-size:14px;">AchiziÈ›ii publice</a>
+  <a class="m-link" href="../delegare-servicii" style="padding-left:26px;font-size:14px;">Delegare servicii</a>
+  <div class="m-section-title">Produse</div>
+  <a class="m-link" href="../magazin">Toate produsele</a>
+  <a class="m-link active" href="./" style="color:#60a5fa;">Focus â€” SpeÈ›e ANAP</a>
+  <a class="m-link" href="../contact" style="margin-top:12px;">Contact</a>
+</div>
+
+<script>
+// Nav scroll + hamburger + dropdown (vanilla JS)
+(function(){
+  const nav = document.getElementById('mainNav');
+  const hbg = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileMenu');
+  let lastY = 0;
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 80) nav.classList.toggle('nav-hidden', y > lastY);
+    else nav.classList.remove('nav-hidden');
+    lastY = y;
+  }, { passive: true });
+
+  hbg.addEventListener('click', () => {
+    hbg.classList.toggle('open');
+    mob.classList.toggle('open');
+  });
+
+  ['ddSvc','ddProd'].forEach(id => {
+    const dd = document.getElementById(id);
+    let t;
+    dd.addEventListener('mouseenter', () => { clearTimeout(t); dd.classList.add('dd-open'); });
+    dd.addEventListener('mouseleave', () => { t = setTimeout(() => dd.classList.remove('dd-open'), 220); });
+  });
+})();
+</script>
+
+<!-- SEARCH HERO -->
+<div class="search-hero">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div class="search-input-wrap">
+          <i class="bi bi-search text-muted me-2" style="flex-shrink:0"></i>
+          <input type="text" id="searchInput"
+                 placeholder="CautÄƒ speÈ›e: Ã®ntrebare, rÄƒspuns, categorie, tag, codâ€¦"
+                 autocomplete="off" spellcheck="false">
+          <button id="clearBtn" style="display:none" title="È˜terge cÄƒutarea">
+            <i class="bi bi-x-lg"></i>
+          </button>
+          <button class="search-btn ms-2" onclick="doSearch()">
+            <i class="bi bi-search me-1"></i>CautÄƒ
+          </button>
+          <button class="keyword-reset ms-1" onclick="resetKeyword()" title="ReseteazÄƒ filtre">
+            <i class="bi bi-x-circle me-1"></i>Reset
+          </button>
+        </div>
+        <div class="text-center mt-2" style="font-size:.8rem; color:rgba(255,255,255,.55);" id="searchHint">
+          Minim 2 caractere Â· CautÄƒ È™i cu cod spetÄƒ (#1095) Â· Click pe tag pentru filtrare
+        </div>
+        <!-- Tab-uri mod cautare -->
+        <div class="d-flex justify-content-center gap-2 mt-3">
+          <button id="tabKeyword" class="tab-mode active" onclick="setMode('keyword')">
+            <i class="bi bi-search me-1"></i>CÄƒutare text
+          </button>
+          <button id="tabSemantic" class="tab-mode" onclick="setMode('semantic')">
+            <i class="bi bi-stars me-1"></i>Semantic AI
+          </button>
+          <button id="tabChat" class="tab-mode" onclick="setMode('chat')">
+            <i class="bi bi-chat-dots me-1"></i>Chat AI
+          </button>
+          <button id="tabCnsc" class="tab-mode" onclick="setMode('cnsc')">
+            <i class="bi bi-journal-richtext me-1"></i>Decizii CNSC
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container-fluid px-3 px-lg-4 py-4" style="max-width:1400px; margin:0 auto;">
+  <div class="row g-3">
+
+    <!-- SIDEBAR -->
+    <aside class="col-xl-3 col-lg-3 col-md-4">
+
+      <!-- Status -->
+      <div class="card sidebar-card">
+        <div class="card-body p-3">
+          <div class="sidebar-title"><i class="bi bi-funnel me-1"></i>Status</div>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-sm btn-primary status-btn" id="btnAll" onclick="setStatus('all')">
+              Toate <span id="cntAll" class="badge bg-white text-primary ms-1">â€”</span>
+            </button>
+            <button class="btn btn-sm btn-outline-success status-btn" id="btnActive" onclick="setStatus('active')">
+              Active <span id="cntActive" class="badge bg-success text-white ms-1">â€”</span>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary status-btn" id="btnArchived" onclick="setStatus('archived')">
+              Arhivate <span id="cntArchived" class="badge bg-secondary text-white ms-1">â€”</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="card sidebar-card">
+        <div class="card-body p-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="sidebar-title mb-0"><i class="bi bi-folder2 me-1"></i>Categorie</div>
+            <button class="btn btn-link btn-sm p-0 text-muted" style="font-size:.75rem;" onclick="setCat(null)">
+              Toate categoriile
+            </button>
+          </div>
+          <input type="text" id="catSearch" class="form-control form-control-sm mb-2"
+                 placeholder="FiltreazÄƒ categoriiâ€¦" oninput="filterCategories(this.value)">
+          <div class="category-scroll" id="categoryList">
+            <div class="text-muted text-center py-3" style="font-size:.8rem;">Se Ã®ncarcÄƒâ€¦</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick stats -->
+      <div class="card sidebar-card">
+        <div class="card-body p-3">
+          <div class="sidebar-title"><i class="bi bi-bar-chart-line me-1"></i>Statistici</div>
+          <div id="statsPanel" style="font-size:.82rem; color:#555; line-height:1.8;">
+            <div class="placeholder-glow"><span class="placeholder col-10"></span><span class="placeholder col-7 mt-1"></span></div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- RESULTS -->
+    <main class="col-xl-9 col-lg-9 col-md-8">
+
+      <div class="d-flex justify-content-between align-items-center stats-row" id="statsRow">
+        <span id="resultCount"></span>
+        <span id="sortLabel" class="text-muted" style="font-size:.8rem;"></span>
+      </div>
+
+      <div id="results">
+        <div class="loader-wrap">
+          <div class="spinner-border text-primary"></div>
+        </div>
+      </div>
+
+      <div id="pagination" class="d-flex justify-content-center mt-4 mb-2"></div>
+
+      <!-- â•â•â• PANOUL CHAT AI â•â•â• -->
+      <div id="chatPanel" style="display:none;">
+        <div id="chatApiStatus" class="mb-3" style="font-size:.82rem;"></div>
+        <div id="chatHistory" class="mb-3"></div>
+        <div class="card" style="border-radius:14px;border:none;box-shadow:0 2px 10px rgba(0,0,0,.07);">
+          <div class="card-body p-3">
+            <div class="d-flex gap-2">
+              <input type="text" id="chatInput" class="form-control" placeholder="Pune o Ã®ntrebare despre achiziÈ›ii publice..."
+                     style="border-radius:20px;" onkeydown="if(event.key==='Enter')sendChat()">
+              <button class="btn btn-primary px-4" onclick="sendChat()" id="chatBtn" style="border-radius:20px;white-space:nowrap;">
+                <i class="bi bi-send me-1"></i>Trimite
+              </button>
+            </div>
+            <div class="mt-2 d-flex align-items-center gap-3" style="font-size:.78rem;color:#888;">
+              <label class="d-flex align-items-center gap-1 mb-0" style="cursor:pointer;">
+                <input type="checkbox" id="chatActiv"> Doar speÈ›e active
+              </label>
+              <span id="chatStatus"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- â•â•â• PANOUL DECIZII CNSC â•â•â• -->
+      <div id="cnscPanel" style="display:none;">
+        <!-- Input dedicat CNSC -->
+        <div class="panel-search-wrap">
+          <i class="bi bi-journal-richtext text-muted me-2" style="flex-shrink:0;color:#2e7d32 !important;"></i>
+          <input type="text" id="cnscInput" placeholder="CautÄƒ Ã®n deciziile CNSC: proporÈ›ionalitate, ofertÄƒ, evaluareâ€¦" autocomplete="off">
+          <button class="panel-search-btn ms-2" style="background:#2e7d32;" onclick="cnscSearch(document.getElementById('cnscInput').value.trim())">
+            <i class="bi bi-search me-1"></i>CautÄƒ
+          </button>
+        </div>
+        <!-- Filtre CNSC -->
+        <div class="cnsc-filter-bar">
+          <select id="cnscFiltSolutie" onchange="cnscApplyFilters()">
+            <option value="">Toate soluÈ›iile</option>
+            <option value="admite">Admite contestaÈ›ia</option>
+            <option value="respinge">Respinge contestaÈ›ia</option>
+            <option value="anuleazÄƒ">Anulare / Obligare AC</option>
+          </select>
+          <select id="cnscFiltAn" onchange="cnscApplyFilters()">
+            <option value="">ToÈ›i anii</option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2021">2021</option>
+            <option value="2015">2015</option>
+          </select>
+          <button class="panel-reset-btn-light" onclick="resetCnsc()">
+            <i class="bi bi-x-circle me-1"></i>ReseteazÄƒ
+          </button>
+          <div id="cnscStatus" style="font-size:.82rem;margin-left:auto;"></div>
+        </div>
+        <div id="cnscResults"></div>
+      </div>
+
+      <!-- â•â•â• PANOUL SEMANTIC â•â•â• -->
+      <div id="semanticPanel">
+        <!-- Input dedicat Semantic -->
+        <div class="panel-search-wrap">
+          <i class="bi bi-stars text-muted me-2" style="flex-shrink:0;color:var(--anap-accent) !important;"></i>
+          <input type="text" id="semInput" placeholder="Descrie problema juridicÄƒ Ã®n cuvinte propriiâ€¦" autocomplete="off"
+                 onkeydown="if(event.key==='Enter') semanticSearch(this.value.trim())">
+          <button class="panel-search-btn ms-2" onclick="semanticSearch(document.getElementById('semInput').value.trim())">
+            <i class="bi bi-stars me-1"></i>CautÄƒ
+          </button>
+        </div>
+        <!-- Exemple clickabile -->
+        <div class="mb-3" style="font-size:.78rem;color:#888;">
+          <span class="me-1">Exemple:</span>
+          <span class="sem-example-light" onclick="semRunExample(this)">criteriu discriminatoriu Ã®n caietul de sarcini</span>
+          <span class="sem-example-light" onclick="semRunExample(this)">DUAE completat greÈ™it de ofertant</span>
+          <span class="sem-example-light" onclick="semRunExample(this)">subcontractant declarat ulterior</span>
+          <span class="sem-example-light" onclick="semRunExample(this)">clarificÄƒri dupÄƒ termenul limitÄƒ</span>
+        </div>
+        <!-- Toggle RÄƒspuns AI -->
+        <div class="d-flex align-items-center gap-3 mb-3" style="font-size:.82rem;">
+          <label class="d-flex align-items-center gap-2 mb-0" style="cursor:pointer;">
+            <input type="checkbox" id="semAiToggle" checked>
+            <span><i class="bi bi-cpu me-1 text-primary"></i>RÄƒspuns AI (Groq sintetizeazÄƒ din rezultate)</span>
+          </label>
+          <button class="panel-reset-btn-light" onclick="resetSemantic()">
+            <i class="bi bi-x-circle me-1"></i>ReseteazÄƒ
+          </button>
+        </div>
+        <!-- Status + AI answer + rezultate -->
+        <div id="apiStatus" class="mb-3" style="font-size:.82rem;"></div>
+        <div id="semAiAnswer" class="mb-3" style="display:none;"></div>
+        <div id="semanticResults"></div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ==============================================================
+   CONFIGURARE
+============================================================== */
+const PER_PAGE   = 25;
+const DATA_FILE  = './spete_anap.json';
+
+/* ==============================================================
+   STARE GLOBALÄ‚
+============================================================== */
+const S = {
+  items:      [],   // toate spetele (augmentate)
+  filtered:   [],   // dupÄƒ filtre + cÄƒutare
+  categories: [],   // lista categorii pentru sidebar
+  allCats:    [],   // toate categoriile (nefiltrate)
+  query:      '',
+  status:     'all',
+  catId:      null,
+  page:       1,
+  loaded:     false,
+};
+
+/* ==============================================================
+   UTILITARE
+============================================================== */
+function norm(s) {
+  if (!s) return '';
+  return String(s).toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '');
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function stripHTML(html) {
+  return (html || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function sanitizeHTML(html) {
+  // Elimina elemente periculoase, pastreazÄƒ formatare
+  return (html || '')
+    .replace(/<script\b[\s\S]*?<\/script>/gi, '')
+    .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
+    .replace(/\s+on\w+="[^"]*"/gi, '')
+    .replace(/\s+on\w+='[^']*'/gi, '')
+    .replace(/javascript:/gi, '');
+}
+
+function trunc(s, n) {
+  if (!s || s.length <= n) return s || '';
+  const cut = s.lastIndexOf(' ', n);
+  return s.slice(0, cut > n - 30 ? cut : n) + 'â€¦';
+}
+
+function fmtDate(iso) {
+  if (!iso) return 'â€”';
+  const [date] = iso.split('T');
+  const [y, m, d] = date.split('-');
+  return `${d}.${m}.${y}`;
+}
+
+function debounce(fn, ms) {
+  let t;
+  return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
+}
+
+function highlight(text, terms) {
+  if (!text) return '';
+  if (!terms || !terms.length) return esc(text);
+
+  const normText = norm(text);
+  const ranges   = [];
+
+  for (const t of terms) {
+    if (!t || t.length < 2) continue;
+    const nt = norm(t);
+    let pos = 0;
+    while ((pos = normText.indexOf(nt, pos)) !== -1) {
+      ranges.push([pos, pos + nt.length]);
+      pos += nt.length;
+    }
+  }
+
+  if (!ranges.length) return esc(text);
+
+  ranges.sort((a, b) => a[0] - b[0]);
+  const merged = [];
+  for (const [s, e] of ranges) {
+    if (merged.length && s <= merged.at(-1)[1]) {
+      merged.at(-1)[1] = Math.max(merged.at(-1)[1], e);
+    } else {
+      merged.push([s, e]);
+    }
+  }
+
+  let out = '', last = 0;
+  for (const [s, e] of merged) {
+    out += esc(text.slice(last, s)) + '<mark>' + esc(text.slice(s, e)) + '</mark>';
+    last = e;
+  }
+  return out + esc(text.slice(last));
+}
+
+/* ==============================================================
+   ÃŽNCÄ‚RCARE DATE
+============================================================== */
+function updateNavStats() {
+  const spete = S.items.length ? `${S.items.length} speÈ›e ANAP` : '';
+  const cnsc  = CNSC.data.length ? `${CNSC.data.length} decizii CNSC` : '';
+  const parts = [spete, cnsc].filter(Boolean);
+  document.getElementById('navStats').textContent = parts.join(' Â· ') || 'Se Ã®ncarcÄƒâ€¦';
+}
+
+async function loadData() {
+  try {
+    const r = await fetch(DATA_FILE);
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+
+    const all = [
+      ...data.questions_active,
+      ...data.questions_archived,
+    ].map(q => {
+      const ans = q.questionAnswer || stripHTML(q.questionAnswerHTML || '');
+      const tags = (q.questionTags || []).map(t => t.tagName).join(' ');
+      return {
+        ...q,
+        _ansPlain: ans,
+        _ansHTML:  sanitizeHTML(q.questionAnswerHTML || ''),
+        _idx: norm([
+          q.questionText || '',
+          ans,
+          q._categoryName || '',
+          tags,
+          String(q.questionCode || ''),
+        ].join(' ')),
+      };
+    });
+
+    S.items  = all;
+    S.loaded = true;
+
+    /* Statistici nav */
+    updateNavStats();
+
+    /* Contoare status */
+    document.getElementById('cntAll').textContent      = all.length;
+    document.getElementById('cntActive').textContent   = data.questions_active.length;
+    document.getElementById('cntArchived').textContent = data.questions_archived.length;
+
+    /* Categorii */
+    const catMap = new Map();
+    for (const q of all) {
+      if (!catMap.has(q._categoryId)) {
+        catMap.set(q._categoryId, { id: q._categoryId, name: q._categoryName, lvl: q._categoryLevel || 0, n: 0 });
+      }
+      catMap.get(q._categoryId).n++;
+    }
+    S.allCats = S.categories = [...catMap.values()].sort((a, b) => a.name.localeCompare(b.name, 'ro'));
+
+    /* Panel statistici */
+    const nCats = S.allCats.length;
+    const nTags = new Set(all.flatMap(q => (q.questionTags || []).map(t => t.tagName))).size;
+    document.getElementById('statsPanel').innerHTML = `
+      <div><i class="bi bi-file-earmark-text me-2 text-primary"></i><strong>${all.length}</strong> speÈ›e totale</div>
+      <div><i class="bi bi-check-circle me-2 text-success"></i><strong>${data.questions_active.length}</strong> speÈ›e active</div>
+      <div><i class="bi bi-archive me-2 text-secondary"></i><strong>${data.questions_archived.length}</strong> speÈ›e arhivate</div>
+      <div><i class="bi bi-folder2 me-2 text-warning"></i><strong>${nCats}</strong> categorii</div>
+      <div><i class="bi bi-tags me-2 text-info"></i><strong>${nTags}</strong> tag-uri unice</div>
+      <div class="text-muted mt-1" style="font-size:.72rem;">
+        <i class="bi bi-clock-history me-1"></i>SursÄƒ: ${data.meta.crawled_at ? data.meta.crawled_at.split('T')[0] : 'â€”'}
+      </div>`;
+
+    buildCategoryList(S.categories);
+    doSearch();
+
+  } catch (err) {
+    document.getElementById('results').innerHTML = `
+      <div class="alert alert-danger d-flex align-items-start gap-2 mt-2">
+        <i class="bi bi-exclamation-triangle-fill mt-1"></i>
+        <div>
+          <strong>Eroare la Ã®ncÄƒrcarea datelor</strong><br>
+          ${esc(err.message)}<br>
+          <small class="text-muted">AsiguraÈ›i-vÄƒ cÄƒ XAMPP ruleazÄƒ È™i cÄƒ fiÈ™ierul <code>spete_anap.json</code> existÄƒ Ã®n acelaÈ™i folder.</small>
+        </div>
+      </div>`;
+    document.getElementById('navStats').textContent = 'Eroare la Ã®ncÄƒrcare';
+  }
+}
+
+/* ==============================================================
+   SIDEBAR â€” CATEGORII
+============================================================== */
+function buildCategoryList(cats) {
+  if (!cats.length) {
+    document.getElementById('categoryList').innerHTML = '<div class="text-muted text-center py-2" style="font-size:.8rem;">Nicio categorie</div>';
+    return;
+  }
+  document.getElementById('categoryList').innerHTML = cats.map(c => `
+    <div class="cat-item ${S.catId === c.id ? 'active' : ''}"
+         id="ci-${c.id}" onclick="setCat(${c.id})">
+      <span class="cat-name" title="${esc(c.name)}">${esc(c.name)}</span>
+      <span class="badge bg-light text-muted border flex-shrink-0" style="font-size:.7rem;">${c.n}</span>
+    </div>`).join('');
+}
+
+function filterCategories(v) {
+  const nv = norm(v);
+  S.categories = nv.length >= 1
+    ? S.allCats.filter(c => norm(c.name).includes(nv))
+    : S.allCats;
+  buildCategoryList(S.categories);
+}
+
+/* ==============================================================
+   CÄ‚UTARE È˜I FILTRARE
+============================================================== */
+function doSearch() {
+  const rawQ = S.query.trim();
+  const terms = rawQ.length >= 2
+    ? rawQ.split(/\s+/).filter(t => t.length >= 2)
+    : [];
+  const normTerms = terms.map(norm);
+
+  let items = S.items;
+
+  /* Filtru status */
+  if (S.status === 'active')   items = items.filter(q => !q._archived);
+  if (S.status === 'archived') items = items.filter(q =>  q._archived);
+
+  /* Filtru categorie */
+  if (S.catId !== null) items = items.filter(q => q._categoryId === S.catId);
+
+  /* CÄƒutare text */
+  if (normTerms.length) {
+    items = items
+      .filter(q => normTerms.every(t => q._idx.includes(t)))
+      .map(q => {
+        const nQ = norm(q.questionText || '');
+        const nA = norm(q._ansPlain);
+        const nC = norm(q._categoryName || '');
+        const nT = norm((q.questionTags || []).map(t => t.tagName).join(' '));
+        let sc = 0;
+        for (const t of normTerms) {
+          if (nQ.includes(t)) sc += 5;
+          if (nA.includes(t)) sc += 2;
+          if (nC.includes(t)) sc += 1;
+          if (nT.includes(t)) sc += 3;
+        }
+        return { ...q, _sc: sc };
+      })
+      .sort((a, b) => b._sc - a._sc);
+  }
+
+  S.filtered = items;
+  S.page     = 1;
+  renderResults(terms);
+  renderPagination();
+
+  const catLabel = S.catId ? ` Ã®n categoria selectatÄƒ` : '';
+  const qLabel   = rawQ.length >= 2 ? ` pentru <strong>"${esc(rawQ)}"</strong>` : '';
+  const stLabel  = S.status === 'active' ? ' active' : S.status === 'archived' ? ' arhivate' : '';
+  document.getElementById('resultCount').innerHTML =
+    `<strong>${items.length}</strong> speÈ›e${stLabel}${catLabel}${qLabel}`;
+  document.getElementById('sortLabel').textContent =
+    rawQ.length >= 2 ? 'Sortate dupÄƒ relevanÈ›Äƒ' : 'Sortare implicitÄƒ';
+}
+
+/* ==============================================================
+   RANDARE REZULTATE
+============================================================== */
+function renderResults(terms) {
+  const { filtered, page } = S;
+  const start = (page - 1) * PER_PAGE;
+  const slice = filtered.slice(start, start + PER_PAGE);
+
+  if (!slice.length) {
+    const noQuery = S.query.trim().length < 2 && S.catId === null && S.status === 'all';
+    document.getElementById('results').innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">${noQuery ? 'ðŸ“š' : 'ðŸ”'}</div>
+        ${noQuery
+          ? `<p class="mt-3 text-muted">IntroduceÈ›i cel puÈ›in 2 caractere<br>sau selectaÈ›i o categorie pentru a explora speÈ›ele.</p>`
+          : `<p class="mt-3 text-muted">Nu s-au gÄƒsit rezultate pentru <strong>"${esc(S.query)}"</strong><br><small>ÃŽncercaÈ›i termeni diferiÈ›i, verificaÈ›i ortografia sau resetaÈ›i filtrele.</small></p>`
+        }
+      </div>`;
+    return;
+  }
+
+  document.getElementById('results').innerHTML = slice.map(q => renderCard(q, terms)).join('');
+
+  /* Expand/collapse rÄƒspuns */
+  document.querySelectorAll('.expand-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const id  = this.dataset.id;
+      const pre = document.getElementById('apre-' + id);
+      const ful = document.getElementById('aful-' + id);
+      const vis = ful.style.display !== 'none';
+      pre.style.display = vis ? '' : 'none';
+      ful.style.display = vis ? 'none' : '';
+      this.innerHTML = vis
+        ? '<i class="bi bi-chevron-down me-1"></i>CiteÈ™te tot rÄƒspunsul'
+        : '<i class="bi bi-chevron-up me-1"></i>RestrÃ¢nge';
+    });
+  });
+
+  /* Click tag */
+  document.querySelectorAll('.tag-pill').forEach(el => {
+    el.addEventListener('click', function () {
+      const tag = this.dataset.tag;
+      document.getElementById('searchInput').value = tag;
+      S.query = tag;
+      document.getElementById('clearBtn').style.display = '';
+      doSearch();
+    });
+  });
+}
+
+/* Paleta de culori pentru categorii */
+const PALETTE = [
+  '#003087','#1a73e8','#0d6efd','#198754','#6f42c1',
+  '#d63384','#fd7e14','#0dcaf0','#20c997','#dc3545',
+  '#6c757d','#ffc107','#0d7377','#8B0000','#4B0082',
+];
+function catColor(id) { return PALETTE[(id || 0) % PALETTE.length]; }
+
+function renderCard(q, terms) {
+  const id       = q.id;
+  const qHtml    = highlight(q.questionText || '', terms);
+  const ansPlain = q._ansPlain;
+  const isLong   = ansPlain.length > 380;
+  const preText  = isLong ? trunc(ansPlain, 380) : ansPlain;
+  const preHtml  = highlight(preText, terms);
+  const col      = catColor(q._categoryId);
+  const archived = q._archived
+    ? '<span class="archived-pill ms-1"><i class="bi bi-archive me-1"></i>Arhivat</span>' : '';
+  const tags = (q.questionTags || [])
+    .map(t => `<span class="tag-pill" data-tag="${esc(t.tagName)}">${esc(t.tagName)}</span>`)
+    .join('');
+
+  /* RÄƒspuns extins: HTML dacÄƒ existÄƒ, altfel plain text */
+  const fullContent = q._ansHTML
+    ? `<div class="answer-html">${q._ansHTML}</div>`
+    : `<div class="answer-text">${highlight(ansPlain, terms)}</div>`;
+
+  return `
+<div class="card result-card">
+  <div class="card-body p-4">
+
+    <!-- Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
+      <div class="d-flex flex-wrap align-items-center gap-1">
+        <span class="cat-badge" style="background:${col}18;color:${col};border:1px solid ${col}35">
+          <i class="bi bi-folder2 me-1"></i>${esc(q._categoryName || '')}
+        </span>
+        ${archived}
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="code-badge">#${q.questionCode || q.id}</span>
+        <span class="date-meta"><i class="bi bi-calendar3 me-1"></i>${fmtDate(q.lastUpdate)}</span>
+      </div>
+    </div>
+
+    <!-- ÃŽntrebare -->
+    <p class="q-text">${qHtml}</p>
+
+    <!-- RÄƒspuns preview -->
+    <div class="answer-text mb-1" id="apre-${id}">${preHtml}</div>
+
+    <!-- RÄƒspuns complet (ascuns) -->
+    <div style="display:none" id="aful-${id}">${fullContent}</div>
+
+    <!-- Buton expand -->
+    ${isLong ? `
+      <button class="expand-btn mt-1 mb-2" data-id="${id}">
+        <i class="bi bi-chevron-down me-1"></i>CiteÈ™te tot rÄƒspunsul
+      </button>` : ''}
+
+    <!-- Tags -->
+    ${tags ? `<div class="mt-2">${tags}</div>` : ''}
+
+  </div>
+</div>`;
+}
+
+/* ==============================================================
+   PAGINARE
+============================================================== */
+function renderPagination() {
+  const total = S.filtered.length;
+  const pages = Math.ceil(total / PER_PAGE);
+  const cur   = S.page;
+  if (pages <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
+
+  let nums = new Set([1, pages]);
+  for (let i = Math.max(1, cur - 2); i <= Math.min(pages, cur + 2); i++) nums.add(i);
+  nums = [...nums].sort((a, b) => a - b);
+
+  const prev = cur > 1
+    ? `<li class="page-item"><a class="page-link" href="#" onclick="goPage(${cur-1});return false;"><i class="bi bi-chevron-left"></i></a></li>` : '';
+  const next = cur < pages
+    ? `<li class="page-item"><a class="page-link" href="#" onclick="goPage(${cur+1});return false;"><i class="bi bi-chevron-right"></i></a></li>` : '';
+
+  let last = 0, items = '';
+  for (const n of nums) {
+    if (last && n - last > 1) items += `<li class="page-item disabled"><span class="page-link">â€¦</span></li>`;
+    items += `<li class="page-item ${n === cur ? 'active' : ''}">
+      <a class="page-link" href="#" onclick="goPage(${n});return false;">${n}</a></li>`;
+    last = n;
+  }
+
+  document.getElementById('pagination').innerHTML =
+    `<nav aria-label="Paginare"><ul class="pagination pagination-sm">${prev}${items}${next}</ul></nav>`;
+}
+
+function goPage(n) {
+  S.page = n;
+  renderResults(S.query.trim().length >= 2
+    ? S.query.trim().split(/\s+/).filter(t => t.length >= 2) : []);
+  renderPagination();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ==============================================================
+   CONTROLLERE FILTRE
+============================================================== */
+function setStatus(v) {
+  S.status = v;
+  const cfg = {
+    all:      ['btn-primary',          'btn-outline-success', 'btn-outline-secondary'],
+    active:   ['btn-outline-primary',  'btn-success',         'btn-outline-secondary'],
+    archived: ['btn-outline-primary',  'btn-outline-success', 'btn-secondary'],
+  };
+  ['btnAll','btnActive','btnArchived'].forEach((id, i) => {
+    const btn = document.getElementById(id);
+    btn.className = btn.className.replace(/btn-(outline-)?(primary|success|secondary)/g,'');
+    btn.className += ' ' + cfg[v][i];
+  });
+  doSearch();
+}
+
+function setCat(id) {
+  S.catId = id;
+  document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('active'));
+  if (id !== null) {
+    const el = document.getElementById('ci-' + id);
+    if (el) el.classList.add('active');
+  }
+  doSearch();
+}
+
+/* ==============================================================
+   KEYBOARD SHORTCUTS & EVENTS
+============================================================== */
+const dSearch = debounce(() => {
+  if (semMode || document.getElementById('chatPanel').style.display !== 'none') return;
+  S.query = document.getElementById('searchInput').value;
+  document.getElementById('clearBtn').style.display = S.query ? '' : 'none';
+  doSearch();
+}, 280);
+
+document.getElementById('searchInput').addEventListener('input', dSearch);
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if (e.key === 'Escape') { document.getElementById('clearBtn').click(); return; }
+  if (e.key === 'Enter') {
+    clearTimeout(); S.query = e.target.value; doSearch();
+  }
+});
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  document.getElementById('searchInput').value = '';
+  S.query = '';
+  document.getElementById('clearBtn').style.display = 'none';
+  doSearch();
+});
+
+/* '/' focuseazÄƒ search-ul */
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== document.getElementById('searchInput')) {
+    e.preventDefault();
+    document.getElementById('searchInput').focus();
+  }
+});
+
+/* ==============================================================
+   MOD SEMANTIC
+============================================================== */
+const CHAT_API = location.hostname === 'localhost' ? './chat.php' : '/api/chat';
+let semMode   = false;
+
+// â”€â”€ Stare motor semantic browser â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const SEM = { ready: false, loading: false, embeddings: null, meta: null, dims: 0 };
+
+function semStatus(html) {
+  const el = document.getElementById('apiStatus');
+  if (el) el.innerHTML = html;
+}
+
+async function initSemantic() {
+  if (SEM.ready) return true;
+  if (SEM.loading) return false;
+  SEM.loading = true;
+
+  semStatus(`<div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
+    <div class="spinner-border spinner-border-sm"></div>
+    Se Ã®ncarcÄƒ datele semantice (prima datÄƒ ~120 MB model, apoi instant din cache)â€¦
+  </div>`);
+
+  try {
+    // 1. Embeddings + metadata Ã®n paralel
+    const [binResp, metaResp] = await Promise.all([
+      fetch('./embeddings.bin'),
+      fetch('./sem_meta.json'),
+    ]);
+    if (!binResp.ok || !metaResp.ok) throw new Error('FiÈ™ierele embeddings.bin / sem_meta.json lipsesc.');
+
+    const [buf, meta] = await Promise.all([binResp.arrayBuffer(), metaResp.json()]);
+    const hdr = new Uint32Array(buf, 0, 2);
+    SEM.dims       = hdr[1];
+    SEM.embeddings = new Float32Array(buf, 8, hdr[0] * hdr[1]);
+    SEM.meta       = meta;
+
+    semStatus(`<div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
+      <div class="spinner-border spinner-border-sm"></div>
+      Date Ã®ncÄƒrcate â€” se iniÈ›ializeazÄƒ modelul AI (prima datÄƒ poate dura 1-2 min)â€¦
+    </div>`);
+
+    // 2. Model transformers.js (din modulul de mai jos)
+    await window._semLoadModel();
+
+    SEM.ready   = true;
+    SEM.loading = false;
+    semStatus(`<span class="badge bg-success me-2">
+      <i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i>Semantic AI activ
+    </span><span class="text-muted">${meta.length} speÈ›e indexate Â· ruleazÄƒ complet Ã®n browser</span>`);
+    return true;
+
+  } catch(e) {
+    SEM.loading = false;
+    semStatus(`<div class="api-offline">
+      <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
+      <strong>Eroare Ã®ncÄƒrcare:</strong> ${esc(e.message)}
+    </div>`);
+    return false;
+  }
+}
+
+async function semanticSearch(q) {
+  if (!q || q.length < 2) return;
+
+  document.getElementById('semanticResults').innerHTML = `
+    <div class="text-center py-5 text-muted">
+      <div class="spinner-border spinner-border-sm me-2"></div>
+      ${SEM.ready ? 'Caut Ã®n 1223 speÈ›eâ€¦' : 'Se iniÈ›ializeazÄƒ motorul semanticâ€¦'}
+    </div>`;
+  document.getElementById('semAiAnswer').style.display = 'none';
+
+  if (!SEM.ready) {
+    const ok = await initSemantic();
+    if (!ok) { document.getElementById('semanticResults').innerHTML = ''; return; }
+  }
+
+  try {
+    const qEmb = await window._semEncode(q);
+    const n = SEM.meta.length, d = SEM.dims;
+    const scores = new Float32Array(n);
+    for (let i = 0; i < n; i++) {
+      let dot = 0;
+      const off = i * d;
+      for (let j = 0; j < d; j++) dot += SEM.embeddings[off + j] * qEmb[j];
+      scores[i] = dot;
+    }
+    const top = Array.from({length: n}, (_, i) => i)
+      .sort((a, b) => scores[b] - scores[a])
+      .slice(0, 5)
+      .map(i => ({ ...SEM.meta[i], scor: Math.round(scores[i] * 1000) / 1000 }));
+
+    renderSemantic(top, q);
+
+    // RÄƒspuns AI Groq dacÄƒ toggle-ul e activ
+    if (document.getElementById('semAiToggle').checked) {
+      semAiAnswer(q, top);
+    }
+  } catch(e) {
+    document.getElementById('semanticResults').innerHTML =
+      `<div class="alert alert-danger">Eroare: ${esc(e.message)}</div>`;
+  }
+}
+
+async function semAiAnswer(q, context) {
+  const box = document.getElementById('semAiAnswer');
+  box.style.display = 'block';
+  box.innerHTML = `<div class="ai-answer-box">
+    <div class="ai-label"><i class="bi bi-cpu me-1"></i>RÄƒspuns AI â€” se genereazÄƒâ€¦</div>
+    <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
+      <div class="spinner-border spinner-border-sm"></div> Groq analizeazÄƒ speÈ›ele relevanteâ€¦
+    </div>
+  </div>`;
+  try {
+    const r = await fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ q, context }),
+      signal: AbortSignal.timeout(25000)
+    });
+    const data = await r.json();
+    if (data.error) { box.style.display = 'none'; return; }
+    const surseHtml = (data.surse || [])
+      .map(s => `<span class="badge bg-light text-dark border me-1">#${s.cod}</span>`).join('');
+    box.innerHTML = `<div class="ai-answer-box">
+      <div class="ai-label"><i class="bi bi-cpu me-1"></i>RÄƒspuns AI bazat pe speÈ›ele de mai jos</div>
+      <div class="ai-text">${esc(data.raspuns).replace(/\n/g,'<br>')}</div>
+      ${surseHtml ? `<div class="ai-surse"><i class="bi bi-journal-text me-1"></i>Surse: ${surseHtml}</div>` : ''}
+    </div>`;
+  } catch(e) {
+    box.style.display = 'none';
+  }
+}
+
+function setMode(mode) {
+  semMode = (mode === 'semantic');
+
+  // Seteaza clasa pe body â€” CSS !important gestioneaza vizibilitatea
+  document.body.className = 'mode-' + mode;
+
+  // Activeaza tab-ul corect
+  ['keyword','semantic','chat','cnsc'].forEach(m =>
+    document.getElementById('tab' + m.charAt(0).toUpperCase() + m.slice(1))
+      .classList.toggle('active', m === mode)
+  );
+
+  const hints = {
+    keyword:  'Minim 2 caractere Â· CautÄƒ È™i cu cod spetÄƒ (#1095) Â· Click pe tag pentru filtrare',
+    semantic: 'Pune o Ã®ntrebare Ã®n romÃ¢nÄƒ â€” agentul cautÄƒ semantic Ã®n 1223 speÈ›e',
+    chat:     'Pune o Ã®ntrebare liberÄƒ â€” AI-ul cautÄƒ Ã®n speÈ›e È™i formuleazÄƒ rÄƒspunsul',
+    cnsc:     'CautÄƒ Ã®n textul complet al deciziilor CNSC Â· minim 3 caractere',
+  };
+  document.getElementById('searchHint').textContent = hints[mode] || hints.keyword;
+
+  if (mode === 'semantic') {
+    initSemantic();
+    setTimeout(() => document.getElementById('semInput').focus(), 50);
+  } else if (mode === 'chat') {
+    checkChatApi();
+    document.getElementById('chatInput').focus();
+  } else if (mode === 'cnsc') {
+    initCnsc();
+    setTimeout(() => document.getElementById('cnscInput').focus(), 50);
+  } else {
+    doSearch();
+    document.getElementById('searchInput').focus();
+  }
+}
+
+function resetKeyword() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('clearBtn').style.display = 'none';
+  S.query  = '';
+  S.catId  = null;
+  S.status = 'all';
+  S.page   = 1;
+  document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('active'));
+  setStatus('all');
+}
+
+function resetSemantic() {
+  document.getElementById('semInput').value = '';
+  document.getElementById('semanticResults').innerHTML = '';
+  document.getElementById('semAiAnswer').style.display = 'none';
+  document.getElementById('semAiAnswer').innerHTML = '';
+}
+
+function resetCnsc() {
+  document.getElementById('cnscInput').value = '';
+  document.getElementById('cnscFiltSolutie').value = '';
+  document.getElementById('cnscFiltAn').value = '';
+  document.getElementById('cnscResults').innerHTML = '';
+}
+
+function semRunExample(el) {
+  const q = el.textContent.trim();
+  document.getElementById('semInput').value = q;
+  semanticSearch(q);
+}
+
+function cnscApplyFilters() {
+  const q = document.getElementById('cnscInput').value.trim();
+  cnscSearch(q);
+}
+
+
+function renderSemantic(rezultate, q) {
+  if (!rezultate.length) {
+    document.getElementById('semanticResults').innerHTML =
+      '<div class="text-center text-muted py-4">Nu s-au gÄƒsit rezultate relevante.</div>';
+    return;
+  }
+
+  document.getElementById('semanticResults').innerHTML = `
+    <div class="mb-3 text-muted" style="font-size:.85rem;">
+      <strong>${rezultate.length}</strong> speÈ›e relevante semantic pentru
+      <strong>"${esc(q)}"</strong>
+    </div>
+    ${rezultate.map((r, i) => renderSemCard(r, i)).join('')}`;
+
+  document.querySelectorAll('.sem-expand').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const ans = document.getElementById('ans-' + this.dataset.i);
+      const collapsed = ans.classList.contains('collapsed');
+      ans.classList.toggle('collapsed', !collapsed);
+      this.innerHTML = collapsed
+        ? '<i class="bi bi-chevron-up me-1"></i>RestrÃ¢nge'
+        : '<i class="bi bi-chevron-down me-1"></i>CiteÈ™te tot';
+    });
+  });
+}
+
+function renderSemCard(r, i) {
+  // suporta atat campurile noi (q/a/cat/arh) cat si cele vechi (intrebare/raspuns/categorie/arhivat)
+  const intrebare = r.q  || r.intrebare || '';
+  const raspuns   = r.a  || r.raspuns   || '';
+  const categorie = r.cat|| r.categorie || '';
+  const arhivat   = r.arh !== undefined ? r.arh : r.arhivat;
+
+  const sc   = r.scor;
+  const cls  = sc >= 0.7 ? 'high' : sc >= 0.5 ? 'med' : 'low';
+  const pct  = Math.round(sc * 100);
+  const st   = arhivat ? '<span class="archived-pill ms-1"><i class="bi bi-archive me-1"></i>Arhivat</span>' : '';
+  const tags = (r.tags || []).map(t => `<span class="tag-pill">${esc(t)}</span>`).join('');
+
+  return `
+<div class="card sem-card">
+  <div class="card-body p-4">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+      <div>
+        <span class="cat-badge" style="background:#1a73e820;color:#1a73e8;border:1px solid #1a73e840">
+          <i class="bi bi-folder2 me-1"></i>${esc(categorie)}
+        </span>${st}
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="sem-score ${cls}"><i class="bi bi-stars me-1"></i>${pct}% relevant</span>
+        <span class="code-badge">#${r.cod}</span>
+        <span class="date-meta"><i class="bi bi-calendar3 me-1"></i>${r.data || 'â€”'}</span>
+      </div>
+    </div>
+    <p class="q-text">${esc(intrebare)}</p>
+    <div class="sem-answer collapsed" id="ans-${i}">${esc(raspuns)}</div>
+    <button class="expand-btn mt-2 sem-expand" data-i="${i}">
+      <i class="bi bi-chevron-down me-1"></i>CiteÈ™te tot
+    </button>
+    ${tags ? `<div class="mt-2">${tags}</div>` : ''}
+  </div>
+</div>`;
+}
+
+/* ==============================================================
+   CHAT AI (Ollama RAG)
+============================================================== */
+let chatHistory = [];
+
+async function checkChatApi() {
+  if (SEM.ready) {
+    document.getElementById('chatApiStatus').innerHTML =
+      `<span class="badge bg-success me-2"><i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i>RAG activ</span>
+       <span class="text-muted">${SEM.meta.length} speÈ›e indexate Â· Groq AI</span>`;
+    return true;
+  }
+  document.getElementById('chatApiStatus').innerHTML = `
+    <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
+      <div class="spinner-border spinner-border-sm"></div>
+      Se iniÈ›ializeazÄƒ motorul de cÄƒutare semanticÄƒâ€¦
+    </div>`;
+  const ok = await initSemantic();
+  if (ok) {
+    document.getElementById('chatApiStatus').innerHTML =
+      `<span class="badge bg-success me-2"><i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i>RAG activ</span>
+       <span class="text-muted">${SEM.meta.length} speÈ›e indexate Â· Groq AI</span>`;
+  }
+  return ok;
+}
+
+function appendBubble(text, role, surse = []) {
+  const div = document.createElement('div');
+  div.className = 'd-flex ' + (role === 'user' ? 'justify-content-end' : 'justify-content-start');
+  const srcHtml = surse.length
+    ? `<div class="surse"><i class="bi bi-journal-text me-1"></i>Surse: ${
+        surse.map(s => `<span class="badge bg-light text-dark border me-1">#${s.cod}</span>`).join('')
+      }</div>` : '';
+  div.innerHTML = `<div class="chat-bubble chat-${role}">${esc(text).replace(/\n/g,'<br>')}${srcHtml}</div>`;
+  document.getElementById('chatHistory').appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  return div;
+}
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const q = input.value.trim();
+  if (!q) return;
+
+  input.value = '';
+  document.getElementById('chatBtn').disabled = true;
+  document.getElementById('chatStatus').textContent = 'Se gÃ¢ndeÈ™te...';
+
+  appendBubble(q, 'user');
+
+  const thinkDiv = document.createElement('div');
+  thinkDiv.className = 'd-flex justify-content-start';
+  thinkDiv.innerHTML = '<div class="chat-bubble chat-ai chat-thinking"><i class="bi bi-three-dots me-1"></i>Caut Ã®n speÈ›e È™i formulez rÄƒspunsul...</div>';
+  document.getElementById('chatHistory').appendChild(thinkDiv);
+  thinkDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+  try {
+    if (!SEM.ready) {
+      const ok = await initSemantic();
+      if (!ok) {
+        thinkDiv.remove();
+        appendBubble('Motorul semantic nu s-a putut iniÈ›ializa. ReÃ®ncarcÄƒ pagina È™i Ã®ncearcÄƒ din nou.', 'ai');
+        document.getElementById('chatBtn').disabled = false;
+        document.getElementById('chatStatus').textContent = '';
+        return;
+      }
+    }
+
+    // RAG Ã®n browser â€” vector search cu embeddings-urile deja Ã®ncÄƒrcate
+    const qEmb = await window._semEncode(q);
+    const activ = document.getElementById('chatActiv').checked;
+    const n = SEM.meta.length, d = SEM.dims;
+    const scores = new Float32Array(n);
+    for (let i = 0; i < n; i++) {
+      if (activ && SEM.meta[i].arh) { scores[i] = -1; continue; }
+      let dot = 0;
+      const off = i * d;
+      for (let j = 0; j < d; j++) dot += SEM.embeddings[off + j] * qEmb[j];
+      scores[i] = dot;
+    }
+    const context = Array.from({length: n}, (_, i) => i)
+      .sort((a, b) => scores[b] - scores[a])
+      .slice(0, 5)
+      .map(i => SEM.meta[i]);
+
+    const r = await fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ q, context }),
+      signal: AbortSignal.timeout(30000)
+    });
+    const data = await r.json();
+    thinkDiv.remove();
+
+    if (data.error) {
+      appendBubble('Eroare: ' + data.error, 'ai');
+    } else {
+      appendBubble(data.raspuns, 'ai', data.surse || []);
+    }
+  } catch (err) {
+    thinkDiv.remove();
+    appendBubble('Timeout sau eroare de reÈ›ea.', 'ai');
+  }
+
+  document.getElementById('chatBtn').disabled = false;
+  document.getElementById('chatStatus').textContent = '';
+}
+
+
+/* ==============================================================
+   DECIZII CNSC
+============================================================== */
+const CNSC = { ready: false, loading: false, data: [] };
+
+async function initCnsc() {
+  if (CNSC.ready) { showCnscReady(); return; }
+  if (CNSC.loading) return;
+  CNSC.loading = true;
+
+  document.getElementById('cnscStatus').innerHTML = `
+    <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
+      <div class="spinner-border spinner-border-sm"></div>
+      Se Ã®ncarcÄƒ deciziile CNSCâ€¦
+    </div>`;
+
+  try {
+    const r = await fetch('./decizii_cnsc.json');
+    if (!r.ok) throw new Error('decizii_cnsc.json lipseÈ™te de pe server.');
+    CNSC.data = await r.json();
+    CNSC.ready = true;
+    CNSC.loading = false;
+    showCnscReady();
+    updateNavStats();
+    const q = document.getElementById('searchInput').value.trim();
+    if (q.length >= 3) cnscSearch(q);
+  } catch(e) {
+    CNSC.loading = false;
+    document.getElementById('cnscStatus').innerHTML =
+      `<div class="alert alert-warning py-2"><i class="bi bi-exclamation-triangle me-2"></i>${esc(e.message)}</div>`;
+  }
+}
+
+function showCnscReady() {
+  document.getElementById('cnscStatus').innerHTML =
+    `<span class="badge bg-success me-2" style="background:#2e7d32 !important;">
+       <i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i>CNSC activ
+     </span>
+     <span class="text-muted">${CNSC.data.length} decizii indexate Â· cÄƒutare Ã®n text complet</span>`;
+}
+
+function cnscSearch(q) {
+  const filtSol = document.getElementById('cnscFiltSolutie')?.value || '';
+  const filtAn  = document.getElementById('cnscFiltAn')?.value || '';
+
+  let pool = CNSC.data;
+
+  // Filtru soluÈ›ie
+  if (filtSol) {
+    pool = pool.filter(d => (d.solutie || '').toLowerCase().includes(filtSol));
+  }
+  // Filtru an
+  if (filtAn) {
+    pool = pool.filter(d => (d.data || '').includes(filtAn));
+  }
+
+  if (!q || q.length < 2) {
+    renderCnsc(pool, '');
+    return;
+  }
+
+  const terms = q.toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '').split(/\s+/).filter(t => t.length >= 2);
+  const results = pool
+    .map(d => {
+      const hay = (d.nr_decizie + ' ' + d.data + ' ' + d.categorie + ' ' +
+                   d.solutie + ' ' + d.continut_complet)
+        .toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '');
+      const hits = terms.filter(t => hay.includes(t)).length;
+      return { ...d, _hits: hits };
+    })
+    .filter(d => d._hits > 0)
+    .sort((a, b) => b._hits - a._hits);
+
+  renderCnsc(results, q);
+}
+
+function cnscExcerpt(text, q) {
+  const terms = q.toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '').split(/\s+/).filter(t => t.length >= 2);
+  const norm = text.toLowerCase().normalize('NFD').replace(/[Ì€-Í¯]/g, '');
+  let pos = -1;
+  for (const t of terms) {
+    pos = norm.indexOf(t);
+    if (pos >= 0) break;
+  }
+  if (pos < 0) pos = 0;
+  const start = Math.max(0, pos - 80);
+  let excerpt = (start > 0 ? 'â€¦' : '') + text.slice(start, start + 350) + 'â€¦';
+  terms.forEach(t => {
+    excerpt = excerpt.replace(new RegExp(t, 'gi'), m => `<mark>${m}</mark>`);
+  });
+  return excerpt;
+}
+
+function solutieCls(s) {
+  if (!s) return '';
+  const sl = s.toLowerCase();
+  if (sl.includes('admite')) return 'cnsc-solutie-admis';
+  if (sl.includes('respinge')) return 'cnsc-solutie-respins';
+  if (sl.includes('anuleazÄƒ') || sl.includes('anuleaza') || sl.includes('obligÄƒ') || sl.includes('obliga')) return 'cnsc-solutie-anulare';
+  return '';
+}
+
+function renderCnsc(items, q) {
+  const el = document.getElementById('cnscResults');
+  if (!items.length) {
+    el.innerHTML = '<div class="text-center text-muted py-4">Nu s-au gÄƒsit decizii pentru aceastÄƒ cÄƒutare.</div>';
+    return;
+  }
+  el.innerHTML = `
+    <div class="mb-3 text-muted" style="font-size:.85rem;">
+      <strong>${items.length}</strong> ${items.length === 1 ? 'decizie gÄƒsitÄƒ' : 'decizii gÄƒsite'}
+      ${q ? `pentru <strong>"${esc(q)}"</strong>` : ''}
+    </div>
+    ${items.map(d => {
+      const nr = d.nr_decizie ? `<span class="cnsc-nr me-2">#${esc(d.nr_decizie)}</span>` : '';
+      const dt = d.data ? `<span class="date-meta me-2"><i class="bi bi-calendar3 me-1"></i>${esc(d.data)}</span>` : '';
+      const sol = d.solutie ? `<span class="cat-badge ${solutieCls(d.solutie)} me-2">${esc(d.solutie.slice(0,60))}</span>` : '';
+      const cat = `<span class="cat-badge" style="background:#e8f5e920;color:#2e7d32;border:1px solid #c8e6c9;">
+        <i class="bi bi-folder2 me-1"></i>${esc(d.categorie)}</span>`;
+      const excerpt = q ? cnscExcerpt(d.continut_complet || '', q) : (d.continut_complet || '').slice(0, 300) + 'â€¦';
+      return `
+<div class="card cnsc-card">
+  <div class="card-body p-4">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+      <div class="d-flex align-items-center flex-wrap gap-1">${cat}${sol}</div>
+      <div class="d-flex align-items-center gap-2">${nr}${dt}
+        <span class="badge bg-light text-dark border" style="font-size:.7rem;">${d.nr_pagini} pag.</span>
+      </div>
+    </div>
+    <div class="cnsc-excerpt">${excerpt}</div>
+  </div>
+</div>`;
+    }).join('')}`;
+}
+
+/* Hook debounce pe inputurile dedicate */
+document.getElementById('semInput').addEventListener('input', () => {
+  const q = document.getElementById('semInput').value.trim();
+  clearTimeout(window._semTimer);
+  window._semTimer = setTimeout(() => { if (q.length >= 2) semanticSearch(q); }, 500);
+});
+document.getElementById('cnscInput').addEventListener('input', () => {
+  const q = document.getElementById('cnscInput').value.trim();
+  clearTimeout(window._cnscTimer);
+  window._cnscTimer = setTimeout(() => { if (CNSC.ready) cnscSearch(q); }, 300);
+});
+document.getElementById('cnscInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') cnscSearch(document.getElementById('cnscInput').value.trim());
+});
+
+/* ==============================================================
+   PORNIRE
+============================================================== */
+loadData();
+</script>
+<!-- â•â•â• TRANSFORMERS.JS â€” motor semantic complet Ã®n browser â•â•â• -->
+<script type="module">
+import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2';
+
+env.allowLocalModels  = false;
+env.useBrowserCache   = true;   // cache model in IndexedDB dupÄƒ primul download
+
+const MODEL = 'Xenova/paraphrase-multilingual-MiniLM-L12-v2';
+let extractor = null;
+
+window._semLoadModel = async function() {
+  if (extractor) return;
+  extractor = await pipeline('feature-extraction', MODEL, { quantized: true });
+};
+
+window._semEncode = async function(text) {
+  if (!extractor) await window._semLoadModel();
+  const out = await extractor(text, { pooling: 'mean', normalize: true });
+  return new Float32Array(out.data);
+};
+</script>
+</body>
+</html>
+
