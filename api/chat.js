@@ -46,11 +46,15 @@ module.exports = async function handler(req, res) {
       }),
     });
 
-    const data = await r.json();
+    const rawBody = await r.text();
+    let data;
+    try { data = JSON.parse(rawBody); } catch(pe) {
+      return res.status(500).json({ error: `Groq HTTP ${r.status} — răspuns non-JSON: ${rawBody.slice(0,200)}` });
+    }
 
-    if (data.error) {
-      const msg = (data.error && data.error.message) ? data.error.message : 'Eroare Groq API.';
-      return res.status(500).json({ error: msg });
+    if (!r.ok || data.error) {
+      const msg = data.error?.message || data.error || rawBody.slice(0,200);
+      return res.status(500).json({ error: `Groq ${r.status}: ${msg}` });
     }
 
     return res.json({
