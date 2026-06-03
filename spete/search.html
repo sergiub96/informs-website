@@ -1017,7 +1017,47 @@ document.addEventListener('keydown', e => {
 /* ==============================================================
    MOD SEMANTIC
 ============================================================== */
-const CHAT_API = './chat.php';
+const CHAT_API = location.hostname === 'localhost' ? './chat.php' : null;
+let _GROQ_KEY = null;
+
+async function _getGroqKey() {
+  if (_GROQ_KEY) return _GROQ_KEY;
+  const r = await fetch('/api/key');
+  const d = await r.json();
+  if (d.error) throw new Error(d.error);
+  _GROQ_KEY = d.k;
+  return _GROQ_KEY;
+}
+
+async function _callAI(q, context) {
+  if (CHAT_API) {
+    const r = await fetch(CHAT_API, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ q, context }), signal: AbortSignal.timeout(25000),
+    });
+    return await r.json();
+  }
+  const key = await _getGroqKey();
+  const ctxText = context.slice(0, 5).map((s, i) => {
+    return `---\nSpetă #${s.cod || i+1} | ${s.cat||s.categorie||''}\nÎntrebare: ${s.q||s.intrebare||''}\nRăspuns: ${s.a||s.raspuns||''}`;
+  }).join('\n');
+  const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+    body: JSON.stringify({
+      model: 'llama3-8b-8192',
+      messages: [
+        { role: 'system', content: 'Ești un expert în achiziții publice din România. Răspunzi EXCLUSIV în română, bazat pe contextul furnizat. Nu inventa legislație.' },
+        { role: 'user', content: `Context:\n${ctxText}\n\nÎntrebare: ${q}\n\nRăspunde clar și structurat.` },
+      ],
+      temperature: 0.2, max_tokens: 1024,
+    }),
+    signal: AbortSignal.timeout(25000),
+  });
+  const data = await r.json();
+  if (!r.ok || data.error) return { error: data.error?.message || 'Groq ' + r.status };
+  return { raspuns: data.choices[0].message.content, surse: context };
+}
 let semMode   = false;
 
 // ── Stare motor semantic browser ──────────────────────────────
@@ -1129,13 +1169,7 @@ async function semAiAnswer(q, context) {
     </div>
   </div>`;
   try {
-    const r = await fetch(CHAT_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ q, context }),
-      signal: AbortSignal.timeout(25000)
-    });
-    const data = await r.json();
+    const data = await _callAI(q, context);
     if (data.error) { box.style.display = 'none'; return; }
     const surseHtml = (data.surse || [])
       .map(s => `<span class="badge bg-light text-dark border me-1">#${s.cod}</span>`).join('');
@@ -1371,17 +1405,11 @@ async function sendChat() {
       .slice(0, 5)
       .map(i => SEM.meta[i]);
 
-    const r = await fetch(CHAT_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ q, context }),
-      signal: AbortSignal.timeout(30000)
-    });
-    const data = await r.json();
+    const data = await _callAI(q, context);
     thinkDiv.remove();
 
     if (data.error) {
-      appendBubble('Eroare: ' + (typeof data.error === 'string' ? data.error : (data.error && data.error.message) || JSON.stringify(data.error)), 'ai');
+      appendBubble('Eroare: ' + (typeof data.error === 'string' ? data.error : (data.error?.message) || JSON.stringify(data.error)), 'ai');
     } else {
       appendBubble(data.raspuns, 'ai', data.surse || []);
     }
@@ -1527,13 +1555,7 @@ async function cnscAiAnswer(q, decisions) {
   const promptQ = `Pe baza deciziilor CNSC de mai jos, răspunde la întrebarea: "${q}"`;
 
   try {
-    const r = await fetch(CHAT_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ q: promptQ, context }),
-      signal: AbortSignal.timeout(25000),
-    });
-    const data = await r.json();
+    const data = await _callAI(promptQ, context);
     if (data.error) { box.style.display = 'none'; return; }
     const surseHtml = decisions.slice(0, 4)
       .map(d => `<span class="badge bg-light border me-1" style="color:#2e7d32;">${esc(d.nr_decizie || d.cod)}</span>`).join('');
