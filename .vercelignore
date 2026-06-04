@@ -1,0 +1,8 @@
+assets/img_library/
+assets/old/
+embeddings.bin
+sem_meta.json
+spete_anap.json
+spete/chat.php
+node_modules/
+.claude/
