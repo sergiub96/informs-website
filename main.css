@@ -18,7 +18,7 @@
   --r:    6px;
   --r-lg: 10px;
   --r-xl: 18px;
-  --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --font: Arial, 'Segoe UI', system-ui, sans-serif;
   --max-w: 1200px;
   --dur: 0.20s;
   --ease: cubic-bezier(0.4,0,0.2,1);
@@ -212,10 +212,10 @@ h4{font-size:1.02rem;font-weight:700;letter-spacing:.01em}
   @keyframes hbg-drift2{from{transform:translateY(0)}to{transform:translateY(520px)}}
   @keyframes hbg-drift3{from{transform:translateY(0)}to{transform:translateY(-140px)}}
 }
-/* Light sections: semi-transparent so parallax shows through */
-.home-page .sec-white{background:rgba(255,255,255,.86)}
-.home-page .sec-pale{background:rgba(244,248,252,.84)}
-.home-page .obj-section{background:rgba(255,255,255,.86)}
+/* Light sections: fundal alb solid */
+.home-page .sec-white{background:#fff}
+.home-page .sec-pale{background:#F4F8FC}
+.home-page .obj-section{background:#fff}
 
 /* ── Sections ── */
 .sec{padding:88px 0;background:var(--bg)}
