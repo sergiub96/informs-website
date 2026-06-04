@@ -1,5 +1,753 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=./search.html">
-<script>window.location.replace('./search.html');</script>
-</head><body></body></html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Baza de cunoștințe INFORMS — 1200+ spețe ANAP, decizii CNSC, căutare semantică AI și Chat. Instrumentul complet pentru specialiști în achiziții publice.">
+  <title>Spețe & Jurisprudență Achiziții Publice — INFORMS</title>
+
+  <link rel="icon" type="image/png" href="../uploads/informs-website-favicon-color-removebg-preview-removebg-preview.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #061830;
+      --blue: #1358B0;
+      --blue-a: #3B80CA;
+      --blue-lt: #E8F3FC;
+      --text-2: #4A6278;
+      --dur: 0.20s;
+      --ease: cubic-bezier(.4,0,.2,1);
+      --green: #16a34a;
+      --green-lt: #dcfce7;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, 'Segoe UI', system-ui, sans-serif;
+      background: #fff;
+      padding-top: 58px;
+      color: var(--navy);
+    }
+
+    /* ── Navbar ── */
+    nav.main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: #fff; box-shadow: 0 2px 12px rgba(6,24,48,.09);
+      transition: transform .3s ease;
+    }
+    nav.main-nav.nav-hidden { transform: translateY(-100%); }
+    .nav-island { max-width: 1200px; margin: 0 auto; }
+    .nav-inner { height: 58px; display: flex; align-items: center; padding: 0 28px; position: relative; }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+    .nav-links { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 2px; }
+    .nav-end { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+    .nav-link { padding: 7px 12px; border-radius: 6px; font-size: 15.5px; font-weight: 500; color: var(--text-2); transition: all var(--dur) var(--ease); white-space: nowrap; text-decoration: none; }
+    .nav-link:hover { color: var(--blue); }
+    .nav-link.active { color: var(--blue); font-weight: 600; }
+    .nav-cta { padding: 7px 18px; background: var(--blue-a); color: #fff !important; border-radius: 6px; font-weight: 600; font-size: 14.5px; transition: all var(--dur) var(--ease); }
+    .nav-cta:hover { background: #5294D4 !important; transform: translateY(-1px); }
+    .nav-dd { position: relative; }
+    .nav-dd::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 8px; }
+    .nav-dd-toggle::after { content: ' ▾'; font-size: 9px; opacity: .45; }
+    .nav-dd-menu {
+      position: absolute; top: calc(100% + 4px); left: 0; min-width: 260px;
+      background: rgba(255,255,255,.97); backdrop-filter: blur(20px);
+      border: 1px solid rgba(59,128,202,.18); border-radius: 12px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(-6px); transition: all var(--dur) var(--ease);
+      padding: 6px; z-index: 201;
+    }
+    .nav-dd.dd-open .nav-dd-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: all; }
+    .nav-dd-item { display: block; padding: 9px 13px; border-radius: 6px; font-size: 15px; color: var(--text-2); font-weight: 500; transition: all var(--dur) var(--ease); text-decoration: none; }
+    .nav-dd-item:hover { background: var(--blue-lt); color: var(--blue); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; border-radius: 6px; border: none; background: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all var(--dur) var(--ease); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 58px 0 0;
+      background: rgba(5,20,42,.97); backdrop-filter: blur(18px);
+      z-index: 199; overflow-y: auto; padding: 12px 14px 40px;
+      flex-direction: column; gap: 2px; border-top: 1px solid rgba(59,128,202,.15);
+    }
+    .mobile-menu.open { display: flex; }
+    .m-link { display: block; padding: 12px 14px; border-radius: 8px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,.68); text-decoration: none; transition: all var(--dur) var(--ease); }
+    .m-link:hover, .m-link.active { background: rgba(59,128,202,.18); color: #fff; }
+    .m-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.3); padding: 14px 14px 5px; }
+    @media(max-width:768px) { .nav-links { display: none; } .nav-end .nav-cta { display: none; } .hamburger { display: flex; } }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #061830 0%, #0f2d5e 55%, #1358B0 100%);
+      padding: 4rem 0 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(59,128,202,.25); border: 1px solid rgba(59,128,202,.45);
+      color: #93c5fd; border-radius: 20px; padding: 4px 14px;
+      font-size: .8rem; font-weight: 600; margin-bottom: 1.2rem;
+    }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: .8rem; }
+    .hero h1 span { color: #60a5fa; }
+    .hero p.lead { font-size: 1.05rem; color: rgba(255,255,255,.7); max-width: 560px; line-height: 1.7; margin-bottom: 2rem; }
+
+    .hero-search-bar {
+      background: #fff; border-radius: 50px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.28);
+      display: flex; align-items: center;
+      padding: .25rem .25rem .25rem 1.4rem;
+      max-width: 600px;
+    }
+    .hero-search-bar input {
+      border: none; outline: none; font-size: 1rem;
+      flex: 1; background: transparent; min-width: 0; color: var(--navy);
+    }
+    .hero-search-bar input::placeholder { color: #aaa; }
+    .hero-search-btn {
+      background: var(--blue-a); border: none; border-radius: 50px;
+      color: #fff; padding: .55rem 1.5rem; font-weight: 600; font-size: .95rem;
+      white-space: nowrap; transition: background .15s;
+    }
+    .hero-search-btn:hover { background: #5294D4; }
+
+    .hero-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+    .hero-chip {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.75); border-radius: 20px;
+      padding: .25rem .85rem; font-size: .78rem; font-weight: 500;
+    }
+    .hero-chip.green { background: rgba(22,163,74,.2); border-color: rgba(22,163,74,.4); color: #86efac; }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      background: #fff; border-bottom: 1px solid #e8edf5;
+      padding: 1rem 0;
+    }
+    .stat-item { text-align: center; padding: .5rem 1rem; }
+    .stat-num { font-size: 1.6rem; font-weight: 800; color: var(--blue); line-height: 1; }
+    .stat-num.green { color: var(--green); }
+    .stat-num.orange { color: #ea580c; }
+    .stat-label { font-size: .75rem; color: var(--text-2); font-weight: 500; margin-top: .2rem; }
+    .stat-divider { width: 1px; background: #e8edf5; align-self: stretch; margin: .25rem 0; }
+
+    /* ── Section ── */
+    .section { padding: 3rem 0; }
+    .section-title { font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: .4rem; }
+    .section-sub { font-size: .95rem; color: var(--text-2); margin-bottom: 2rem; }
+
+    /* ── Tool cards ── */
+    .tool-card {
+      background: #fff; border-radius: 16px;
+      border: 1.5px solid #e8edf5;
+      padding: 1.75rem; height: 100%;
+      transition: all .2s var(--ease);
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .tool-card:hover {
+      border-color: var(--blue-a);
+      box-shadow: 0 8px 32px rgba(19,88,176,.12);
+      transform: translateY(-3px);
+      color: inherit;
+    }
+    .tool-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--card-accent, var(--blue-a));
+      opacity: 0; transition: opacity .2s;
+    }
+    .tool-card:hover::before { opacity: 1; }
+    .tool-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1rem; flex-shrink: 0;
+    }
+    .tool-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
+    .tool-card p { font-size: .88rem; color: var(--text-2); line-height: 1.6; flex: 1; margin-bottom: 1rem; }
+    .tool-tag {
+      font-size: .7rem; font-weight: 700; border-radius: 20px;
+      padding: .18rem .65rem; display: inline-block; margin-bottom: .5rem;
+    }
+    .tool-arrow {
+      font-size: .85rem; font-weight: 600; color: var(--blue-a);
+      display: flex; align-items: center; gap: .35rem; margin-top: auto;
+    }
+
+    /* Card accents per tool */
+    .card-keyword  { --card-accent: #1358B0; }
+    .card-semantic { --card-accent: #7c3aed; }
+    .card-chat     { --card-accent: #0891b2; }
+    .card-cnsc     { --card-accent: #16a34a; }
+
+    /* ── Category grid ── */
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .6rem; }
+    .cat-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #fff; border: 1px solid #e8edf5; border-radius: 10px;
+      padding: .65rem 1rem; font-size: .88rem; font-weight: 500;
+      transition: all .15s; cursor: pointer; text-decoration: none; color: var(--navy);
+    }
+    .cat-row:hover { border-color: var(--blue-a); background: var(--blue-lt); color: var(--blue); }
+    .cat-count {
+      background: #f0f4fa; color: var(--text-2);
+      border-radius: 20px; padding: .1rem .6rem;
+      font-size: .75rem; font-weight: 700; flex-shrink: 0; margin-left: .5rem;
+    }
+
+    /* ── Source cards ── */
+    .source-card {
+      background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+    }
+    .source-icon { font-size: 1.6rem; margin-bottom: .6rem; }
+    .source-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
+    .source-card p { font-size: .83rem; color: var(--text-2); line-height: 1.6; margin: 0; }
+
+    /* ── CTA banner ── */
+    .cta-banner {
+      background: linear-gradient(135deg, #061830, #1358B0);
+      border-radius: 20px; padding: 2.5rem 2rem;
+      color: #fff; text-align: center;
+    }
+    .cta-banner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: .5rem; }
+    .cta-banner p { color: rgba(255,255,255,.7); font-size: .95rem; margin-bottom: 1.5rem; }
+    .cta-btn {
+      background: #fff; color: var(--navy); border-radius: 50px;
+      padding: .7rem 2rem; font-weight: 700; font-size: 1rem;
+      text-decoration: none; transition: all .15s; display: inline-block;
+    }
+    .cta-btn:hover { background: #e8f3fc; color: var(--blue); transform: translateY(-2px); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.5);
+      padding: 2rem 0; font-size: .82rem; text-align: center;
+      margin-top: 4rem;
+    }
+    footer a { color: rgba(255,255,255,.6); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* Skeleton loader */
+    .skel { background: linear-gradient(90deg, #e8edf5 25%, #f4f7fb 50%, #e8edf5 75%); background-size: 200% 100%; animation: skel-anim 1.2s infinite; border-radius: 6px; }
+    @keyframes skel-anim { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    @media(max-width:576px) {
+      .hero { padding: 2.5rem 0 2rem; }
+      .hero h1 { font-size: 1.6rem; }
+      .stats-bar .row { gap: .5rem; }
+      .stat-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="main-nav" id="mainNav">
+  <div class="nav-island">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../">
+        <img src="../logo/png/logo-no-background.png" alt="INFORMS" style="height:28px;width:auto;"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;font-weight:800;font-size:18px;color:var(--navy);">INFORMS</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="../">Acasă</a>
+        <a class="nav-link" href="../despre-noi">Despre noi</a>
+        <div class="nav-dd" id="ddSvc">
+          <a class="nav-link nav-dd-toggle" href="../servicii">Servicii</a>
+          <div class="nav-dd-menu">
+            <a class="nav-dd-item" href="../analiza-si-solutii">Analiză și soluții personalizate</a>
+            <a class="nav-dd-item" href="../achizitii-publice">Achiziții publice</a>
+            <a class="nav-dd-item" href="../delegare-servicii">Delegare servicii de utilități publice</a>
+            <a class="nav-dd-item" href="../modele-excel">Modele de lucru EXCEL</a>
+            <a class="nav-dd-item" href="../modele-word">Modele de lucru WORD</a>
+            <a class="nav-dd-item" href="../modele-pdf">Modele de lucru PDF</a>
+          </div>
+        </div>
+        <div class="nav-dd" id="ddProd">
+          <a class="nav-link nav-dd-toggle" href="../magazin">Produse</a>
+          <div class="nav-dd-menu">
+            <a class="nav-dd-item" href="../magazin">Toate produsele</a>
+            <a class="nav-dd-item" href="../magazin">Achiziții publice</a>
+            <a class="nav-dd-item" href="../magazin">Delegare servicii</a>
+            <a class="nav-dd-item" href="../magazin">Management proiect</a>
+            <a class="nav-dd-item" href="../magazin" style="color:#16A34A;">Gratuite</a>
+          </div>
+        </div>
+        <a class="nav-link active" href="./">Spețe</a>
+      </div>
+      <div class="nav-end">
+        <a class="nav-link nav-cta" href="../contact">Contact</a>
+        <button class="hamburger" id="hamburger" aria-label="Meniu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a class="m-link" href="../">Acasă</a>
+  <a class="m-link" href="../despre-noi">Despre noi</a>
+  <div class="m-section-title">Servicii</div>
+  <a class="m-link" href="../analiza-si-solutii" style="padding-left:26px;font-size:14px;">Analiză și soluții</a>
+  <a class="m-link" href="../achizitii-publice" style="padding-left:26px;font-size:14px;">Achiziții publice</a>
+  <a class="m-link" href="../delegare-servicii" style="padding-left:26px;font-size:14px;">Delegare servicii</a>
+  <div class="m-section-title">Produse</div>
+  <a class="m-link" href="../magazin">Toate produsele</a>
+  <a class="m-link active" href="./" style="color:#60a5fa;">Spețe & Jurisprudență</a>
+  <a class="m-link" href="../contact" style="margin-top:12px;">Contact</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7">
+        <div class="hero-badge">
+          <i class="bi bi-database-fill-check"></i>
+          Baza de cunoștințe — Achiziții Publice
+        </div>
+        <h1>Spețe <span>ANAP</span>, Decizii <span>CNSC</span><br>și Jurisprudență</h1>
+        <p class="lead">
+          Caută în peste 1200 spețe oficiale ANAP, decizii CNSC în format complet
+          și jurisprudență relevantă — cu căutare semantică AI și asistent Chat integrat.
+        </p>
+
+        <div class="hero-search-bar">
+          <i class="bi bi-search text-muted me-2" style="flex-shrink:0;font-size:1.05rem;"></i>
+          <input type="text" id="heroSearch" placeholder="Caută: DUAE, criteriu calificare, garanție…" autocomplete="off">
+          <button class="hero-search-btn" onclick="goSearch()">
+            <i class="bi bi-search me-1"></i>Caută
+          </button>
+        </div>
+
+        <div class="hero-chips mt-3" id="heroChips">
+          <span class="hero-chip green"><i class="bi bi-circle-fill me-1" style="font-size:.45rem;"></i>Live — actualizat 2026</span>
+          <span class="hero-chip"><i class="bi bi-stars me-1"></i>Semantic AI</span>
+          <span class="hero-chip"><i class="bi bi-chat-dots me-1"></i>Chat RAG</span>
+          <span class="hero-chip"><i class="bi bi-journal-richtext me-1"></i>Decizii CNSC PDF</span>
+        </div>
+      </div>
+
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="p-3" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;">
+          <div class="d-flex align-items-center gap-2 mb-3 pb-3" style="border-bottom:1px solid rgba(255,255,255,.1);">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ef4444;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#f59e0b;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#22c55e;"></div>
+            <span style="font-size:.75rem;color:rgba(255,255,255,.4);margin-left:.5rem;">informs.ro/spete</span>
+          </div>
+          <div id="previewStats" style="font-family:'Courier New',monospace;font-size:.8rem;color:rgba(255,255,255,.7);line-height:2;">
+            <div><span style="color:#60a5fa;">spete_active</span>   <span style="color:#86efac;">→</span> <span class="stat-preview-active" style="color:#fbbf24;">…</span></div>
+            <div><span style="color:#60a5fa;">spete_arhivate</span> <span style="color:#86efac;">→</span> <span class="stat-preview-arch" style="color:#fbbf24;">…</span></div>
+            <div><span style="color:#60a5fa;">decizii_cnsc</span>   <span style="color:#86efac;">→</span> <span class="stat-preview-cnsc" style="color:#fbbf24;">…</span></div>
+            <div><span style="color:#60a5fa;">categorii</span>      <span style="color:#86efac;">→</span> <span class="stat-preview-cats" style="color:#fbbf24;">…</span></div>
+            <div><span style="color:#60a5fa;">semantic_ai</span>    <span style="color:#86efac;">→</span> <span style="color:#86efac;">✓ activ în browser</span></div>
+            <div><span style="color:#60a5fa;">sursa</span>          <span style="color:#86efac;">→</span> <span style="color:rgba(255,255,255,.45);">ANAP + CNSC oficial</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STATS BAR ══════════ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="row justify-content-center align-items-center text-center g-0">
+      <div class="col stat-item">
+        <div class="stat-num green" id="sActive">—</div>
+        <div class="stat-label">Spețe active</div>
+      </div>
+      <div class="stat-divider d-none d-sm-block"></div>
+      <div class="col stat-item">
+        <div class="stat-num" style="color:#6366f1;" id="sArch">—</div>
+        <div class="stat-label">Spețe arhivate</div>
+      </div>
+      <div class="stat-divider d-none d-sm-block"></div>
+      <div class="col stat-item">
+        <div class="stat-num" id="sTotal">—</div>
+        <div class="stat-label">Total spețe ANAP</div>
+      </div>
+      <div class="stat-divider d-none d-sm-block"></div>
+      <div class="col stat-item">
+        <div class="stat-num orange" id="sCnsc">—</div>
+        <div class="stat-label">Decizii CNSC</div>
+      </div>
+      <div class="stat-divider d-none d-sm-block"></div>
+      <div class="col stat-item">
+        <div class="stat-num" style="color:#0891b2;" id="sCats">—</div>
+        <div class="stat-label">Categorii</div>
+      </div>
+      <div class="stat-divider d-none d-sm-block"></div>
+      <div class="col stat-item">
+        <div class="stat-num" style="color:#7c3aed;" id="sTags">—</div>
+        <div class="stat-label">Tag-uri unice</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ INSTRUMENTE ══════════ -->
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title">4 moduri de căutare</h2>
+      <p class="section-sub">De la căutare simplă la AI semantic și Chat RAG — alege instrumentul potrivit</p>
+    </div>
+
+    <div class="row g-3">
+
+      <!-- Căutare text -->
+      <div class="col-lg-3 col-md-6">
+        <a href="./search.html?mode=keyword" class="tool-card card-keyword">
+          <div class="tool-icon" style="background:#e8f0fe;color:#1358B0;">
+            <i class="bi bi-search"></i>
+          </div>
+          <span class="tool-tag" style="background:#e8f0fe;color:#1358B0;">Rapid</span>
+          <h3>Căutare text</h3>
+          <p>Caută după cuvinte cheie în titlu, răspuns, categorii și tag-uri. Rezultate instantanee cu highlight și paginare.</p>
+          <div class="tool-arrow">
+            Deschide <i class="bi bi-arrow-right"></i>
+          </div>
+        </a>
+      </div>
+
+      <!-- Semantic AI -->
+      <div class="col-lg-3 col-md-6">
+        <a href="./search.html?mode=semantic" class="tool-card card-semantic">
+          <div class="tool-icon" style="background:#f3e8ff;color:#7c3aed;">
+            <i class="bi bi-stars"></i>
+          </div>
+          <span class="tool-tag" style="background:#f3e8ff;color:#7c3aed;">AI</span>
+          <h3>Semantic AI</h3>
+          <p>Descrie problema juridică cu cuvintele tale — motorul semantic găsește spețe relevante chiar dacă nu folosești termenii exacți.</p>
+          <div class="tool-arrow" style="color:#7c3aed;">
+            Deschide <i class="bi bi-arrow-right"></i>
+          </div>
+        </a>
+      </div>
+
+      <!-- Chat AI -->
+      <div class="col-lg-3 col-md-6">
+        <a href="./search.html?mode=chat" class="tool-card card-chat">
+          <div class="tool-icon" style="background:#e0f7fa;color:#0891b2;">
+            <i class="bi bi-chat-dots-fill"></i>
+          </div>
+          <span class="tool-tag" style="background:#e0f7fa;color:#0891b2;">RAG</span>
+          <h3>Chat AI</h3>
+          <p>Pune o întrebare liberă. AI-ul caută semantic în toate spețele și formulează un răspuns structurat cu surse.</p>
+          <div class="tool-arrow" style="color:#0891b2;">
+            Deschide <i class="bi bi-arrow-right"></i>
+          </div>
+        </a>
+      </div>
+
+      <!-- Decizii CNSC -->
+      <div class="col-lg-3 col-md-6">
+        <a href="./search.html?mode=cnsc" class="tool-card card-cnsc">
+          <div class="tool-icon" style="background:#dcfce7;color:#16a34a;">
+            <i class="bi bi-journal-richtext"></i>
+          </div>
+          <span class="tool-tag" style="background:#dcfce7;color:#16a34a;">PDF</span>
+          <h3>Decizii CNSC</h3>
+          <p>Caută în textul complet al deciziilor CNSC. Filtrează după soluție (admis/respins) și an. Deschide PDF direct.</p>
+          <div class="tool-arrow" style="color:#16a34a;">
+            Deschide <i class="bi bi-arrow-right"></i>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CATEGORII TOP ══════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-3">
+      <div>
+        <h2 class="section-title mb-1">Categorii principale</h2>
+        <p class="section-sub mb-0">Cele mai frecvente tematici din baza de spețe ANAP</p>
+      </div>
+      <a href="./search.html" class="btn btn-sm btn-outline-primary" style="border-radius:20px;white-space:nowrap;">
+        Toate categoriile <i class="bi bi-arrow-right ms-1"></i>
+      </a>
+    </div>
+
+    <div class="cat-grid" id="catGrid">
+      <!-- skeleton -->
+      <div class="cat-row"><div class="skel" style="width:70%;height:16px;"></div><div class="skel" style="width:30px;height:16px;border-radius:20px;"></div></div>
+      <div class="cat-row"><div class="skel" style="width:55%;height:16px;"></div><div class="skel" style="width:30px;height:16px;border-radius:20px;"></div></div>
+      <div class="cat-row"><div class="skel" style="width:65%;height:16px;"></div><div class="skel" style="width:30px;height:16px;border-radius:20px;"></div></div>
+      <div class="cat-row"><div class="skel" style="width:60%;height:16px;"></div><div class="skel" style="width:30px;height:16px;border-radius:20px;"></div></div>
+      <div class="cat-row"><div class="skel" style="width:75%;height:16px;"></div><div class="skel" style="width:30px;height:16px;border-radius:20px;"></div></div>
+      <div class="cat-row"><div class="skel" style="width:50%;height:16px;"></div><div class="skel" style="width:30px;height:16px;border-radius:20px;"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SURSE ══════════ -->
+<section class="section" style="background:#fff;padding:3rem 0;">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title">Surse și acoperire</h2>
+      <p class="section-sub">Date extrase din surse oficiale, indexate și actualizate periodic</p>
+    </div>
+    <div class="row g-3 justify-content-center">
+
+      <div class="col-md-4">
+        <div class="source-card">
+          <div class="source-icon">🏛️</div>
+          <h4>Spețe ANAP</h4>
+          <p>Întrebări și răspunsuri oficiale de pe platforma <strong>achizitiipublice.gov.ro</strong>, organizate pe categorii și subcategorii. Actualizate din API oficial.</p>
+          <div class="mt-2">
+            <span class="badge bg-success-subtle text-success border border-success-subtle me-1">Active</span>
+            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Arhivate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="source-card">
+          <div class="source-icon">⚖️</div>
+          <h4>Decizii CNSC</h4>
+          <p>Decizii ale Consiliului Național de Soluționare a Contestațiilor, extrase din documente PDF oficiale cu text complet și indexare full-text.</p>
+          <div class="mt-2">
+            <span id="cnscYears" class="badge bg-warning-subtle text-warning border border-warning-subtle">2015–2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="source-card">
+          <div class="source-icon">🤖</div>
+          <h4>AI Semantic</h4>
+          <p>Embeddings generate cu <strong>all-MiniLM-L6-v2</strong> pentru căutare semantică. Modelul rulează complet în browser — fără trimitere de date.</p>
+          <div class="mt-2">
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Privacy-first</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECENT CNSC ══════════ -->
+<section class="section" style="padding-top:2.5rem;">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-3">
+      <div>
+        <h2 class="section-title mb-1">Decizii CNSC recente</h2>
+        <p class="section-sub mb-0">Ultimele decizii indexate din baza de date</p>
+      </div>
+      <a href="./search.html?mode=cnsc" class="btn btn-sm btn-outline-success" style="border-radius:20px;white-space:nowrap;">
+        Toate deciziile <i class="bi bi-arrow-right ms-1"></i>
+      </a>
+    </div>
+    <div class="row g-3" id="cnscPreview">
+      <div class="col-12 text-center text-muted py-3"><div class="spinner-border spinner-border-sm"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="cta-banner">
+      <i class="bi bi-search" style="font-size:2.5rem;opacity:.4;display:block;margin-bottom:.75rem;"></i>
+      <h2>Gata să cauți?</h2>
+      <p>Accesează baza completă — căutare text, semantic AI, chat și decizii CNSC</p>
+      <a href="./search.html" class="cta-btn">
+        <i class="bi bi-arrow-right-circle me-2"></i>Deschide baza de date
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="container">
+    <div class="mb-2">
+      <a href="../">INFORMS</a> &nbsp;·&nbsp;
+      <a href="../achizitii-publice">Achiziții publice</a> &nbsp;·&nbsp;
+      <a href="../magazin">Produse</a> &nbsp;·&nbsp;
+      <a href="../contact">Contact</a>
+    </div>
+    <div>Baza de date spețe — surse oficiale ANAP &amp; CNSC · <span id="footerUpdate"></span></div>
+    <div class="mt-1" style="font-size:.73rem;opacity:.6;">Conținutul acestei pagini are scop informativ. Verificați întotdeauna actualitatea prevederilor legale citate.</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ── Nav ── */
+(function(){
+  const nav = document.getElementById('mainNav');
+  const hbg = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileMenu');
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 80) nav.classList.toggle('nav-hidden', y > lastY);
+    else nav.classList.remove('nav-hidden');
+    lastY = y;
+  }, { passive: true });
+  hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mob.classList.toggle('open'); });
+  ['ddSvc','ddProd'].forEach(id => {
+    const dd = document.getElementById(id);
+    if (!dd) return;
+    let t;
+    dd.addEventListener('mouseenter', () => { clearTimeout(t); dd.classList.add('dd-open'); });
+    dd.addEventListener('mouseleave', () => { t = setTimeout(() => dd.classList.remove('dd-open'), 220); });
+  });
+})();
+
+/* ── Hero search → search.html ── */
+function goSearch() {
+  const q = document.getElementById('heroSearch').value.trim();
+  if (q) window.location.href = './search.html?q=' + encodeURIComponent(q);
+  else    window.location.href = './search.html';
+}
+document.getElementById('heroSearch').addEventListener('keydown', e => {
+  if (e.key === 'Enter') goSearch();
+});
+
+/* ── Helpers ── */
+function fmt(n) {
+  if (n === null || n === undefined) return '—';
+  return n.toLocaleString('ro-RO');
+}
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ── Load spete_anap.json ── */
+async function loadSpete() {
+  try {
+    const r = await fetch('./spete_anap.json');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+
+    const nActive   = (data.questions_active   || []).length;
+    const nArchived = (data.questions_archived || []).length;
+    const nTotal    = nActive + nArchived;
+
+    /* Stats bar */
+    document.getElementById('sActive').textContent  = fmt(nActive);
+    document.getElementById('sArch').textContent    = fmt(nArchived);
+    document.getElementById('sTotal').textContent   = fmt(nTotal);
+
+    /* Hero preview panel */
+    document.querySelectorAll('.stat-preview-active').forEach(el => el.textContent = nActive);
+    document.querySelectorAll('.stat-preview-arch').forEach(el => el.textContent = nArchived);
+
+    /* Categorii */
+    const catMap = new Map();
+    for (const q of [...(data.questions_active||[]), ...(data.questions_archived||[])]) {
+      const id = q._categoryId, name = q._categoryName;
+      if (id && name) {
+        catMap.set(id, { name, n: (catMap.get(id)?.n || 0) + 1 });
+      }
+    }
+    const cats = [...catMap.values()].sort((a,b) => b.n - a.n);
+    document.getElementById('sCats').textContent = fmt(catMap.size);
+
+    /* Tag-uri */
+    const all = [...(data.questions_active||[]), ...(data.questions_archived||[])];
+    const tags = new Set(all.flatMap(q => (q.questionTags||[]).map(t => t.tagName)));
+    document.getElementById('sTags').textContent = fmt(tags.size);
+    document.querySelectorAll('.stat-preview-cats').forEach(el => el.textContent = catMap.size);
+
+    /* Footer */
+    if (data.meta?.crawled_at) {
+      const d = data.meta.crawled_at.split('T')[0];
+      document.getElementById('footerUpdate').textContent = 'Ultima actualizare: ' + d;
+    }
+
+    /* Categorii grid — top 12 */
+    const top12 = cats.slice(0, 12);
+    document.getElementById('catGrid').innerHTML = top12.map(c => `
+      <a class="cat-row" href="./search.html">
+        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(c.name)}</span>
+        <span class="cat-count">${c.n}</span>
+      </a>`).join('');
+
+  } catch(e) {
+    console.warn('Nu s-a putut încărca spete_anap.json:', e.message);
+  }
+}
+
+/* ── Load decizii_cnsc.json ── */
+async function loadCnsc() {
+  try {
+    const r = await fetch('./decizii_cnsc.json');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+    const arr = Array.isArray(data) ? data : (data.decizii || []);
+
+    document.getElementById('sCnsc').textContent = fmt(arr.length);
+    document.querySelectorAll('.stat-preview-cnsc').forEach(el => el.textContent = arr.length);
+
+    /* Ani acoperiți */
+    const years = [...new Set(arr.map(d => d.data ? d.data.slice(0,4) : (d.cod||'').match(/\d{4}/)?.[0]).filter(Boolean))].sort();
+    if (years.length >= 2) {
+      document.getElementById('cnscYears').textContent = years[0] + '–' + years[years.length-1];
+    }
+
+    /* Preview ultimele 4 decizii */
+    const recent = [...arr].reverse().slice(0, 4);
+    if (!recent.length) { document.getElementById('cnscPreview').innerHTML = '<div class="col-12 text-muted text-center">Nicio decizie disponibilă.</div>'; return; }
+
+    const colorMap = { admite:'#16a34a', respinge:'#dc2626', anulare:'#d97706', anuleaza:'#d97706', obliga:'#0891b2' };
+    function solutieColor(s) {
+      s = (s||'').toLowerCase();
+      for (const [k,v] of Object.entries(colorMap)) { if (s.includes(k)) return v; }
+      return '#6366f1';
+    }
+
+    document.getElementById('cnscPreview').innerHTML = recent.map(d => {
+      const col = solutieColor(d.solutie);
+      const excerpt = (d.motivare || d.continut_complet || '').replace(/\s+/g,' ').trim().slice(0,200);
+      return `
+        <div class="col-md-6 col-lg-3">
+          <div class="source-card h-100" style="border-left:4px solid ${col};cursor:pointer;" onclick="window.location.href='./search.html?mode=cnsc'">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span style="font-size:.7rem;font-family:'Courier New',monospace;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;border-radius:5px;padding:.15rem .5rem;">${esc(d.cod||'')}</span>
+              ${d.data ? `<span style="font-size:.72rem;color:#999;">${esc(d.data)}</span>` : ''}
+            </div>
+            <div class="mb-2"><span style="font-size:.72rem;font-weight:700;background:${col}18;color:${col};border-radius:5px;padding:.15rem .55rem;">${esc(d.solutie||'—')}</span></div>
+            <div style="font-size:.82rem;color:#555;line-height:1.55;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;">${esc(excerpt)}${excerpt.length>=200?'…':''}</div>
+            <div class="mt-2" style="font-size:.75rem;color:var(--blue-a);font-weight:600;">
+              <i class="bi bi-arrow-right me-1"></i>Citește decizia
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+
+  } catch(e) {
+    console.warn('Nu s-a putut încărca decizii_cnsc.json:', e.message);
+    document.getElementById('cnscPreview').innerHTML = '<div class="col-12 text-muted text-center py-2"><i class="bi bi-exclamation-circle me-1"></i>Deciziile CNSC sunt disponibile direct în <a href="./search.html?mode=cnsc">modulul de căutare</a>.</div>';
+  }
+}
+
+/* ── Init ── */
+loadSpete();
+loadCnsc();
+</script>
+</body>
+</html>
