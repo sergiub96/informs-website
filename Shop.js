@@ -14,6 +14,8 @@ const {
 /* ─── Date produse ───────────────────────────────
    format: 'word' | 'excel' | 'pdf' | 'pachet'
    category: 'achizitii' | 'delegare' | 'management' | 'digitalizare' | 'gratuite'
+   mainCategories: array cu unul sau mai multe dintre:
+       'autoritati' | 'companii' | 'liber-profesionisti' | 'uz-zilnic'
    cv: clasa CSS pentru culoarea header-ului cardului
        cv-word (albastru) | cv-excel (verde) | cv-pdf (roșu) | cv-atr (navy)
    file: calea relativă către fișier (opțional)
@@ -28,6 +30,7 @@ const SHOP_PRODUCTS = [{
   shortDesc: 'Model de contract pentru transferul dreptului de proprietate asupra unui mijloc de transport.',
   longDesc: 'Formular PDF completabil pentru înstrăinarea și dobândirea unui mijloc de transport. Conține toate clauzele obligatorii și câmpurile necesare pentru o tranzacție legală conformă.',
   category: 'gratuite',
+  mainCategories: ['uz-zilnic', 'companii', 'liber-profesionisti'],
   format: 'pdf',
   cv: 'cv-pdf',
   price: 0,
@@ -46,6 +49,7 @@ const SHOP_PRODUCTS = [{
   shortDesc: 'Formular pentru înregistrarea consultațiilor medicale în vederea obținerii sau reînnoirii permisului de conducere.',
   longDesc: 'Fișă medicală standardizată pentru consultațiile necesare obținerii sau reînnoirii permisului de conducere. Formular PDF completabil, conform cerințelor autorităților competente.',
   category: 'gratuite',
+  mainCategories: ['uz-zilnic'],
   format: 'pdf',
   cv: 'cv-pdf',
   price: 0,
@@ -64,6 +68,7 @@ const SHOP_PRODUCTS = [{
   shortDesc: 'Formular oficial pentru comunicarea datei de începere a execuției lucrărilor de construcții către autoritățile competente.',
   longDesc: 'Formularul F.14 este documentul oficial prin care se comunică data de începere a execuției lucrărilor de construcții. PDF completabil, conform legislației în vigoare privind autorizarea executării lucrărilor de construcții.',
   category: 'gratuite',
+  mainCategories: ['autoritati', 'companii'],
   format: 'pdf',
   cv: 'cv-pdf',
   price: 0,
@@ -82,6 +87,7 @@ const SHOP_PRODUCTS = [{
   shortDesc: 'Model de proces-verbal pentru recepția la terminarea lucrărilor de construcții, conform normelor legale în vigoare.',
   longDesc: 'Formular PDF pentru procesul-verbal de recepție la terminarea lucrărilor de construcții. Include toate rubricile obligatorii conform HG 343/2017 privind recepția lucrărilor de construcții.',
   category: 'gratuite',
+  mainCategories: ['autoritati', 'companii'],
   format: 'pdf',
   cv: 'cv-pdf',
   price: 0,
@@ -137,6 +143,25 @@ const SHOP_FORMATS = [{
   id: 'pachet',
   label: 'Pachete',
   cls: 'fmt-pachet'
+}];
+
+/* ─── Categorii principale (profil utilizator) ──── */
+const MAIN_CATEGORIES = [{
+  id: 'autoritati',
+  label: 'Autorități',
+  subcategories: ['achizitii', 'delegare', 'management', 'digitalizare', 'gratuite']
+}, {
+  id: 'companii',
+  label: 'Companii',
+  subcategories: ['management', 'digitalizare', 'gratuite']
+}, {
+  id: 'liber-profesionisti',
+  label: 'Liber-profesioniști',
+  subcategories: ['management', 'gratuite']
+}, {
+  id: 'uz-zilnic',
+  label: 'Uz zilnic',
+  subcategories: ['gratuite']
 }];
 const FORMAT_META = {
   word: {
@@ -680,19 +705,32 @@ function ShopPage({
   onNav,
   initialCategory = 'all'
 }) {
+  const [mainCat, setMainCat] = useState('all');
   const [category, setCategory] = useState(initialCategory);
   const [format, setFormat] = useState('all');
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState(null);
+  const handleMainCat = id => {
+    setMainCat(id);
+    setCategory('all');
+  };
+  const activeSubs = React.useMemo(() => {
+    if (mainCat === 'all') return SHOP_CATEGORIES;
+    const mc = MAIN_CATEGORIES.find(m => m.id === mainCat);
+    if (!mc) return SHOP_CATEGORIES;
+    return SHOP_CATEGORIES.filter(c => c.id === 'all' || mc.subcategories.includes(c.id));
+  }, [mainCat]);
   const filtered = SHOP_PRODUCTS.filter(p => {
+    const matchMain = mainCat === 'all' || p.mainCategories.includes(mainCat);
     const matchCat = category === 'all' || p.category === category;
     const matchFmt = format === 'all' || p.format === format;
     const q = query.trim().toLowerCase();
     const matchQ = !q || p.title.toLowerCase().includes(q) || p.shortDesc.toLowerCase().includes(q) || p.tags.some(t => t.toLowerCase().includes(q));
-    return matchCat && matchFmt && matchQ;
+    return matchMain && matchCat && matchFmt && matchQ;
   });
-  const hasFilters = category !== 'all' || format !== 'all' || query.trim();
+  const hasFilters = mainCat !== 'all' || category !== 'all' || format !== 'all' || query.trim();
   const resetFilters = () => {
+    setMainCat('all');
     setCategory('all');
     setFormat('all');
     setQuery('');
@@ -787,13 +825,56 @@ function ShopPage({
       color: 'var(--navy)'
     }
   }, "Suntem \u0219i pe SEAP"), " \u2014 produsele \u0219i serviciile INFORMS pot fi achizi\u021Bionate prin sistemul electronic de achizi\u021Bii publice.")))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      borderBottom: '1px solid var(--border)',
+      background: '#fff'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container",
+    style: {
+      padding: '18px 28px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '11px',
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      letterSpacing: '.12em',
+      color: 'var(--text-2)',
+      marginBottom: '12px'
+    }
+  }, "Filtreaz\u0103 dup\u0103 profil"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: '8px',
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }
+  }, MAIN_CATEGORIES.map(m => /*#__PURE__*/React.createElement("button", {
+    key: m.id,
+    onClick: () => handleMainCat(mainCat === m.id ? 'all' : m.id),
+    style: {
+      padding: '9px 22px',
+      borderRadius: '8px',
+      border: '1.5px solid',
+      borderColor: mainCat === m.id ? 'var(--navy)' : 'var(--border)',
+      background: mainCat === m.id ? 'var(--navy)' : '#fff',
+      color: mainCat === m.id ? '#fff' : 'var(--text)',
+      fontWeight: 600,
+      fontSize: '14px',
+      fontFamily: 'var(--font)',
+      cursor: 'pointer',
+      transition: 'all .15s',
+      lineHeight: 1.4
+    }
+  }, m.label))))), /*#__PURE__*/React.createElement("div", {
     className: "shop-filter-bar",
     id: "shop-filter-bar"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "shop-tabs"
-  }, SHOP_CATEGORIES.map(c => /*#__PURE__*/React.createElement("div", {
+  }, activeSubs.map(c => /*#__PURE__*/React.createElement("div", {
     key: c.id,
     className: `shop-tab${category === c.id ? ' active' : ''}`,
     style: c.green ? {
