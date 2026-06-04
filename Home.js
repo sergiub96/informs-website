@@ -303,7 +303,7 @@ function HomePage({
     className: "prov-card-header"
   }, /*#__PURE__*/React.createElement("div", {
     className: "prov-icon-x"
-  }, "\u2715"), /*#__PURE__*/React.createElement("span", {
+  }, "!"), /*#__PURE__*/React.createElement("span", {
     className: "prov-header-label prov-header-label-left"
   }, "Provoc\u0103ri")), [{
     title: 'Documentații cu lacune procedurale',
@@ -322,7 +322,7 @@ function HomePage({
     className: "prov-card-row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "prov-icon-x"
-  }, "\u2715"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, "!"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "prov-item-title"
   }, item.title), /*#__PURE__*/React.createElement("div", {
     className: "prov-item-desc"

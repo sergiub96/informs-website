@@ -154,7 +154,7 @@ function HomePage({ onNav }) {
             <div className="prov-two-cards">
               <div className="prov-card prov-card-left">
                 <div className="prov-card-header">
-                  <div className="prov-icon-x">✕</div>
+                  <div className="prov-icon-x">!</div>
                   <span className="prov-header-label prov-header-label-left">Provocări</span>
                 </div>
                 {[
@@ -164,7 +164,7 @@ function HomePage({ onNav }) {
                   { title: 'Resurse temporale alocate documentației', desc: 'Elaborarea documentelor de rutină consumă resurse semnificative ce ar putea fi direcționate spre activități cu valoare adăugată superioară.' },
                 ].map((item, i) => (
                   <div key={i} className="prov-card-row">
-                    <div className="prov-icon-x">✕</div>
+                    <div className="prov-icon-x">!</div>
                     <div>
                       <div className="prov-item-title">{item.title}</div>
                       <div className="prov-item-desc">{item.desc}</div>
