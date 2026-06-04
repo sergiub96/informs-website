@@ -18,7 +18,7 @@
   --r:    6px;
   --r-lg: 10px;
   --r-xl: 18px;
-  --font: Arial, 'Segoe UI', system-ui, sans-serif;
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
   --max-w: 1200px;
   --dur: 0.20s;
   --ease: cubic-bezier(0.4,0,0.2,1);
