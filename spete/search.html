@@ -210,6 +210,27 @@
 
     @media (max-width: 768px) {
       .search-hero { padding: 1.5rem 0; }
+      .cnsc-filter-bar { gap: .4rem; }
+    }
+    @media (max-width: 576px) {
+      .tab-mode { font-size: .75rem; padding: .25rem .7rem; }
+      .panel-search-wrap { padding: .2rem .2rem .2rem .9rem; }
+      .panel-search-btn { padding: .4rem 1rem; font-size: .82rem; }
+      .cnsc-filter-bar select { font-size: .78rem; padding: .25rem .6rem; }
+      .search-input-wrap { padding: .15rem .15rem .15rem 1rem; }
+      .search-btn { padding: .45rem 1.1rem; font-size: .88rem; }
+      #searchInput { font-size: .95rem; }
+    }
+    @media (max-width: 480px) {
+      .search-hero { padding: 1rem 0; }
+      .tab-mode { font-size: .72rem; padding: .22rem .6rem; }
+      #searchInput { font-size: .9rem; }
+      .search-btn { padding: .4rem .9rem; font-size: .82rem; }
+      .cnsc-filter-bar { flex-direction: column; align-items: flex-start; }
+      .cnsc-filter-bar select { width: 100%; }
+      #cnscStatus { margin-left: 0 !important; }
+      .chat-bubble { max-width: 95%; font-size: .85rem; }
+      .sidebar-card .card-body { padding: .75rem !important; }
     }
   </style>
 </head>
@@ -325,7 +346,7 @@
           Minim 2 caractere · Caută și cu cod spetă (#1095) · Click pe tag pentru filtrare
         </div>
         <!-- Tab-uri mod cautare -->
-        <div class="d-flex justify-content-center gap-2 mt-3">
+        <div class="d-flex justify-content-center flex-wrap gap-2 mt-3">
           <button id="tabKeyword" class="tab-mode active" onclick="setMode('keyword')">
             <i class="bi bi-search me-1"></i>Căutare text
           </button>

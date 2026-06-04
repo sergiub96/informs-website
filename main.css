@@ -849,6 +849,35 @@ textarea{resize:vertical;min-height:128px;line-height:1.6}
   .stat-col:last-child{border-bottom:none}
   .trust-inner{flex-direction:column;align-items:flex-start;gap:10px}
   .challenge-card{padding:20px 16px}
+  .container{padding:0 16px}
+  .pain-side,.sol-side{padding:44px 20px}
+}
+
+@media(max-width:480px){
+  .container{padding:0 14px}
+  .sec{padding:44px 0}
+  .proc-section{padding:44px 0}
+  .cta-wrap{padding:32px 18px}
+  .quote-card{padding:36px 18px 32px}
+  .pain-side,.sol-side{padding:32px 14px}
+  .pg-hero{padding:88px 0 44px}
+  .pg-hero h1{font-size:clamp(1.5rem,5.5vw,2.1rem)}
+  .hero-video-section{padding:100px 0 64px;min-height:440px}
+  .stat-col{padding:20px 12px}
+  .stat-col .s-num{font-size:2rem}
+  .stat-col .s-lbl{font-size:13px}
+  .shop-cta-banner{padding:28px 16px}
+  .h-label{font-size:11px;margin-bottom:14px}
+  .prov-two-cards{gap:16px}
+  .two-col{gap:20px!important}
+  .shop-modal{max-height:95vh}
+}
+
+@media(max-height:500px) and (orientation:landscape){
+  .hero-video-section{padding:70px 0 40px;min-height:300px}
+  .pg-hero{padding:70px 0 36px}
+  .sec{padding:40px 0}
+  .proc-section{padding:40px 0}
 }
 
 /* ── CSS-only fade-up animation (replaces AOS) ── */
