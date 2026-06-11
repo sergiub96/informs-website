@@ -1,8 +1,10 @@
 assets/img_library/
 assets/old/
-embeddings.bin
-sem_meta.json
-spete_anap.json
+# Doar copiile duplicate din rădăcină — ancorate cu "/" ca să NU excludă
+# fișierele cu același nume din spete/ (de care depinde search.html).
+/embeddings.bin
+/sem_meta.json
+/spete_anap.json
 spete/chat.php
 node_modules/
 .claude/

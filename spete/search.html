@@ -487,13 +487,8 @@
           <button class="panel-reset-btn-light" onclick="resetCnsc()">
             <i class="bi bi-x-circle me-1"></i>Resetează
           </button>
-          <label class="d-flex align-items-center gap-1 mb-0 ms-2" style="cursor:pointer;font-size:.82rem;">
-            <input type="checkbox" id="cnscAiToggle" checked>
-            <span><i class="bi bi-cpu me-1 text-success"></i>Răspuns AI</span>
-          </label>
           <div id="cnscStatus" style="font-size:.82rem;margin-left:auto;"></div>
         </div>
-        <div id="cnscAiAnswer" class="mb-3" style="display:none;"></div>
         <div id="cnscResults"></div>
       </div>
 
@@ -516,19 +511,14 @@
           <span class="sem-example-light" onclick="semRunExample(this)">subcontractant declarat ulterior</span>
           <span class="sem-example-light" onclick="semRunExample(this)">clarificări după termenul limită</span>
         </div>
-        <!-- Toggle Răspuns AI -->
+        <!-- Reset -->
         <div class="d-flex align-items-center gap-3 mb-3" style="font-size:.82rem;">
-          <label class="d-flex align-items-center gap-2 mb-0" style="cursor:pointer;">
-            <input type="checkbox" id="semAiToggle" checked>
-            <span><i class="bi bi-cpu me-1 text-primary"></i>Răspuns AI (Groq sintetizează din rezultate)</span>
-          </label>
           <button class="panel-reset-btn-light" onclick="resetSemantic()">
             <i class="bi bi-x-circle me-1"></i>Resetează
           </button>
         </div>
-        <!-- Status + AI answer + rezultate -->
+        <!-- Status + rezultate -->
         <div id="apiStatus" class="mb-3" style="font-size:.82rem;"></div>
-        <div id="semAiAnswer" class="mb-3" style="display:none;"></div>
         <div id="semanticResults"></div>
       </div>
 
@@ -1146,7 +1136,6 @@ async function semanticSearch(q) {
       <div class="spinner-border spinner-border-sm me-2"></div>
       ${SEM.ready ? 'Caut în 1223 spețe…' : 'Se inițializează motorul semantic…'}
     </div>`;
-  document.getElementById('semAiAnswer').style.display = 'none';
 
   if (!SEM.ready) {
     const ok = await initSemantic();
@@ -1169,38 +1158,9 @@ async function semanticSearch(q) {
       .map(i => ({ ...SEM.meta[i], scor: Math.round(scores[i] * 1000) / 1000 }));
 
     renderSemantic(top, q);
-
-    // Răspuns AI Groq dacă toggle-ul e activ
-    if (document.getElementById('semAiToggle').checked) {
-      semAiAnswer(q, top);
-    }
   } catch(e) {
     document.getElementById('semanticResults').innerHTML =
       `<div class="alert alert-danger">Eroare: ${esc(e.message)}</div>`;
-  }
-}
-
-async function semAiAnswer(q, context) {
-  const box = document.getElementById('semAiAnswer');
-  box.style.display = 'block';
-  box.innerHTML = `<div class="ai-answer-box">
-    <div class="ai-label"><i class="bi bi-cpu me-1"></i>Răspuns AI — se generează…</div>
-    <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
-      <div class="spinner-border spinner-border-sm"></div> Groq analizează spețele relevante…
-    </div>
-  </div>`;
-  try {
-    const data = await _callAI(q, context);
-    if (data.error) { box.style.display = 'none'; return; }
-    const surseHtml = (data.surse || [])
-      .map(s => `<span class="badge bg-light text-dark border me-1">#${s.cod}</span>`).join('');
-    box.innerHTML = `<div class="ai-answer-box">
-      <div class="ai-label"><i class="bi bi-cpu me-1"></i>Răspuns AI bazat pe spețele de mai jos</div>
-      <div class="ai-text">${esc(data.raspuns).replace(/\n/g,'<br>')}</div>
-      ${surseHtml ? `<div class="ai-surse"><i class="bi bi-journal-text me-1"></i>Surse: ${surseHtml}</div>` : ''}
-    </div>`;
-  } catch(e) {
-    box.style.display = 'none';
   }
 }
 
@@ -1253,8 +1213,6 @@ function resetKeyword() {
 function resetSemantic() {
   document.getElementById('semInput').value = '';
   document.getElementById('semanticResults').innerHTML = '';
-  document.getElementById('semAiAnswer').style.display = 'none';
-  document.getElementById('semAiAnswer').innerHTML = '';
 }
 
 function resetCnsc() {
@@ -1262,7 +1220,6 @@ function resetCnsc() {
   document.getElementById('cnscFiltSolutie').value = '';
   document.getElementById('cnscFiltAn').value = '';
   document.getElementById('cnscResults').innerHTML = '';
-  document.getElementById('cnscAiAnswer').style.display = 'none';
 }
 
 function semRunExample(el) {
@@ -1556,40 +1513,6 @@ function solutieCls(s) {
   return '';
 }
 
-async function cnscAiAnswer(q, decisions) {
-  const box = document.getElementById('cnscAiAnswer');
-  box.style.display = 'block';
-  box.innerHTML = `<div class="ai-answer-box" style="border-color:#c8e6c9;background:linear-gradient(135deg,#e8f5e9,#f1f8f1);">
-    <div class="ai-label" style="color:#2e7d32;"><i class="bi bi-cpu me-1"></i>Răspuns AI — analizez deciziile CNSC…</div>
-    <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
-      <div class="spinner-border spinner-border-sm"></div> Groq procesează deciziile relevante…
-    </div>
-  </div>`;
-
-  const context = decisions.slice(0, 4).map(d => ({
-    cod:  d.nr_decizie || d.cod,
-    cat:  d.categorie,
-    q:    `Decizie CNSC ${d.nr_decizie || d.cod} din ${d.data || '?'}. Soluție: ${d.solutie || '?'}`,
-    a:    (d.motivare || d.continut_complet || '').slice(0, 800),
-  }));
-
-  const promptQ = `Pe baza deciziilor CNSC de mai jos, răspunde la întrebarea: "${q}"`;
-
-  try {
-    const data = await _callAI(promptQ, context);
-    if (data.error) { box.style.display = 'none'; return; }
-    const surseHtml = decisions.slice(0, 4)
-      .map(d => `<span class="badge bg-light border me-1" style="color:#2e7d32;">${esc(d.nr_decizie || d.cod)}</span>`).join('');
-    box.innerHTML = `<div class="ai-answer-box" style="border-color:#c8e6c9;background:linear-gradient(135deg,#e8f5e9,#f1f8f1);">
-      <div class="ai-label" style="color:#2e7d32;"><i class="bi bi-cpu me-1"></i>Răspuns AI bazat pe deciziile CNSC de mai jos</div>
-      <div class="ai-text">${esc(data.raspuns).replace(/\n/g,'<br>')}</div>
-      ${surseHtml ? `<div class="ai-surse"><i class="bi bi-journal-text me-1"></i>Surse: ${surseHtml}</div>` : ''}
-    </div>`;
-  } catch(e) {
-    box.style.display = 'none';
-  }
-}
-
 function renderCnsc(items, q) {
   const el = document.getElementById('cnscResults');
   if (!items.length) {
@@ -1629,12 +1552,6 @@ function renderCnsc(items, q) {
   </div>
 </div>`;
     }).join('')}`;
-
-  if (q && items.length && document.getElementById('cnscAiToggle')?.checked) {
-    cnscAiAnswer(q, items);
-  } else {
-    document.getElementById('cnscAiAnswer').style.display = 'none';
-  }
 }
 
 /* ==============================================================

@@ -8,3 +8,5 @@ node_modules/
 design-preview-desktop.png
 design-preview-mobile.png
 assets/old/
+
+.vercel
